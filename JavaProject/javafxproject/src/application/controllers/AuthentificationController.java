@@ -7,16 +7,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
+import application.Navigation;
 import application.entities.AccountType;
 import application.services.AuthentificationService;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 
 public class AuthentificationController implements Initializable{
@@ -41,10 +45,14 @@ public class AuthentificationController implements Initializable{
     
     @FXML
     public void handleLogin() {
+    	Stage stage = (Stage) login_btn.getScene().getWindow();
+
         String email = email_login.getText();
         String password = password_login.getText();
         AccountType userType = AuthentificationService.isLoginValid(email, password);
         if (userType != AccountType.NotFound) {
+        	Navigation navigation = new Navigation();
+        	navigation.toAfterLogin(stage,userType);
         	
             // Login successful
             Alert alert = new Alert(AlertType.INFORMATION);
