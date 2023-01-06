@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -9,14 +14,60 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.StudentScreenController">
    <top>
-      <HBox prefHeight="80.0" prefWidth="1200.0" style="-fx-background-color: #1E90FF;" BorderPane.alignment="CENTER" />
+      <HBox prefHeight="80.0" prefWidth="1200.0" style="-fx-background-color: #1E90FF;" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="80.0" prefWidth="1222.0">
+               <children>
+                  <Label fx:id="fullname_toshow" layoutX="233.0" layoutY="23.0" text="Jada Mohamed" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="email_toshow" layoutX="233.0" layoutY="40.0" text="mohamedjada@gmail.com" textFill="WHITE" />
+                  <Label fx:id="cne_toshow" layoutX="487.0" layoutY="23.0" text="D13256789051" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="bactype_toshow" layoutX="487.0" layoutY="40.0" prefHeight="17.0" prefWidth="205.0" text="Baccalauriate Science Of Physics" textFill="WHITE" />
+                  <Label layoutX="791.0" layoutY="23.0" text="Age" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="age_toshow" layoutX="791.0" layoutY="40.0" prefHeight="17.0" prefWidth="54.0" text="20 year" textFill="WHITE" />
+                  <Label layoutX="902.0" layoutY="23.0" text="Obtenir le bac en" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="bacyear_toshow" layoutX="902.0" layoutY="40.0" prefHeight="17.0" prefWidth="74.0" text="2021/2022" textFill="WHITE" />
+                  <Label layoutX="1047.0" layoutY="23.0" text="Ville" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="city_toshow" layoutX="1047.0" layoutY="40.0" prefHeight="17.0" prefWidth="74.0" text="Agadir" textFill="WHITE" />
+                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="149.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/profile-male.png" />
+                     </image>
+                  </ImageView>
+                  <Line endX="9.0" layoutX="489.0" layoutY="39.0" rotate="90.0" startX="-44.02731704711914" startY="0.9787230491638184" stroke="#f7fdffa4" strokeMiterLimit="5.0" />
+                  <Line endX="9.0" layoutX="793.0" layoutY="39.0" rotate="90.0" startX="-44.02731704711914" startY="0.9787230491638184" stroke="#f7fdffa4" strokeMiterLimit="5.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
    </top>
    <left>
-      <VBox prefHeight="200.0" prefWidth="150.0" spacing="460.0" style="-fx-background-color: #1E90FF;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="150.0" spacing="470.0" style="-fx-background-color: #1E90FF;" BorderPane.alignment="CENTER">
          <children>
             <VBox prefHeight="136.0" prefWidth="150.0">
                <children>
@@ -28,6 +79,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button fx:id="student_infosbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="204.0" style="-fx-background-color: #1E90FF;" text="Mes informations" textFill="WHITE">
                      <graphic>
@@ -37,6 +91,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button fx:id="student_notifsbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="204.0" style="-fx-background-color: #1E90FF;" text="Notifications" textFill="WHITE">
                      <graphic>
@@ -46,6 +103,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button fx:id="student_appsbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="204.0" style="-fx-background-color: #1E90FF;" text="Mes candidateurs" textFill="WHITE">
                      <graphic>
@@ -55,6 +115,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </VBox>
@@ -68,6 +131,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </VBox>
@@ -77,24 +143,157 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane fx:id="student_applications" layoutX="579.0" layoutY="223.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Label layoutX="511.0" layoutY="312.0" text="Apps" />
-               </children>
-            </Pane>
             <Pane fx:id="student_notifications" layoutX="579.0" layoutY="223.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label layoutX="509.0" layoutY="312.0" text="Notifs" />
+                  <TableView focusTraversable="false" layoutX="20.0" layoutY="20.0" prefHeight="600.0" prefWidth="1010.0">
+                     <columns>
+                        <TableColumn prefWidth="350.0" resizable="false" text="Etablissement" />
+                        <TableColumn minWidth="6.0" prefWidth="300.0" resizable="false" text="Formation" />
+                        <TableColumn prefWidth="150.0" resizable="false" text="Ville" />
+                        <TableColumn prefWidth="150.0" resizable="false" text="Actions" />
+                     </columns>
+                  </TableView>
                </children>
             </Pane>
-            <Pane fx:id="student_infos" layoutX="579.0" layoutY="223.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane fx:id="student_applications" layoutX="579.0" layoutY="223.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label layoutX="496.0" layoutY="312.0" text="Perso infos" />
+                  <TableView focusTraversable="false" layoutX="20.0" layoutY="20.0" prefHeight="600.0" prefWidth="1010.0">
+                     <columns>
+                        <TableColumn prefWidth="300.0" resizable="false" text="Etablissement" />
+                        <TableColumn minWidth="6.0" prefWidth="250.0" resizable="false" text="Formation" />
+                        <TableColumn prefWidth="150.0" resizable="false" text="Ville" />
+                        <TableColumn prefWidth="100.0" resizable="false" text="Note" />
+                        <TableColumn prefWidth="100.0" resizable="false" text="Résiduelle" />
+                        <TableColumn prefWidth="109.0" resizable="false" text="Actions" />
+                        <TableColumn prefWidth="109.0" resizable="false" text="candidateur_code" visible="false" />
+                     </columns>
+                  </TableView>
                </children>
             </Pane>
             <Pane fx:id="student_home" layoutX="569.0" layoutY="213.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label layoutX="509.0" layoutY="312.0" text="Home" />
+                  <ChoiceBox fx:id="admin_school_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #1E90FF; -fx-cursor: pointer;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ChoiceBox>
+                  <TableView cacheShape="false" centerShape="false" focusTraversable="false" layoutX="20.0" layoutY="66.0" prefHeight="564.0" prefWidth="1010.0" scaleShape="false">
+                     <columns>
+                        <TableColumn prefWidth="300.0" resizable="false" text="Etablissement" />
+                        <TableColumn minWidth="6.0" prefWidth="250.0" resizable="false" text="Formation" />
+                        <TableColumn prefWidth="160.0" resizable="false" text="Ville" />
+                        <TableColumn prefWidth="120.0" resizable="false" text="Résiduelle" />
+                        <TableColumn prefWidth="180.0" resizable="false" text="Actions" />
+                        <TableColumn prefWidth="180.0" resizable="false" text="cp_code" visible="false" />
+                     </columns>
+                  </TableView>
+               </children>
+            </Pane>
+            <Pane fx:id="student_infos" layoutX="579.0" layoutY="223.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="290.0" prefWidth="495.0" style="-fx-background-color: fff; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 3, 0, 0, 0); -fx-background-radius: 8; -fx-style: ;">
+                     <children>
+                        <Label layoutX="45.0" layoutY="22.0" text="Relvé de notes">
+                           <font>
+                              <Font name="Segoe UI Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/RN.png" />
+                           </image>
+                        </ImageView>
+                        <Line endX="290.0" layoutX="150.0" layoutY="63.0" startX="-102.0" stroke="#00000039" />
+                        <Line endX="290.0" layoutX="150.0" layoutY="103.0" startX="-102.0" stroke="#00000039" />
+                        <Line endX="290.0" layoutX="150.0" layoutY="143.0" startX="-102.0" stroke="#00000039" />
+                        <Line endX="290.0" layoutX="150.0" layoutY="223.0" startX="-102.0" stroke="#00000039" />
+                        <Line endX="290.0" layoutX="150.0" layoutY="183.0" startX="-102.0" stroke="#00000039" />
+                        <Line endX="290.0" layoutX="150.0" layoutY="263.0" startX="-102.0" stroke="#00000039" />
+                        <Line endX="200.0" layoutX="240.0" layoutY="163.0" rotate="90.0" stroke="#00000039" />
+                        <Label layoutX="70.0" layoutY="75.0" text="Mathématiques" />
+                        <Label layoutX="70.0" layoutY="115.0" text="Physique et Chimie" />
+                        <Label layoutX="70.0" layoutY="155.0" text="Science de la Vie et la Terre" />
+                        <Label layoutX="70.0" layoutY="195.0" text="Anglais" />
+                        <Label layoutX="70.0" layoutY="235.0" text="Francais" />
+                        <Label layoutX="354.0" layoutY="195.0" text="20" />
+                        <Label layoutX="354.0" layoutY="115.0" text="20" />
+                        <Label layoutX="354.0" layoutY="155.0" text="20" />
+                        <Label layoutX="354.0" layoutY="235.0" text="20" />
+                        <Label layoutX="354.0" layoutY="75.0" text="20" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="536.0" layoutY="20.0" prefHeight="595.0" prefWidth="495.0" style="-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 3, 0, 0, 0); -fx-background-color: fff; -fx-background-radius: 8;">
+                     <children>
+                        <Label layoutX="45.0" layoutY="322.0" text="Le mot de pass">
+                           <font>
+                              <Font name="Segoe UI Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="20.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/SC.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="45.0" layoutY="22.0" text="Sécurité">
+                           <font>
+                              <Font name="Segoe UI Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/lock.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="53.0" layoutY="55.0" text="E-mail actuel" />
+                        <Label layoutX="70.0" layoutY="92.0" text="mohameedjada@gmail.com" textFill="#464646" />
+                        <Label layoutX="53.0" layoutY="129.0" text="Nouveau E-mail" />
+                        <TextField layoutX="53.0" layoutY="151.0" prefHeight="30.0" prefWidth="300.0" promptText="nouveau e-mail" />
+                        <Label layoutX="53.0" layoutY="198.0" text="Confirm E-mail" />
+                        <TextField layoutX="53.0" layoutY="220.0" prefHeight="30.0" prefWidth="300.0" promptText="confirm e-mail" />
+                        <Button layoutX="374.0" layoutY="220.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="74.0" style="-fx-background-color: #1E90FF;" text="Change" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Label layoutX="53.0" layoutY="358.0" text="Mot de pass actuel" />
+                        <Label layoutX="53.0" layoutY="426.0" text="Nouvelle mot de pass" />
+                        <TextField layoutX="53.0" layoutY="448.0" prefHeight="30.0" prefWidth="300.0" promptText="nouveau mot de pass" />
+                        <Label layoutX="53.0" layoutY="495.0" text="Confirm mot de pass" />
+                        <TextField layoutX="53.0" layoutY="517.0" prefHeight="30.0" prefWidth="300.0" promptText="confirm mot de pass" />
+                        <Button layoutX="374.0" layoutY="517.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="74.0" style="-fx-background-color: #1E90FF;" text="Change" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <TextField layoutX="53.0" layoutY="381.0" prefHeight="30.0" prefWidth="300.0" promptText="mot e pass actuel" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="20.0" layoutY="330.0" prefHeight="290.0" prefWidth="495.0" style="-fx-background-color: fff; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 3, 0, 0, 0); -fx-background-radius: 8;">
+                     <children>
+                        <Label layoutX="45.0" layoutY="22.0" text="N Telephone">
+                           <font>
+                              <Font name="Segoe UI Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/call.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="50.0" layoutY="55.0" text="N Telephone actuel" />
+                        <Label layoutX="67.0" layoutY="92.0" text="+212 " textFill="#464646" />
+                        <Label layoutX="100.0" layoutY="92.0" text="664937463" textFill="#464646" />
+                        <Label layoutX="50.0" layoutY="129.0" text="Nouveau N Telephone" />
+                        <TextField layoutX="50.0" layoutY="151.0" prefHeight="30.0" prefWidth="300.0" promptText="nouveau n telephone" />
+                        <Label layoutX="50.0" layoutY="198.0" text="Confirm N Telephone" />
+                        <TextField layoutX="50.0" layoutY="220.0" prefHeight="30.0" prefWidth="300.0" promptText="confirm n telephone" />
+                        <Button layoutX="371.0" layoutY="220.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="74.0" style="-fx-background-color: #1E90FF;" text="Change" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
                </children>
             </Pane>
          </children>
