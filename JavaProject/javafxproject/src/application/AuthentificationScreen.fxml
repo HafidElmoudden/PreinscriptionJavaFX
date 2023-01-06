@@ -24,7 +24,7 @@
       </AnchorPane>
       <AnchorPane prefHeight="720.0" prefWidth="400.0" style="-fx-background-color: fff;">
          <children>
-            <Button fx:id="login_btn" alignment="CENTER" layoutX="79.0" layoutY="493.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="250.0" style="-fx-background-color: #1E90FF; -fx-background-radius: 5;" text="Se Connecter" textFill="WHITE">
+            <Button fx:id="login_btn" onAction="#handleLogin" alignment="CENTER" layoutX="79.0" layoutY="493.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="250.0" style="-fx-background-color: #1E90FF; -fx-background-radius: 5;" text="Se Connecter" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

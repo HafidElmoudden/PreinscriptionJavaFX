@@ -1,16 +1,22 @@
 package application.controllers;
 
+import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
+
+import application.services.AuthentificationService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
 
 public class AuthentificationController implements Initializable{
 	private Connection conn;
@@ -32,5 +38,24 @@ public class AuthentificationController implements Initializable{
     @FXML
     private Label sign_up;
     
-
+    @FXML
+    public void handleLogin() {
+        String email = email_login.getText();
+        String password = password_login.getText();
+        if (AuthentificationService.isLoginValid(email, password)) {
+            // Login successful
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Login Successful");
+            alert.setHeaderText("Welcome to the app!");
+            alert.showAndWait();
+            // Redirect the user to another page, or perform some other action
+        } else {
+            // Login failed
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Login Failed");
+            alert.setHeaderText("Invalid email or password");
+            alert.setContentText("Please try again.");
+            alert.showAndWait();
+        }
+    }
 }
