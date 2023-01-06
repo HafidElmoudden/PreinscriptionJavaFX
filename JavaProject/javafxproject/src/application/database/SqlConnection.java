@@ -5,21 +5,25 @@ import java.sql.DriverManager;
  
 public class SqlConnection {
 	public static Connection Connector() {
-		String serverUrl="localhost";
+		String instanceName="ABDULHAFID\\SQLEXPRESS";
 		String dbName="Csharp_Platforme";
-
+		
+		String db_url = "jdbc:sqlserver://"+instanceName+";databaseName="+dbName+";integratedSecurity=true;trustServerCertificate=true";
+		Connection connection = null;
 		
 		try {
 			
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			//DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
-			Connection connection = DriverManager.getConnection("jdbc:sqlserver://"+ serverUrl +";databaseName="+ dbName +";integratedSecurity=true;");
+			
+			connection = DriverManager.getConnection(db_url);
+
 			return connection;	
 		} catch (Exception e) {
 			
 			e.printStackTrace();
 		}
 	
-		return null;
+		return connection;
 	}
 }
