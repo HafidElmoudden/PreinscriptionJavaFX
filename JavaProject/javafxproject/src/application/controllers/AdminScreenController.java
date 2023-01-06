@@ -24,11 +24,11 @@ public class AdminScreenController {
     @FXML
     void handleButtonAction(ActionEvent event) {
     	if(event.getSource()==admin_schools_listbtn) {
-    		System.out.println("Schools");
+    		
     		admin_school_list.toFront();
     	}
     	else if(event.getSource()==admin_students_listbtn) {
-    		System.out.println("Students");
+    		
     		admin_students_list.toFront();
     	}
     	else if(event.getSource()==admin_logout) {

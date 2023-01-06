@@ -5,7 +5,7 @@ import java.sql.DriverManager;
  
 public class SqlConnection {
 	public static Connection Connector() {
-		String instanceName="ABDULHAFID\\SQLEXPRESS";
+		String instanceName="DESKTOP-3HP6PGB\\SQLEXPRESS";
 		String dbName="Csharp_Platforme";
 		
 		String db_url = "jdbc:sqlserver://"+instanceName+";databaseName="+dbName+";integratedSecurity=true;trustServerCertificate=true";
