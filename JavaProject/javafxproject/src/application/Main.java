@@ -1,5 +1,9 @@
 package application;
 	
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+
+import application.database.SqlConnection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -16,6 +20,7 @@ public class Main extends Application {
 			scene.getStylesheets().add(getClass().getResource("Application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
