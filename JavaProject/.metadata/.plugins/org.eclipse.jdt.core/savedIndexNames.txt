@@ -1,0 +1,13 @@
+INDEX VERSION 1.131+C:\Users\OK4G1\Desktop\javafxproject-preinscreption-\JavaProject\.metadata\.plugins\org.eclipse.jdt.core
+273140479.index
+2009143187.index
+3308409126.index
+530210164.index
+1384586370.index
+2445227277.index
+3267298733.index
+3959137331.index
+1815894603.index
+1038219446.index
+1865797976.index
+3869186804.index
