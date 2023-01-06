@@ -1,6 +1,5 @@
 package application;
 
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
