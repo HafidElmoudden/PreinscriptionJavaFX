@@ -8,6 +8,7 @@ import javafx.scene.control.ChoiceBox;
 
 public class CommonService {
 	public static void fillVilles(ChoiceBox<String> cb) {
+		cb.getItems().add("Toutes les villes");
 		try {
 			ResultSet villes = CommonRepository.getVilles();
 			while(villes.next()) {

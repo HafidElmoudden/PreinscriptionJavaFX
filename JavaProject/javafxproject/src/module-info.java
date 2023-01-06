@@ -5,10 +5,14 @@ module javafxproject {
 	requires java.sql;
 	requires com.microsoft.sqlserver.jdbc;
 	requires javafx.graphics;
+	requires javafx.base;
 	
 	//exports controllers and opens them
 	exports application.controllers;
 	opens application.controllers;
+	
+	exports application.entities;
+	opens application.entities;
 	
 	opens application to javafx.graphics, javafx.fxml, javafx.base;
 }

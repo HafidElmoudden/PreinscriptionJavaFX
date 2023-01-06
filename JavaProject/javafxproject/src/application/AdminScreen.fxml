@@ -118,13 +118,13 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ChoiceBox>
-                  <TableView focusTraversable="false" layoutX="20.0" layoutY="66.0" prefHeight="564.0" prefWidth="1010.0">
+                  <TableView fx:id="schools_table_view" focusTraversable="false" layoutX="20.0" layoutY="66.0" prefHeight="564.0" prefWidth="1010.0">
                     <columns>
-                      <TableColumn prefWidth="300.0" resizable="false" text="Etablissement" />
-                      <TableColumn minWidth="6.0" prefWidth="150.0" resizable="false" text="Ville" />
-                        <TableColumn prefWidth="200.0" resizable="false" text="Email" />
-                        <TableColumn prefWidth="150.0" resizable="false" text="Telephone" />
-                        <TableColumn prefWidth="100.0" resizable="false" text="N formations" />
+                      <TableColumn fx:id="etaCol" prefWidth="300.0" resizable="false" text="Etablissement" />
+                      <TableColumn fx:id="villeCol" minWidth="6.0" prefWidth="150.0" resizable="false" text="Ville" />
+                        <TableColumn fx:id="emailCol" prefWidth="200.0" resizable="false" text="Email" />
+                        <TableColumn fx:id="phoneCol" prefWidth="150.0" resizable="false" text="Telephone" />
+                        <TableColumn fx:id="nbFormationsCol" prefWidth="100.0" resizable="false" text="N formations" />
                         <TableColumn prefWidth="57.0" />
                         <TableColumn prefWidth="57.0" />
                     </columns>
