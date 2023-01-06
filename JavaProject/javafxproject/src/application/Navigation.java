@@ -22,6 +22,16 @@ public class Navigation {
 				e.printStackTrace();
 			}
 			break;
+		case Etudiant:
+			try {
+				root = FXMLLoader.load(getClass().getResource("StudentScreen.fxml"));
+				Scene scene = new Scene(root,1200,720);
+				scene.getStylesheets().add(getClass().getResource("Application.css").toExternalForm());
+				stage.setScene(scene);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			break;
 		default:
 			break;
 		}
