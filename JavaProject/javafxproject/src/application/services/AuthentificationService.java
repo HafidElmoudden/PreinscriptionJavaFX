@@ -9,21 +9,20 @@ import application.entities.AccountType;
 
 public class AuthentificationService {
 
-	static public boolean isLoginValid(String email, String password) {
-		String query = "SELECT * FROM Users WHERE email = ? AND password_ = ?";
+	static public AccountType isLoginValid(String email, String password) {
+		String query = "SELECT user_type FROM Users WHERE email = ? AND password_ = ?";
 		ResultSet resultSet = dbClient.executeCommand(true, query, List.of(email, password));
-		if(resultSet == null)
-			return false;
+
 		try {
 			if (resultSet.next()) {
-				return true;
+				return getAccountType(resultSet.getString(1));
 			} else {
-				return false;
+				return AccountType.NotFound;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return false;
+		return AccountType.NotFound;
 	}
 
 	static public AccountType getAccountType(String userType) {

@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
+import application.entities.AccountType;
 import application.services.AuthentificationService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,10 +43,12 @@ public class AuthentificationController implements Initializable{
     public void handleLogin() {
         String email = email_login.getText();
         String password = password_login.getText();
-        if (AuthentificationService.isLoginValid(email, password)) {
+        AccountType userType = AuthentificationService.isLoginValid(email, password);
+        if (userType != AccountType.NotFound) {
+        	
             // Login successful
             Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Login Successful");
+            alert.setTitle("Login Successful : " + userType);
             alert.setHeaderText("Welcome to the app!");
             alert.showAndWait();
             // Redirect the user to another page, or perform some other action
