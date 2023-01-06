@@ -78,41 +78,6 @@ public class AdminScreenController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		/*etaCol.setCellValueFactory((Callback<CellDataFeatures<SchoolInformations, String>, ObservableValue<String>>) new Callback<CellDataFeatures<SchoolInformations, String>, ObservableValue<String>>() {
-		    @Override
-		    public ObservableValue<String> call(CellDataFeatures<SchoolInformations, String> param) {
-		        SchoolInformations school = param.getValue();
-		        return new SimpleStringProperty(school.etablissement);
-		    }
-		});
-		villeCol.setCellValueFactory((Callback<CellDataFeatures<SchoolInformations, String>, ObservableValue<String>>) new Callback<CellDataFeatures<SchoolInformations, String>, ObservableValue<String>>() {
-		    @Override
-		    public ObservableValue<String> call(CellDataFeatures<SchoolInformations, String> param) {
-		        SchoolInformations school = param.getValue();
-		        return new SimpleStringProperty(school.ville);
-		    }
-		});
-		emailCol.setCellValueFactory((Callback<CellDataFeatures<SchoolInformations, String>, ObservableValue<String>>) new Callback<CellDataFeatures<SchoolInformations, String>, ObservableValue<String>>() {
-		    @Override
-		    public ObservableValue<String> call(CellDataFeatures<SchoolInformations, String> param) {
-		        SchoolInformations school = param.getValue();
-		        return new SimpleStringProperty(school.email);
-		    }
-		});
-		phoneCol.setCellValueFactory((Callback<CellDataFeatures<SchoolInformations, String>, ObservableValue<String>>) new Callback<CellDataFeatures<SchoolInformations, String>, ObservableValue<String>>() {
-		    @Override
-		    public ObservableValue<String> call(CellDataFeatures<SchoolInformations, String> param) {
-		        SchoolInformations school = param.getValue();
-		        return new SimpleStringProperty(school.phone);
-		    }
-		});
-		nbFormationsCol.setCellValueFactory((Callback<CellDataFeatures<SchoolInformations, String>, ObservableValue<String>>) new Callback<CellDataFeatures<SchoolInformations, String>, ObservableValue<String>>() {
-		    @Override
-		    public ObservableValue<String> call(CellDataFeatures<SchoolInformations, String> param) {
-		        SchoolInformations school = param.getValue();
-		        return new SimpleStringProperty(school.nombreFormations);
-		    }
-		});*/
 		etaCol.setCellValueFactory(new PropertyValueFactory<>("etablissement"));
 		villeCol.setCellValueFactory(new PropertyValueFactory<>("ville"));
 		emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
