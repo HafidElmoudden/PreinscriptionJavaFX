@@ -4,6 +4,7 @@ module javafxproject {
 	requires java.desktop;
 	requires java.sql;
 	requires com.microsoft.sqlserver.jdbc;
+	requires javafx.graphics;
 	
 	//exports controllers and opens them
 	exports application.controllers;
