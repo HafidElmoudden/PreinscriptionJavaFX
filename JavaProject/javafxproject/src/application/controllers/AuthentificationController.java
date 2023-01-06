@@ -31,5 +31,6 @@ public class AuthentificationController implements Initializable{
 
     @FXML
     private Label sign_up;
+    
 
 }

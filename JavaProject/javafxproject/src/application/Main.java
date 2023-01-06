@@ -11,9 +11,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Pane root=FXMLLoader.load(getClass().getResource("authentification.fxml"));
+			Pane root=FXMLLoader.load(getClass().getResource("AdminScreen.fxml"));
 			Scene scene = new Scene(root,1200,720);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("Application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
