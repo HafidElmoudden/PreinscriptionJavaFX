@@ -31,7 +31,6 @@ public class SchoolService {
 						.add(new SchoolInformations(etablissement, ville, email, telephone, nombreFormations));
 			}
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		}
 	}

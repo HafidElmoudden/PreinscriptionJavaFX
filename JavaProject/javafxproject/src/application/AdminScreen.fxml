@@ -99,14 +99,14 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ChoiceBox>
-                  <TableView focusTraversable="false" layoutX="20.0" layoutY="66.0" prefHeight="564.0" prefWidth="1010.0">
+                  <TableView fx:id="students_table_view" focusTraversable="false" layoutX="20.0" layoutY="66.0" prefHeight="564.0" prefWidth="1010.0">
                      <columns>
-                        <TableColumn editable="false" prefWidth="120.0" resizable="false" text="CNE" />
-                        <TableColumn editable="false" minWidth="6.0" prefWidth="150.0" resizable="false" text="Nom" />
-                        <TableColumn editable="false" prefWidth="150.0" resizable="false" text="Prénom" />
-                        <TableColumn editable="false" prefWidth="150.0" resizable="false" text="Email" />
-                        <TableColumn prefWidth="220.0" resizable="false" text="Baccalaureate" />
-                        <TableColumn prefWidth="120.0" resizable="false" text="Ville" />
+                        <TableColumn fx:id="cneCol" editable="false" prefWidth="120.0" resizable="false" text="CNE" />
+                        <TableColumn fx:id="nomCol" editable="false" minWidth="6.0" prefWidth="150.0" resizable="false" text="Nom" />
+                        <TableColumn fx:id="prenomCol" editable="false" prefWidth="150.0" resizable="false" text="Prénom" />
+                        <TableColumn fx:id="stEmailCol" editable="false" prefWidth="150.0" resizable="false" text="Email" />
+                        <TableColumn fx:id="bacCol" prefWidth="220.0" resizable="false" text="Baccalaureate" />
+                        <TableColumn fx:id="stVilleCol" prefWidth="120.0" resizable="false" text="Ville" />
                      </columns>
                   </TableView>
                </children>
