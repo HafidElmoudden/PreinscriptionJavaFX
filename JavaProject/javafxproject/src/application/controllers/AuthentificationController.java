@@ -1,6 +1,7 @@
 package application.controllers;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,20 +18,49 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 
-public class AuthentificationController implements Initializable{
+public class AuthentificationController{
 	private Connection conn;
 	private PreparedStatement ps;
 	private ResultSet rs;
+    
+    @FXML
+    private Button suivantbtn1, suivantbtn2, suivantbtn3;
+    
+    @FXML
+    private Button starting_signup, backtologin1, backtologin2, backtologin3;
+    
+    @FXML
+    private TextField sign_email;
+    
+    @FXML
+    private Pane login_forum, signup1, signup2, signup3;
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-	}
+    @FXML
+    private ComboBox<?> signup_baccity, signup_bactype, signup_city, signup_yearbac;
+
+    @FXML
+    private DatePicker signup_birthday;
+
+    @FXML
+    private TextField signup_cne, signup_confirm_password, signup_lastname, signup_name, signup_telephon, signup_password;
+
+    @FXML
+    private RadioButton signup_female, signup_male;
+    
+    
+    
+    
+    
     @FXML
     private TextField email_login;
 
@@ -39,11 +69,7 @@ public class AuthentificationController implements Initializable{
 
     @FXML
     private PasswordField password_login;
-
-    @FXML
-    private Label sign_up;
     
-    @FXML
     public void handleLogin() {
     	Stage stage = (Stage) login_btn.getScene().getWindow();
 
