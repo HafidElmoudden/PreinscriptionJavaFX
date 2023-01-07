@@ -29,30 +29,72 @@ public class StudentScreenController implements Initializable{
 
 	Navigation navigation = new Navigation();
 	@FXML
-	private Label fullname_toshow,email_toshow,cne_toshow,bactype_toshow,age_toshow,bacyear_toshow,city_toshow;
-	
-    @FXML
-    private Pane student_applications, student_notifications, student_infos, student_home;
+    private TableColumn<?, ?> actions_grid_home;
 
     @FXML
-    private Button student_appsbtn, student_homebtn, student_infosbtn, student_logout, student_notifsbtn ; 
+    private ChoiceBox<?> student_schoollist_ville_filter;
+    @FXML
+    private Label age_toshow;
 
     @FXML
-    private ChoiceBox<String> student_schoollist_ville_filter;
-    
-    //Formation Posts Table View
+    private Label bactype_toshow;
+
     @FXML
-    private TableView<FormationPost> student_grid_home;
+    private Label bacyear_toshow;
+
     @FXML
-    private TableColumn<FormationPost, String> etablissement_grid_home;
+    private Label city_toshow;
+
     @FXML
-    private TableColumn<FormationPost, String> formation_grid_home;
+    private Label cne_toshow;
+
     @FXML
-    private TableColumn<FormationPost, String> ville_grid_home;
+    private Label email_toshow;
+
     @FXML
-    private TableColumn<FormationPost, String> residuelle_grid_home;
+    private TableColumn<?, ?> etablissement_grid_home;
+
     @FXML
-    private TableColumn<FormationPost, String> actioons_grid_home;
+    private TableColumn<?, ?> formation_grid_home;
+
+    @FXML
+    private Label fullname_toshow;
+
+    @FXML
+    private TableColumn<?, ?> residuelle_grid_home;
+
+    @FXML
+    private Pane student_applications;
+
+    @FXML
+    private Button student_appsbtn;
+
+    @FXML
+    private TableView<?> student_grid_home;
+
+    @FXML
+    private Pane student_home;
+
+    @FXML
+    private Button student_homebtn;
+
+    @FXML
+    private Pane student_infos;
+
+    @FXML
+    private Button student_infosbtn;
+
+    @FXML
+    private Button student_logout;
+
+    @FXML
+    private Pane student_notifications;
+
+    @FXML
+    private Button student_notifsbtn;
+
+    @FXML
+    private TableColumn<?, ?> ville_grid_home;
     
     @FXML
     void handleButtonAction(ActionEvent event) {
@@ -91,7 +133,7 @@ public class StudentScreenController implements Initializable{
 		bacyear_toshow.setText(student.getBacYear());
 		city_toshow.setText(student.getCity());
 		
-		CommonService.fillVilles(student_schoollist_ville_filter);
+		CommonService.fillVilles((ChoiceBox<String>) student_schoollist_ville_filter);
 		
 		etablissement_grid_home.setCellValueFactory(new PropertyValueFactory<>("etablissement"));
 		formation_grid_home.setCellValueFactory(new PropertyValueFactory<>("formation"));
@@ -99,7 +141,7 @@ public class StudentScreenController implements Initializable{
 		residuelle_grid_home.setCellValueFactory(new PropertyValueFactory<>("nbr_chaises_available"));
 		
 		student_schoollist_ville_filter.setOnAction(event -> {
-			String villeSelectedItem = student_schoollist_ville_filter.getSelectionModel().getSelectedItem();
+			String villeSelectedItem = (String) student_schoollist_ville_filter.getSelectionModel().getSelectedItem();
 			FormationService.fillFormationPosts(student_grid_home, villeSelectedItem);
 		});
 		FormationService.fillFormationPosts(student_grid_home, null);

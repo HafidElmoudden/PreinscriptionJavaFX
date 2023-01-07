@@ -171,7 +171,7 @@
             </Pane>
             <Pane fx:id="student_infos" layoutX="579.0" layoutY="223.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="290.0" prefWidth="495.0" style="-fx-background-color: fff; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 3, 0, 0, 0); -fx-background-radius: 8; -fx-style: ;">
+                  <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="290.0" prefWidth="495.0" style="-fx-background-color: fff; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 3, 0, 0, 0); -fx-background-radius: 8;">
                      <children>
                         <Label layoutX="45.0" layoutY="22.0" text="Relvé de notes">
                            <font>
@@ -278,18 +278,18 @@
             </Pane>
             <Pane fx:id="student_home" layoutX="569.0" layoutY="213.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ChoiceBox fx:id="admin_school_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #1E90FF; -fx-cursor: pointer; -fx-text-fill: fff;" styleClass="dropdown">
+                  <ChoiceBox fx:id="student_schoollist_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #1E90FF; -fx-cursor: pointer;" styleClass="dropdown">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ChoiceBox>
                   <TableView fx:id="student_grid_home" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="20.0" layoutY="66.0" prefHeight="564.0" prefWidth="1010.0" scaleShape="false" style="-fx-background-radius: 5; -fx-focus-color: transparent; -fx-background-color: fff; -fx-border-radius: 5;">
                      <columns>
-                        <TableColumn fx:id="etablissement_grid_home" prefWidth="300.0" resizable="false" style="-fx-background-color: #1E90FF; -fx-text-fill: #ff; -fx-background-radius: 5 0 0 0; -fx-min-height: 40;" text="Etablissement" />
+                        <TableColumn fx:id="etablissement_grid_home" prefWidth="300.0" resizable="false" style="-fx-background-color: #1E90FF; -fx-background-radius: 5 0 0 0; -fx-min-height: 40;" text="Etablissement" />
                         <TableColumn fx:id="formation_grid_home" minWidth="6.0" prefWidth="250.0" resizable="false" style="-fx-background-color: #1E90FF;" text="Formation" />
                         <TableColumn fx:id="ville_grid_home" prefWidth="160.0" resizable="false" style="-fx-background-color: #1E90FF;" text="Ville" />
                         <TableColumn fx:id="residuelle_grid_home" prefWidth="120.0" resizable="false" style="-fx-background-color: #1E90FF;" text="Résiduelle" />
-                        <TableColumn fx:id="actioons_grid_home" prefWidth="180.0" resizable="false" style="-fx-background-color: #1E90FF; -fx-background-radius: 0 5 0 0;" text="Actions" />
+                        <TableColumn fx:id="actions_grid_home" prefWidth="180.0" resizable="false" style="-fx-background-color: #1E90FF; -fx-background-radius: 0 5 0 0;" text="Actions" />
                         <TableColumn prefWidth="180.0" resizable="false" text="cp_code" visible="false" />
                      </columns>
                   </TableView>
