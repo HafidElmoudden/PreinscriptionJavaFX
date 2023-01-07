@@ -9,6 +9,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Navigation {
+	public static String email = "";
+	public static String password = "";
 	public void toAfterLogin(Stage stage,AccountType accType) {
 		Pane root;
 		switch(accType) {

@@ -7,6 +7,10 @@ import java.util.List;
 import application.database.dbClient;
 
 public class StudentRepository {
+	public static ResultSet getStudentCneByEmail(String email) {
+		return dbClient.executeCommand(true, "SELECT cne FROM Etudiant WHERE email = ?", List.of(email));
+	}
+	
 	public static ResultSet getStudentInformations(String email) {
 		List<Object> parameters = new ArrayList<>();
 		parameters.add(email);
