@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import application.Navigation;
 import application.database.dbClient;
 import application.entities.AccountType;
 
@@ -15,6 +16,8 @@ public class AuthentificationService {
 
 		try {
 			if (resultSet.next()) {
+				Navigation.email = email;
+				Navigation.password = password;
 				return getAccountType(resultSet.getString(1));
 			} else {
 				return AccountType.NotFound;
