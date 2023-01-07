@@ -278,7 +278,7 @@
             </Pane>
             <Pane fx:id="student_home" layoutX="569.0" layoutY="213.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ChoiceBox fx:id="admin_school_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #1E90FF; -fx-cursor: pointer; -fx-text-fill: fff;" styleClass="dropdown">
+                  <ChoiceBox fx:id="student_schoollist_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #1E90FF; -fx-cursor: pointer; -fx-text-fill: fff;" styleClass="dropdown">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
