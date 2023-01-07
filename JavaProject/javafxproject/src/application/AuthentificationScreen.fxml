@@ -22,9 +22,9 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="720.0" prefWidth="400.0" style="-fx-background-color: fff;">
+      <AnchorPane prefHeight="720.0" prefWidth="400.0" style="-fx-background-color: fff;" stylesheets="@application.css">
          <children>
-            <Button fx:id="login_btn" onAction="#handleLogin" alignment="CENTER" layoutX="79.0" layoutY="493.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="250.0" style="-fx-background-color: #1E90FF; -fx-background-radius: 5;" text="Se Connecter" textFill="WHITE">
+            <Button fx:id="login_btn" alignment="CENTER" layoutX="79.0" layoutY="493.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="34.0" prefWidth="250.0" style="-fx-background-color: #1E90FF; -fx-background-radius: 5;" text="Se Connecter" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -57,7 +57,7 @@
                   <Font name="Segoe UI" size="11.0" />
                </font>
             </Label>
-            <TextField fx:id="email_login" focusTraversable="false" layoutX="79.0" layoutY="350.0" prefHeight="34.0" prefWidth="250.0" promptText="example@email.com" style="-fx-background-radius: 5;" />
+            <TextField fx:id="email_login" focusTraversable="false" layoutX="79.0" layoutY="350.0" prefHeight="34.0" prefWidth="250.0" promptText="example@email.com" style="-fx-background-radius: 5; -fx-focus-color: 1px solid #1E90FF;" styleClass="input" />
             <Label layoutX="79.0" layoutY="333.0" text="Email" textFill="#00000099">
                <font>
                   <Font name="Segoe UI Bold" size="12.0" />
@@ -68,7 +68,7 @@
                   <Font name="Segoe UI Bold" size="12.0" />
                </font>
             </Label>
-            <PasswordField fx:id="password_login" focusTraversable="false" layoutX="78.0" layoutY="427.0" prefHeight="34.0" prefWidth="250.0" promptText="********" style="-fx-background-radius: 5; -fx-border-color: none;" />
+            <PasswordField fx:id="password_login" focusTraversable="false" layoutX="78.0" layoutY="427.0" prefHeight="34.0" prefWidth="250.0" promptText="********" style="-fx-background-radius: 5; -fx-focus-color: 1px solid #1E90FF;" styleClass="input" />
          </children>
       </AnchorPane>
    </children>

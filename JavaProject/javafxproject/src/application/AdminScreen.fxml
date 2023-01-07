@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.AdminScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="1200.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.AdminScreenController">
    <left>
       <VBox prefHeight="670.0" prefWidth="150.0" style="-fx-background-color: #1E90FF;" BorderPane.alignment="CENTER">
          <children>
@@ -113,7 +113,7 @@
             </Pane>
             <Pane fx:id="admin_school_list" layoutX="57.0" layoutY="78.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ChoiceBox fx:id="admin_school_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #1E90FF; -fx-cursor: pointer;">
+                  <ChoiceBox fx:id="admin_school_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #1E90FF; -fx-cursor: pointer;" styleClass="dropdown">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

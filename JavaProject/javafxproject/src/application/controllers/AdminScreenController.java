@@ -62,7 +62,7 @@ public class AdminScreenController implements Initializable{
     private TableView<SchoolInformations> schools_table_view;
     @FXML
     void handleButtonAction(ActionEvent event) {
-    	Stage stage = (Stage) admin_logout.getScene().getWindow();
+    	
     	if(event.getSource()==admin_schools_listbtn) {
     		admin_school_list.toFront();
     	}
@@ -70,9 +70,8 @@ public class AdminScreenController implements Initializable{
     		admin_students_list.toFront();
     	}
     	else if(event.getSource()==admin_logout) {
+    		Stage stage = (Stage) admin_logout.getScene().getWindow();
     		navigation.backToLogin(stage);
-    		System.out.println("Logout");
-    		
     	}
     }
 
