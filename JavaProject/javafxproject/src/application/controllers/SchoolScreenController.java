@@ -72,7 +72,7 @@ public class SchoolScreenController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		identity.setText(Navigation.email);
-		CommonService.fillVilles(school_candi_ville_filter);
+		CommonService.fillVilles(school_candi_ville_filter, true);
 		
 		fillTheCandidatsGrids();
 		fillTheSelectionGrids();
