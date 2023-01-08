@@ -154,17 +154,22 @@
                   </TableView>
                </children>
             </Pane>
-            <Pane fx:id="student_applications" layoutX="579.0" layoutY="223.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane fx:id="student_home" layoutX="569.0" layoutY="213.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <TableView focusTraversable="false" layoutX="20.0" layoutY="20.0" prefHeight="600.0" prefWidth="1010.0">
+                  <ChoiceBox fx:id="student_schoollist_ville_filter" focusTraversable="false" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" style="-fx-cursor: pointer; -fx-focus-color: transparent; -fx-background-color: fff;" styleClass="combo-box">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ChoiceBox>
+                  <TableView fx:id="student_grid_home" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="20.0" layoutY="66.0" prefHeight="564.0" prefWidth="1010.0" scaleShape="false" styleClass="gridview">
                      <columns>
-                        <TableColumn prefWidth="300.0" resizable="false" text="Etablissement" />
-                        <TableColumn minWidth="6.0" prefWidth="250.0" resizable="false" text="Formation" />
-                        <TableColumn prefWidth="150.0" resizable="false" text="Ville" />
-                        <TableColumn prefWidth="100.0" resizable="false" text="Note" />
-                        <TableColumn prefWidth="100.0" resizable="false" text="Résiduelle" />
-                        <TableColumn prefWidth="109.0" resizable="false" text="Actions" />
-                        <TableColumn prefWidth="109.0" resizable="false" text="candidateur_code" visible="false" />
+                        <TableColumn fx:id="etablissement_grid_home" prefWidth="300.0" resizable="false" styleClass="gridcolumn" text="Etablissement" />
+                        <TableColumn fx:id="formation_grid_home" minWidth="6.0" prefWidth="250.0" resizable="false" styleClass="gridcolumn" text="Formation" />
+                        <TableColumn fx:id="ville_grid_home" prefWidth="160.0" resizable="false" styleClass="gridcolumn" text="Ville" />
+                        <TableColumn fx:id="residuelle_grid_home" prefWidth="120.0" resizable="false" styleClass="gridcolumn" text="Résiduelle" />
+                        <TableColumn fx:id="viewschool_grid_home" prefWidth="90.0" resizable="false" styleClass="gridcolumn" />
+                        <TableColumn prefWidth="180.0" resizable="false" text="cp_code" visible="false" />
+                        <TableColumn fx:id="apply_grid_home" prefWidth="88.0" resizable="false" styleClass="gridcolumn" />
                      </columns>
                   </TableView>
                </children>
@@ -195,11 +200,11 @@
                         <Label layoutX="70.0" layoutY="155.0" text="Science de la Vie et la Terre" />
                         <Label layoutX="70.0" layoutY="195.0" text="Anglais" />
                         <Label layoutX="70.0" layoutY="235.0" text="Francais" />
-                        <Label layoutX="354.0" layoutY="195.0" text="20" />
-                        <Label layoutX="354.0" layoutY="115.0" text="20" />
-                        <Label layoutX="354.0" layoutY="155.0" text="20" />
-                        <Label layoutX="354.0" layoutY="235.0" text="20" />
-                        <Label layoutX="354.0" layoutY="75.0" text="20" />
+                        <Label fx:id="student_ang" layoutX="354.0" layoutY="195.0" text="20" />
+                        <Label fx:id="student_pc" layoutX="354.0" layoutY="115.0" text="20" />
+                        <Label fx:id="student_svt" layoutX="354.0" layoutY="155.0" text="20" />
+                        <Label fx:id="student_fra" layoutX="354.0" layoutY="235.0" text="20" />
+                        <Label fx:id="student_math" layoutX="354.0" layoutY="75.0" text="20" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="536.0" layoutY="20.0" prefHeight="595.0" prefWidth="495.0" style="-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 3, 0, 0, 0); -fx-background-color: fff; -fx-background-radius: 8;">
@@ -225,7 +230,7 @@
                            </image>
                         </ImageView>
                         <Label layoutX="53.0" layoutY="55.0" text="E-mail actuel" />
-                        <Label layoutX="70.0" layoutY="92.0" text="mohameedjada@gmail.com" textFill="#464646" />
+                        <Label fx:id="student_email" layoutX="70.0" layoutY="92.0" text="mohameedjada@gmail.com" textFill="#464646" />
                         <Label layoutX="53.0" layoutY="129.0" text="Nouveau E-mail" />
                         <TextField layoutX="53.0" layoutY="151.0" prefHeight="30.0" prefWidth="300.0" promptText="nouveau e-mail" />
                         <Label layoutX="53.0" layoutY="198.0" text="Confirm E-mail" />
@@ -262,12 +267,12 @@
                         </ImageView>
                         <Label layoutX="50.0" layoutY="55.0" text="N Telephone actuel" />
                         <Label layoutX="67.0" layoutY="92.0" text="+212 " textFill="#464646" />
-                        <Label layoutX="100.0" layoutY="92.0" text="664937463" textFill="#464646" />
+                        <Label fx:id="student_num" layoutX="100.0" layoutY="92.0" text="664937463" textFill="#464646" />
                         <Label layoutX="50.0" layoutY="129.0" text="Nouveau N Telephone" />
                         <TextField layoutX="50.0" layoutY="151.0" prefHeight="30.0" prefWidth="300.0" promptText="nouveau n telephone" />
                         <Label layoutX="50.0" layoutY="198.0" text="Confirm N Telephone" />
                         <TextField layoutX="50.0" layoutY="220.0" prefHeight="30.0" prefWidth="300.0" promptText="confirm n telephone" />
-                        <Button layoutX="371.0" layoutY="220.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="74.0" style="-fx-background-color: #1E90FF;" text="Change" textFill="WHITE">
+                        <Button layoutX="371.0" layoutY="220.0" mnemonicParsing="false" onAction="#change_num" prefHeight="30.0" prefWidth="74.0" style="-fx-background-color: #1E90FF;" text="Change" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -276,21 +281,17 @@
                   </AnchorPane>
                </children>
             </Pane>
-            <Pane fx:id="student_home" layoutX="569.0" layoutY="213.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane fx:id="student_applications" layoutX="579.0" layoutY="223.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ChoiceBox fx:id="student_schoollist_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #1E90FF; -fx-cursor: pointer;" styleClass="dropdown">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ChoiceBox>
-                  <TableView fx:id="student_grid_home" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="20.0" layoutY="66.0" prefHeight="564.0" prefWidth="1010.0" scaleShape="false" style="-fx-background-radius: 5; -fx-focus-color: transparent; -fx-background-color: fff; -fx-border-radius: 5;">
+                  <TableView fx:id="my_applications_grid" focusTraversable="false" layoutX="20.0" layoutY="20.0" prefHeight="600.0" prefWidth="1010.0" styleClass="gridview">
                      <columns>
-                        <TableColumn fx:id="etablissement_grid_home" prefWidth="300.0" resizable="false" style="-fx-background-color: #1E90FF; -fx-background-radius: 5 0 0 0; -fx-min-height: 40;" text="Etablissement" />
-                        <TableColumn fx:id="formation_grid_home" minWidth="6.0" prefWidth="250.0" resizable="false" style="-fx-background-color: #1E90FF;" text="Formation" />
-                        <TableColumn fx:id="ville_grid_home" prefWidth="160.0" resizable="false" style="-fx-background-color: #1E90FF;" text="Ville" />
-                        <TableColumn fx:id="residuelle_grid_home" prefWidth="120.0" resizable="false" style="-fx-background-color: #1E90FF;" text="Résiduelle" />
-                        <TableColumn fx:id="actions_grid_home" prefWidth="180.0" resizable="false" style="-fx-background-color: #1E90FF; -fx-background-radius: 0 5 0 0;" text="Actions" />
-                        <TableColumn prefWidth="180.0" resizable="false" text="cp_code" visible="false" />
+                        <TableColumn fx:id="etablissement_apps" prefWidth="300.0" resizable="false" styleClass="gridcolumn" text="Etablissement" />
+                        <TableColumn fx:id="fromation_apps" minWidth="6.0" prefWidth="250.0" resizable="false" styleClass="gridcolumn" text="Formation" />
+                        <TableColumn fx:id="ville_apps" prefWidth="150.0" resizable="false" styleClass="gridcolumn" text="Ville" />
+                        <TableColumn fx:id="note_apps" prefWidth="100.0" resizable="false" styleClass="gridcolumn" text="Note" />
+                        <TableColumn fx:id="residuelle_apps" prefWidth="100.0" resizable="false" styleClass="gridcolumn" text="Résiduelle" />
+                        <TableColumn fx:id="action_apps" prefWidth="109.0" resizable="false" styleClass="gridcolumn" />
+                        <TableColumn fx:id="candidateur_code" prefWidth="109.0" resizable="false" styleClass="gridcolumn" visible="false" />
                      </columns>
                   </TableView>
                </children>

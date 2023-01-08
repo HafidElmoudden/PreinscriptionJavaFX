@@ -2,7 +2,7 @@ package application.services;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import application.entities.BacInformations;
 import application.entities.StudentInformations;
 import application.repositories.StudentRepository;
 import javafx.scene.control.TableView;
@@ -30,6 +30,7 @@ public class StudentService {
 			while(result.next()) {
 				student.setBac(result.getString("baccalaureat"));
 				student.setBacYear(result.getString("bac_annee"));
+				student.setBacInformations(new BacInformations(result.getString("note_math"), result.getString("note_physic"), result.getString("note_svt"), result.getString("note_francais"), result.getString("note_anglais")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
