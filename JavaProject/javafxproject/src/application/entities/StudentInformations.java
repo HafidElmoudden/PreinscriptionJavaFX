@@ -13,6 +13,10 @@ public class StudentInformations
     private String bacYear;
     private String city;
     private String bac;
+    //for Sign Up
+    private String password;
+    private String bacCity;
+    
     private BacInformations bacInformations = new BacInformations();
     
     public String getFirstName() {
@@ -86,6 +90,18 @@ public class StudentInformations
 	}
 	public void setBacInformations(BacInformations bacInformations) {
 		this.bacInformations = bacInformations;
+	}
+	public String getBacCity() {
+		return bacCity;
+	}
+	public void setBacCity(String bacCity) {
+		this.bacCity = bacCity;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

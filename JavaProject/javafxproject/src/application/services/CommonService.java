@@ -7,8 +7,10 @@ import application.repositories.CommonRepository;
 import javafx.scene.control.ChoiceBox;
 
 public class CommonService {
-	public static void fillVilles(ChoiceBox<String> cb) {
+	public static void fillVilles(ChoiceBox<String> cb, boolean isFilter) {
+		if(isFilter) {
 		cb.getItems().add("Toutes les villes");
+		}
 		try {
 			ResultSet villes = CommonRepository.getVilles();
 			while(villes.next()) {

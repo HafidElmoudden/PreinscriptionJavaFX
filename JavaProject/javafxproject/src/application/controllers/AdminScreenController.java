@@ -118,8 +118,8 @@ public class AdminScreenController implements Initializable {
 			StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem);
 		});
 
-		CommonService.fillVilles(admin_school_ville_filter);
-		CommonService.fillVilles(admin_students_ville_filter);
+		CommonService.fillVilles(admin_school_ville_filter, true);
+		CommonService.fillVilles(admin_students_ville_filter, true);
 		CommonService.fillBacs(admin_type_bac_filter);
 		SchoolService.fillSchoolsList(schools_table_view, admin_school_ville_filter.getValue());
 		StudentService.fillStudentsList(students_table_view, null, null);
