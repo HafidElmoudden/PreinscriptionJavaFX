@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.database.dbClient;
-import application.entities.FormationPost;
 
 public class FormationRepository {
 	static public ResultSet getAllFormationPostsData(String bacType, String city) {
@@ -25,5 +24,18 @@ public class FormationRepository {
 	        params.add(bacType);
 	    }
 	    return dbClient.executeCommand(true, query, params);
+	}
+	
+	static public ResultSet getAllMyApps(String cne) {
+		String query = "SELECT E.ecole_nom, F.formation_nom, C.candidateur_note, E.ville, F.max_chaises, C.candidateur_code FROM Formation_Post F, Candidats C, Ecole E WHERE C.cp_code = F.cp_code AND E.ecole_code = F.ecole_code AND C.cne = ?";
+	    List<Object> params = new ArrayList<>();
+	    params.add(cne);
+	    return dbClient.executeCommand(true, query, params);
+	}
+	public static ResultSet getNotifs(String cne) {
+		String query= "SELECT F.formation_nom, E.ecole_nom, E.ville, F.formation_code FROM Formation_Post F, Ecole E, Affectations A WHERE F.ecole_code = E.ecole_code AND F.cp_code = A.cp_code AND A.reponse = 'En attendant' AND A.cne = ?";
+		List<Object> params = new ArrayList<>();
+		params.add(cne);
+		return dbClient.executeCommand(true, query , params);
 	}
 }

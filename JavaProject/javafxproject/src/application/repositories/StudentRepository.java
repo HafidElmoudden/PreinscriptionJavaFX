@@ -69,4 +69,5 @@ public class StudentRepository {
 		parameters.add(cne);
 		return dbClient.executeCommand(true, "SELECT E.ecole_nom, F.formation_nom, C.candidateur_note,E.ville, F.max_chaises, C.candidateur_code FROM Formation_Post F, Candidats C, Ecole E WHERE C.cp_code = F.cp_code and E.ecole_code = F.ecole_code and C.cne = ?", parameters);
 	}
+	
 }

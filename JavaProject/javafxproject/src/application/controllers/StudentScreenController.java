@@ -1,22 +1,20 @@
 package application.controllers;
 
+import java.awt.TextField;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.ResourceBundle;
 
 import application.Navigation;
 import application.entities.FormationPost;
-import application.entities.SchoolInformations;
 import application.entities.StudentInformations;
 import application.repositories.StudentRepository;
 import application.services.CommonService;
 import application.services.FormationService;
 import application.services.StudentService;
-import application.utilities.DateParser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -247,7 +245,39 @@ public class StudentScreenController implements Initializable{
 			FormationService.fillFormationPosts(student_grid_home, villeSelectedItem);
 		});
 		FormationService.fillFormationPosts(student_grid_home, null);
-		
 	}
+	
+	
+	
+	
+	private void fillNotifications(String cne) {
+		
+		etablissement_notifs.setCellValueFactory(new PropertyValueFactory<>("etablissement"));
+		formation_notifs.setCellValueFactory(new PropertyValueFactory<>("formation"));
+		ville_notifs.setCellValueFactory(new PropertyValueFactory<>("ville"));
 
+		FormationService.fillMyNotifsGrid(notifications_grid, cne);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@FXML
+    void change_num(ActionEvent event) {
+		if(new_phone.getText().length()==0 || confirm_phone.getText().length()==0) {
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		    alert.setTitle("Information");
+		    alert.setHeaderText("Message");
+		    alert.setContentText("Please fill the requerement first");
+		    alert.showAndWait();
+		}
+    }
+	
 }

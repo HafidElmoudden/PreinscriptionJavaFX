@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -79,7 +80,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="150.0" layoutY="42.0" style="-fx-background-color: fff;" text="MEO DE MEOW" textFill="DODGERBLUE" />
+                  <Label layoutX="150.0" layoutY="42.0" style="-fx-background-color: fff;" text="MEO DE MEOW" textFill="#2197ff" />
                </children>
             </AnchorPane>
          </children></HBox>
@@ -87,46 +88,52 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" BorderPane.alignment="CENTER">
          <children>
-            <Pane fx:id="admin_students_list" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane fx:id="admin_students_list" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ChoiceBox fx:id="admin_students_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #1E90FF; -fx-cursor: pointer;">
+                  <ChoiceBox fx:id="admin_students_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #1E90FF; -fx-cursor: pointer; -fx-color: transparent;" styleClass="combo-box">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ChoiceBox>
-                  <ChoiceBox fx:id="admin_type_bac_filter" layoutX="250.0" layoutY="20.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #1E90FF; -fx-cursor: pointer;">
+                  <ChoiceBox fx:id="admin_type_bac_filter" layoutX="250.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #1E90FF; -fx-cursor: pointer; -fx-color: transparent;" styleClass="combo-box">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ChoiceBox>
-                  <TableView fx:id="students_table_view" focusTraversable="false" layoutX="20.0" layoutY="66.0" prefHeight="564.0" prefWidth="1010.0">
+                  <TableView fx:id="students_table_view" focusTraversable="false" layoutX="20.0" layoutY="70.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="560.0" prefWidth="1010.0">
                      <columns>
-                        <TableColumn fx:id="cneCol" editable="false" prefWidth="120.0" resizable="false" text="CNE" />
-                        <TableColumn fx:id="nomCol" editable="false" minWidth="6.0" prefWidth="150.0" resizable="false" text="Nom" />
-                        <TableColumn fx:id="prenomCol" editable="false" prefWidth="150.0" resizable="false" text="Prénom" />
-                        <TableColumn fx:id="stEmailCol" editable="false" prefWidth="150.0" resizable="false" text="Email" />
-                        <TableColumn fx:id="bacCol" prefWidth="220.0" resizable="false" text="Baccalaureate" />
-                        <TableColumn fx:id="stVilleCol" prefWidth="120.0" resizable="false" text="Ville" />
+                        <TableColumn fx:id="cneCol" editable="false" prefWidth="120.0" resizable="false" styleClass="gridcolumn" text="CNE" />
+                        <TableColumn fx:id="nomCol" editable="false" minWidth="6.0" prefWidth="120.0" resizable="false" styleClass="gridcolumn" text="Nom" />
+                        <TableColumn fx:id="prenomCol" editable="false" prefWidth="120.0" resizable="false" styleClass="gridcolumn" text="Prénom" />
+                        <TableColumn fx:id="stEmailCol" editable="false" prefWidth="200.0" resizable="false" styleClass="gridcolumn" text="Email" />
+                        <TableColumn fx:id="bacCol" prefWidth="220.0" resizable="false" styleClass="gridcolumn" text="Baccalaureate" />
+                        <TableColumn fx:id="stVilleCol" minWidth="140.0" prefWidth="140.0" resizable="false" styleClass="gridcolumn" text="Ville" />
+                        <TableColumn fx:id="stVilleCol1" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" resizable="false" styleClass="gridcolumn" />
+                        <TableColumn fx:id="stVilleCol11" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" resizable="false" styleClass="gridcolumn" />
                      </columns>
+                     <styleClass>
+                        <String fx:value="gridview" />
+                        <String fx:value="scroll-bar" />
+                     </styleClass>
                   </TableView>
                </children>
             </Pane>
             <Pane fx:id="admin_school_list" layoutX="57.0" layoutY="78.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ChoiceBox fx:id="admin_school_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #1E90FF; -fx-cursor: pointer;" styleClass="dropdown">
+                  <ChoiceBox fx:id="admin_school_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #1E90FF; -fx-cursor: pointer; -fx-color: transparent;" styleClass="dropdown">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ChoiceBox>
-                  <TableView fx:id="schools_table_view" focusTraversable="false" layoutX="20.0" layoutY="66.0" prefHeight="564.0" prefWidth="1010.0">
+                  <TableView fx:id="schools_table_view" focusTraversable="false" layoutX="20.0" layoutY="70.0" prefHeight="560.0" prefWidth="1010.0" styleClass="gridview" stylesheets="@application.css">
                     <columns>
-                      <TableColumn fx:id="etaCol" prefWidth="300.0" resizable="false" text="Etablissement" />
-                      <TableColumn fx:id="villeCol" minWidth="6.0" prefWidth="150.0" resizable="false" text="Ville" />
-                        <TableColumn fx:id="emailCol" prefWidth="200.0" resizable="false" text="Email" />
-                        <TableColumn fx:id="phoneCol" prefWidth="150.0" resizable="false" text="Telephone" />
-                        <TableColumn fx:id="nbFormationsCol" prefWidth="100.0" resizable="false" text="N formations" />
-                        <TableColumn prefWidth="57.0" />
-                        <TableColumn prefWidth="57.0" />
+                      <TableColumn fx:id="etaCol" editable="false" prefWidth="330.0" resizable="false" styleClass="gridcolumn" text="Etablissement" />
+                      <TableColumn fx:id="villeCol" minWidth="6.0" prefWidth="150.0" resizable="false" styleClass="gridcolumn" text="Ville" />
+                        <TableColumn fx:id="emailCol" prefWidth="200.0" resizable="false" styleClass="gridcolumn" text="Email" />
+                        <TableColumn fx:id="phoneCol" prefWidth="150.0" resizable="false" styleClass="gridcolumn" text="Telephone" />
+                        <TableColumn fx:id="nbFormationsCol" prefWidth="100.0" resizable="false" styleClass="gridcolumn" text="N formations" />
+                        <TableColumn prefWidth="40.0" styleClass="gridcolumn" />
+                        <TableColumn prefWidth="40.0" styleClass="gridcolumn" />
                     </columns>
                   </TableView>
                </children>

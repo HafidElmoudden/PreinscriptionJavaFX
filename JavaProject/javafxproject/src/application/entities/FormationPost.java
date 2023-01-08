@@ -1,7 +1,5 @@
 package application.entities;
 
-
-
 public class FormationPost
 {
     public String etablissement;
