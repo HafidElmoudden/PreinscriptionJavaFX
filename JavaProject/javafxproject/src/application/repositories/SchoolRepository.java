@@ -30,5 +30,12 @@ public class SchoolRepository {
 		parameters.add(email);
 		return dbClient.executeCommand(true, "SELECT ecole_nom FROM Ecole WHERE email=?", parameters);
 	}
+	
+	public static ResultSet getCandidateurs(String email) {
+		String query = "SELECT F.formation_nom, C.cne, E.nom, E.prenom, E.email, E.ville FROM Ecole EC, Candidats C, Etudiant E, EtudiantBac EB, Formation_Post F\r\nWHERE C.cne = E.cne AND EB.cne = C.cne AND C.cp_code = F.cp_code AND EC.ecole_code = F.ecole_code AND EC.email = ? ";
+		List<Object> parameters = new ArrayList<>();
+		parameters.add(email);
+		return dbClient.executeCommand(true, query, parameters);
+	}
 }
 

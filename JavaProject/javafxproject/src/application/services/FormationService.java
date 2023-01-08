@@ -23,6 +23,7 @@ public class FormationService {
 				formation.setFormation(result.getString("formation_nom"));
 				formation.setVille(result.getString("ville"));
 				formation.setNbr_chaises_available(result.getString("nbr_chaises_available"));
+				
 				formations.add(formation);
 			}
 		} catch (SQLException e) {

@@ -102,7 +102,6 @@ public class StudentScreenController implements Initializable{
 		//Fill Grid
 		fillFormations();
 		
-		
 		//My informations
 		student_pc.setText(student.getBacInformations().note_physic);
 		student_math.setText(student.getBacInformations().note_math);
@@ -112,17 +111,11 @@ public class StudentScreenController implements Initializable{
 		student_num.setText(student.getTelephone());
 		student_email.setText(student.getEmail());
 		
-		
 		//My applications
 		fillOrUpdateMyApps((String)student.getCne());
-
 		
 		//My Notifications
 		fillNotifications((String)student.getCne());
-		
-		
-		
-		
 	}
 	
 	public void fillOrUpdateMyApps(String cne) {
@@ -144,10 +137,7 @@ public class StudentScreenController implements Initializable{
 
 		FormationService.fillFormationPosts(student_grid_home, null);
 	}
-	
-	
-	
-	
+
 	private void fillNotifications(String cne) {
 		
 		etablissement_notifs.setCellValueFactory(new PropertyValueFactory<>("etablissement"));
@@ -156,16 +146,6 @@ public class StudentScreenController implements Initializable{
 
 		FormationService.fillMyNotifsGrid(notifications_grid, cne);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	@FXML
     void change_num(ActionEvent event) {

@@ -2,9 +2,14 @@ package application.services;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
+import application.entities.FormationPost;
 import application.entities.SchoolInformations;
+import application.entities.StudentInformations;
+import application.repositories.FormationRepository;
 import application.repositories.SchoolRepository;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -33,5 +38,36 @@ public class SchoolService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void fillCandidatslist(TableView<FormationPost> table, String email) {
+		table.getItems().clear();
+		List<FormationPost> formations = getcandidats(email);
+		for(FormationPost formation : formations) {
+			table.getItems().add(formation);
+		}
+	}
+	
+	public static List<FormationPost> getcandidats(String email){
+		List<FormationPost> formations = new ArrayList<>();
+	    ResultSet result = SchoolRepository.getCandidateurs(email);
+	  
+		try {
+			while(result.next()) {
+				FormationPost formation = new FormationPost();
+				
+				formation.setFormation(result.getString("formation_nom"));
+				formation.setStudentCne(result.getString("cne"));
+				formation.setStudentNom(result.getString("nom"));
+				formation.setStudentPrenom(result.getString("prenom"));
+				formation.setstudentEmail(result.getString("email"));
+				formation.setStudentVille(result.getString("ville"));
+				
+				formations.add(formation);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	    return formations;
 	}
 }

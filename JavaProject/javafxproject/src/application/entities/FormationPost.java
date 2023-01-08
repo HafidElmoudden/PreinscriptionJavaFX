@@ -9,7 +9,15 @@ public class FormationPost
     public String formation_code;
 	public String candida_code;
 	public String nbr_chaises_available;
-	//to use in student application gridview
+	//for student list grids in school screen 
+	
+	public String student_ville;
+	public String student_nom;
+	public String student_prenom;
+	public String student_bac;
+	public String student_cne;
+    public String student_email;
+	//to use in student application
     public String classement_note;
     
     
@@ -37,7 +45,10 @@ public class FormationPost
         this.classement_note = classement_note;
         this.candida_code = candida_code;
     }
-    public String getEtablissement() {
+    public FormationPost() {
+		// TODO Auto-generated constructor stub
+	}
+	public String getEtablissement() {
 		return etablissement;
 	}
 	public void setEtablissement(String etablissement) {
@@ -79,8 +90,53 @@ public class FormationPost
 	public void setCandida_code(String candida_code) {
 		this.candida_code = candida_code;
 	}
-    public FormationPost() {
-    	
+    public void setStudentNom(String studentNom) {
+    	this.student_nom= studentNom;
     }
-
+    public void setStudentPrenom(String studentPrenom) {
+    	this.student_prenom= studentPrenom;
+    }
+    public void setStudentBac(String studentBac) {
+    	this.student_bac= studentBac;
+    }
+    public void setStudentVille(String studentVille) {
+    	this.student_ville= studentVille;
+    }
+    public void setstudentEmail(String studentEmail) {
+    	this.student_email= studentEmail;
+    }
+    public void setStudentCne(String studentCne) {
+    	this.student_cne= studentCne;
+    }
+    public String getStudent_prenom() {
+		return student_prenom;
+	}
+    public String getStudent_nom() {
+    	return student_nom;
+    }
+    public String getStudent_ville() {
+    	return student_ville;
+    }
+    public String getStudent_email() {
+    	return student_email;
+    }
+    public String getStudent_cne() {
+    	return student_cne;
+    }
+	public FormationPost(String formation_nom, String ville, String email, String nom, String prenom,String cne, String a) {
+		this.formation=formation_nom;
+		this.student_email=email;
+		this.student_prenom=prenom;
+		this.student_nom=nom;
+		this.student_ville=ville;
+		this.student_cne=cne;
+	}
+	
 }
+
+
+
+
+
+
+
