@@ -34,7 +34,7 @@ public class StudentScreenController implements Initializable {
 	private TableColumn<?, ?> actions_grid_home;
 
 	@FXML
-	private ChoiceBox<?> student_schoollist_ville_filter;
+	private ChoiceBox<String> student_schoollist_ville_filter;
 	@FXML
 	private Label age_toshow;
 
@@ -72,7 +72,7 @@ public class StudentScreenController implements Initializable {
 	private Button student_appsbtn;
 
 	@FXML
-	private TableView<?> student_grid_home, my_applications_grid;
+	private TableView<FormationPost> student_grid_home, my_applications_grid, notifications_grid;
 
 	@FXML
 	private Pane student_home;
@@ -129,18 +129,12 @@ public class StudentScreenController implements Initializable {
 	private TextField confPassField;
 	@FXML
 	private Button changePassBtn;
-
-	// Phone fields
 	@FXML
 	private TextField newPhoneField;
 	@FXML
 	private TextField confPhoneField;
 	@FXML
 	private Button changePhoneBtn;
-
-	// My notifications table
-	@FXML
-	private TableView notifications_grid;
 	@FXML
 	private TableColumn<?, ?> etablissement_notifs;
 	@FXML
@@ -148,8 +142,7 @@ public class StudentScreenController implements Initializable {
 	@FXML
 	private TableColumn<?, ?> ville_notifs;
 	@FXML
-	private TableColumn<?, ?> etablissement_apps, fromation_apps, ville_apps, note_apps, residuelle_apps,
-			candidateur_code;
+	private TableColumn<?, ?> etablissement_apps, fromation_apps, ville_apps, note_apps, residuelle_apps, candidateur_code;
 
 	@FXML
 	void handleButtonAction(ActionEvent event) {
@@ -279,7 +272,7 @@ public class StudentScreenController implements Initializable {
 		residuelle_apps.setCellValueFactory(new PropertyValueFactory<>("nbr_chaises_available"));
 		candidateur_code.setCellValueFactory(new PropertyValueFactory<>("candida_code"));
 
-		FormationService.fillMyAppsGrid((TableView<FormationPost>) my_applications_grid, cne);
+		FormationService.fillMyAppsGrid(my_applications_grid, cne);
 	}
 
 	private void fillFormations() {
@@ -290,9 +283,9 @@ public class StudentScreenController implements Initializable {
 
 		student_schoollist_ville_filter.setOnAction(event -> {
 			String villeSelectedItem = (String) student_schoollist_ville_filter.getSelectionModel().getSelectedItem();
-			FormationService.fillFormationPosts((TableView<FormationPost>) student_grid_home, villeSelectedItem);
+			FormationService.fillFormationPosts(student_grid_home, villeSelectedItem);
 		});
-		FormationService.fillFormationPosts((TableView<FormationPost>) student_grid_home, null);
+		FormationService.fillFormationPosts(student_grid_home, null);
 	}
 
 	private void fillNotifications(String cne) {

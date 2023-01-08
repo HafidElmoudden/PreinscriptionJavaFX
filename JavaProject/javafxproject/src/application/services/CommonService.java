@@ -20,7 +20,10 @@ public class CommonService {
 			e.printStackTrace();
 		}
 	}
-	public static void fillBacs(ChoiceBox<String> cb) {
+	public static void fillBacs(ChoiceBox<String> cb, boolean isfilter) {
+		if(isfilter) {
+			cb.getItems().add("Tous types de BAC");
+		}
 		try {
 			ResultSet bacs = CommonRepository.getBacs();
 			while(bacs.next()) {

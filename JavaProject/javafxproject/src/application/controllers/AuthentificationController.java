@@ -97,7 +97,7 @@ public class AuthentificationController implements Initializable{
     @FXML
     void starting_signup(ActionEvent event) {
     	signup1.toFront();
-    	CommonService.fillBacs(bactype_choice);
+    	CommonService.fillBacs(bactype_choice, false);
 		CommonService.fillVilles(bacville_choice, false);
 		CommonService.fillVilles(studentcity_choice, false);
 		bacyear_choice.getItems().addAll("2022", "2021", "2020");
@@ -129,9 +129,9 @@ public class AuthentificationController implements Initializable{
     		signedstudent.setCne(signup_cne.getText());
     		signedstudent.setFirstName(signup_name.getText());
     		signedstudent.setLastName(signup_lastname.getText());
-    		if(((Labeled) toggleGroup.getSelectedToggle()).getText()=="Fémenin")
+    		if(((Labeled) toggleGroup.getSelectedToggle()).getText().equals("Fémenin"))
     			signedstudent.setSexe("f");
-    		else if(((Labeled) toggleGroup.getSelectedToggle()).getText()=="Masculin")
+    		else if(((Labeled) toggleGroup.getSelectedToggle()).getText().equals("Masculin"))
     			signedstudent.setSexe("m");
     		
     	signup2.toFront();
