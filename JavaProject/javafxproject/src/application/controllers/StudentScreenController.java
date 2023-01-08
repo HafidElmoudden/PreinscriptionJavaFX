@@ -97,7 +97,7 @@ public class StudentScreenController implements Initializable {
 
 	@FXML
 	private TableColumn<?, ?> ville_grid_home;
-
+	
 	// Student releve de notes
 	@FXML
 	private Label anglaisNote;
@@ -193,7 +193,7 @@ public class StudentScreenController implements Initializable {
 		svtNote.setText(student.getBacInformations().note_svt);
 		frenchNote.setText(student.getBacInformations().note_francais);
 		mathNote.setText(student.getBacInformations().note_math);
-
+		
 		// Email Change Action
 		changeEmailBtn.setOnAction(e -> {
 			Alert alert = new Alert(Alert.AlertType.NONE);

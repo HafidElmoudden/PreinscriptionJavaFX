@@ -6,7 +6,9 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.database.dbClient;
 import application.entities.FormationPost;
+import application.entities.SchoolFormationPost;
 import application.entities.SchoolInformations;
 import application.entities.StudentInformations;
 import application.repositories.FormationRepository;
@@ -70,4 +72,25 @@ public class SchoolService {
 		}
 	    return formations;
 	}
+	public static String getSchoolNameByEmail(String email) {
+		String schoolName = null;
+		ResultSet result = SchoolRepository.getSchoolNameByEmail(email);
+		try {
+			result.next();
+			schoolName = result.getString(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return schoolName;
+	}
+	
+	public static void fillSelectionlist(TableView<SchoolFormationPost> table, String email) {
+		table.getItems().clear();
+		List<SchoolFormationPost> formations = FormationService.getSchoolFormationPosts(email);
+		for(SchoolFormationPost formation : formations) {
+			table.getItems().add(formation);
+		}
+	}
+	
 }

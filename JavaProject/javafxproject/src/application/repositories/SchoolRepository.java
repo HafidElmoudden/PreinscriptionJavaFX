@@ -37,5 +37,6 @@ public class SchoolRepository {
 		parameters.add(email);
 		return dbClient.executeCommand(true, query, parameters);
 	}
+	
 }
 
