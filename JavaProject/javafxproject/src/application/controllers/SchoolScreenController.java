@@ -5,7 +5,9 @@ import java.util.ResourceBundle;
 
 import application.Navigation;
 import application.entities.FormationPost;
+import application.entities.SchoolFormationPost;
 import application.services.CommonService;
+import application.services.FormationService;
 import application.services.SchoolService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,7 +29,7 @@ public class SchoolScreenController implements Initializable{
 	@FXML
 	private Label identity;
     @FXML
-    private TableColumn<FormationPost, String> action_grid_selection, disponible_grid_selection, etablissement_grid_selection, formation_grid_selection, occupee_grid_selection,residuelle_grid_selection ;
+    private TableColumn<SchoolFormationPost, String> action_grid_selection, disponible_grid_selection, etablissement_grid_selection, formation_grid_selection, occupee_grid_selection,residuelle_grid_selection ;
     
     @FXML
     private TableColumn<FormationPost, String> cne_grid_etudiants, ville_grid_etudiants, email_grid_etudiants, formation_grid_etudiants, prenom_grid_etudiants, nom_grid_etudiants, statu_grid_etudiants;
@@ -39,8 +41,9 @@ public class SchoolScreenController implements Initializable{
     private ChoiceBox<String> school_candi_ville_filter, school_formaion_filter, school_etu_formation_filter, school_etu_statu_filter;
 
     @FXML
-    private TableView<FormationPost> shool_grid_etudiants, shcool_grid_candidats, shool_grid_section;
-
+    private TableView<FormationPost> shool_grid_etudiants, shcool_grid_candidats;
+    @FXML
+    private TableView<SchoolFormationPost> shool_grid_section;
     @FXML
     private Button logoutbtn, school_candidateurbtn, school_selectionbtn, school_studentbtn;
     
@@ -69,10 +72,10 @@ public class SchoolScreenController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		identity.setText(Navigation.email);
-		CommonService.fillVilles(school_candi_ville_filter, true);
+		CommonService.fillVilles(school_candi_ville_filter);
 		
 		fillTheCandidatsGrids();
-		
+		fillTheSelectionGrids();
 		
 		
 		
@@ -88,6 +91,17 @@ public class SchoolScreenController implements Initializable{
 		email_grid_candida.setCellValueFactory(new PropertyValueFactory<>("student_email"));
 		
 		SchoolService.fillCandidatslist(shcool_grid_candidats,Navigation.email);
+	}
+	
+	public void fillTheSelectionGrids() {
+		disponible_grid_selection.setCellValueFactory(new PropertyValueFactory<>("nbr_chaises_available"));
+		etablissement_grid_selection.setCellValueFactory(new PropertyValueFactory<>("ecole_nom"));
+		formation_grid_selection.setCellValueFactory(new PropertyValueFactory<>("formation_nom"));
+		occupee_grid_selection.setCellValueFactory(new PropertyValueFactory<>("nbr_chaises_reserver"));
+		residuelle_grid_selection.setCellValueFactory(new PropertyValueFactory<>("max_chaises"));
+		
+		
+		SchoolService.fillSelectionlist(shool_grid_section, Navigation.email);
 	}
 
 }

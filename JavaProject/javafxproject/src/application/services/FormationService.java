@@ -7,7 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.entities.FormationPost;
+import application.entities.SchoolFormationPost;
 import application.repositories.FormationRepository;
+import application.repositories.SchoolRepository;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
 
 
@@ -73,17 +76,6 @@ public class FormationService {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	public static void fillMyNotifsGrid(TableView<FormationPost> table, String cne) {
 	    table.getItems().clear();
 		List<FormationPost> formations = getMyNotifs(cne);
@@ -110,4 +102,33 @@ public class FormationService {
 		}
 	    return formations;
 	}
+	
+	static public void fillFormationsChoiceBox(ChoiceBox<String> cb, String email) {
+		ResultSet result = FormationRepository.getSchoolFormationsPosts(email);
+		try {
+			while(result.next()) {
+				cb.getItems().add(result.getString("formation_nom"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+    static public List<SchoolFormationPost> getSchoolFormationPosts(String email)
+    {
+        List<SchoolFormationPost> formationPosts = new ArrayList<SchoolFormationPost>();
+        ResultSet result = FormationRepository.getSchoolFormationsPosts(email);
+        try {
+			while (result.next())
+			{
+				SchoolFormationPost formationPost =new SchoolFormationPost(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6), result.getString(7));
+			    formationPost.setEcole_nom(SchoolService.getSchoolNameByEmail(email));
+				formationPosts.add(formationPost);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+        
+        return formationPosts;
+    }
+
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.database.dbClient;
+import application.entities.SchoolFormationPost;
 
 public class FormationRepository {
 	static public ResultSet getAllFormationPostsData(String bacType, String city) {
@@ -38,4 +39,8 @@ public class FormationRepository {
 		params.add(cne);
 		return dbClient.executeCommand(true, query , params);
 	}
+    static public ResultSet getSchoolFormationsPosts(String email)
+    {
+        return dbClient.executeCommand(true, "SELECT F.* FROM Formation_Post F, Ecole E WHERE E.ecole_code = F.ecole_code AND E.email= ?", List.of(email));
+    }
 }
