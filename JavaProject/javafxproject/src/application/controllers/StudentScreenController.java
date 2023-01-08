@@ -9,6 +9,7 @@ import application.Navigation;
 import application.entities.FormationPost;
 import application.entities.SchoolInformations;
 import application.entities.StudentInformations;
+import application.repositories.StudentRepository;
 import application.services.CommonService;
 import application.services.FormationService;
 import application.services.StudentService;
@@ -16,11 +17,13 @@ import application.utilities.DateParser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -96,6 +99,46 @@ public class StudentScreenController implements Initializable{
     @FXML
     private TableColumn<?, ?> ville_grid_home;
     
+    //Student releve de notes
+    @FXML
+    private Label anglaisNote;
+    @FXML
+    private Label phyNote;
+    @FXML
+    private Label svtNote;
+    @FXML
+    private Label frenchNote;
+    @FXML
+    private Label mathNote;
+    
+    //Email fields
+    @FXML
+    private Label emailActuel;
+    @FXML
+    private TextField newEmailField;
+    @FXML
+    private TextField confirmEmailField;
+    @FXML
+    private Button changeEmailBtn;
+    
+    //Password fields
+    @FXML
+    private TextField currPassField;
+    @FXML
+    private TextField newPassField;
+    @FXML
+    private TextField confPassField;
+    @FXML
+    private Button changePassBtn;
+    
+    //Phone fields
+    @FXML
+    private TextField newPhoneField;
+    @FXML
+    private TextField confPhoneField;
+    @FXML
+    private Button changePhoneBtn;
+    
     @FXML
     void handleButtonAction(ActionEvent event) {
     	
@@ -120,21 +163,80 @@ public class StudentScreenController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		emailActuel.setText(Navigation.email);
 		StudentInformations student = StudentService.getStudentInformations(Navigation.email);
+		//Header informations fill
 		fullname_toshow.setText(student.getFirstName() + " " + student.getLastName());
 		email_toshow.setText(student.getEmail());
 		cne_toshow.setText(student.getCne());
 		bactype_toshow.setText(student.getBac());
-		
 		LocalDate parseDateNai = DateParser.parseDate(student.getDateNaissance());
         Period age = Period.between(parseDateNai, LocalDate.now());
 		age_toshow.setText(String.valueOf(age.getYears()));
-		
 		bacyear_toshow.setText(student.getBacYear());
 		city_toshow.setText(student.getCity());
 		
-		CommonService.fillVilles((ChoiceBox<String>) student_schoollist_ville_filter);
+		//Notes fill
+		anglaisNote.setText(student.getBacInformations().note_anglais);
+		phyNote.setText(student.getBacInformations().note_physic);
+		svtNote.setText(student.getBacInformations().note_svt);
+		frenchNote.setText(student.getBacInformations().note_francais);
+		mathNote.setText(student.getBacInformations().note_math);
 		
+		CommonService.fillVilles((ChoiceBox<String>) student_schoollist_ville_filter);
+		//Email Change Action
+		changeEmailBtn.setOnAction(e -> {
+			Alert alert = new Alert(Alert.AlertType.NONE);
+			if(newEmailField.getText().equals(Navigation.email) ) {
+				alert.setAlertType(Alert.AlertType.ERROR);
+				alert.setContentText("L'email entrée est l'e-mail actuel");
+				alert.show();
+			}
+			else if(newEmailField.getText().equals(confirmEmailField.getText())) {
+				StudentRepository.changeStudentEmail(Navigation.email, newEmailField.getText(), student.getCne());
+				alert.setAlertType(Alert.AlertType.CONFIRMATION);
+				alert.setContentText("l'email a changé avec succès");
+				alert.show();
+			}
+			else {
+				alert.setAlertType(Alert.AlertType.ERROR);
+				alert.setContentText("Vérifiez les champs e-mail : "+newEmailField.getText()+" , " + confirmEmailField.getText());
+				alert.show();
+			}
+				
+		});
+		
+		//Password change action
+		changePassBtn.setOnAction(e -> {
+			Alert alert = new Alert(Alert.AlertType.NONE);
+
+			if(currPassField.getText().equals(Navigation.password) && newPassField.getText().equals(confPassField.getText())) {
+				StudentRepository.changeStudentPassword(Navigation.email, newPassField.getText());
+				alert.setAlertType(Alert.AlertType.CONFIRMATION);
+				alert.setContentText("le mote de passe a changé avec succès");
+				alert.show();
+			} else {
+				alert.setAlertType(Alert.AlertType.ERROR);
+				alert.setContentText("Vérifiez les champs de mote de passe!");
+				alert.show();
+			}
+		});
+		
+		//Phone change action
+		changePhoneBtn.setOnAction(e -> {
+			Alert alert = new Alert(Alert.AlertType.NONE);
+
+			if(newPhoneField.getText().equals(confPhoneField.getText())) {
+				StudentRepository.changeStudentPhone(student.getCne(),newPhoneField.getText());
+				alert.setAlertType(Alert.AlertType.CONFIRMATION);
+				alert.setContentText("le numero de telephone a changé avec succès");
+				alert.show();
+			} else {
+				alert.setAlertType(Alert.AlertType.ERROR);
+				alert.setContentText("Vérifiez les champs des numero de telephone!");
+				alert.show();
+			}
+		});
 		etablissement_grid_home.setCellValueFactory(new PropertyValueFactory<>("etablissement"));
 		formation_grid_home.setCellValueFactory(new PropertyValueFactory<>("formation"));
 		ville_grid_home.setCellValueFactory(new PropertyValueFactory<>("ville"));

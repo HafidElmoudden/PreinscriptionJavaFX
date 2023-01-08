@@ -1,6 +1,6 @@
 package application.entities;
 
-class BacInformations
+public class BacInformations
 {
     public String cne;
     public String baccalaureat;
