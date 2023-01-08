@@ -2,7 +2,6 @@ package application.services;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import application.entities.BacInformations;
 import application.entities.StudentInformations;
 import application.repositories.StudentRepository;
 import javafx.scene.control.TableView;

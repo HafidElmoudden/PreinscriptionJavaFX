@@ -6,6 +6,7 @@ import java.time.Period;
 import java.util.ResourceBundle;
 
 import application.Navigation;
+import application.entities.FormationPost;
 import application.entities.StudentInformations;
 import application.repositories.StudentRepository;
 import application.services.CommonService;
@@ -71,7 +72,7 @@ public class StudentScreenController implements Initializable{
     private Button student_appsbtn;
 
     @FXML
-    private TableView<?> student_grid_home;
+    private TableView<?> student_grid_home, my_applications_grid;
 
     @FXML
     private Pane student_home;
@@ -111,7 +112,7 @@ public class StudentScreenController implements Initializable{
     
     //Email fields
     @FXML
-    private Label emailActuel;
+    private Label emailActuel, student_num;
     @FXML
     private TextField newEmailField;
     @FXML
@@ -146,6 +147,8 @@ public class StudentScreenController implements Initializable{
     private TableColumn<?, ?> formation_notifs;
     @FXML
     private TableColumn<?, ?> ville_notifs;
+    @FXML
+    private TableColumn<?, ?> etablissement_apps, fromation_apps, ville_apps, note_apps, residuelle_apps, candidateur_code;
     @FXML
     void handleButtonAction(ActionEvent event) {
     	
@@ -198,13 +201,8 @@ public class StudentScreenController implements Initializable{
 		
 		
 		//My informations
-		student_pc.setText(student.getBacInformations().note_physic);
-		student_math.setText(student.getBacInformations().note_math);
-		student_ang.setText(student.getBacInformations().note_anglais);
-		student_fra.setText(student.getBacInformations().note_francais);
-		student_svt.setText(student.getBacInformations().note_svt);
 		student_num.setText(student.getTelephone());
-		student_email.setText(student.getEmail());
+		emailActuel.setText(student.getEmail());
 		
 		
 		//My applications
@@ -227,7 +225,7 @@ public class StudentScreenController implements Initializable{
 		residuelle_apps.setCellValueFactory(new PropertyValueFactory<>("nbr_chaises_available"));
 		candidateur_code.setCellValueFactory(new PropertyValueFactory<>("candida_code"));
 		
-		FormationService.fillMyAppsGrid(my_applications_grid, cne);
+		FormationService.fillMyAppsGrid((TableView<FormationPost>) my_applications_grid, cne);
 	}
 	
 	private void fillFormations() {
@@ -238,9 +236,9 @@ public class StudentScreenController implements Initializable{
 		
 		student_schoollist_ville_filter.setOnAction(event -> {
 			String villeSelectedItem = (String) student_schoollist_ville_filter.getSelectionModel().getSelectedItem();
-			FormationService.fillFormationPosts(student_grid_home, villeSelectedItem);
+			FormationService.fillFormationPosts((TableView<FormationPost>) student_grid_home, villeSelectedItem);
 		});
-		FormationService.fillFormationPosts(student_grid_home, null);
+		FormationService.fillFormationPosts((TableView<FormationPost>) student_grid_home, null);
 	}
 
 	private void fillNotifications(String cne) {
@@ -252,25 +250,5 @@ public class StudentScreenController implements Initializable{
 		FormationService.fillMyNotifsGrid(notifications_grid, cne);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	@FXML
-    void change_num(ActionEvent event) {
-		if(new_phone.getText().length()==0 || confirm_phone.getText().length()==0) {
-			Alert alert = new Alert(Alert.AlertType.INFORMATION);
-		    alert.setTitle("Information");
-		    alert.setHeaderText("Message");
-		    alert.setContentText("Please fill the requerement first");
-		    alert.showAndWait();
-		}
-    }
 	
 }

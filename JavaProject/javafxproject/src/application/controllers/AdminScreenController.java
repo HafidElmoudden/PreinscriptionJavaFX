@@ -1,30 +1,24 @@
 package application.controllers;
 
 import java.net.URL;
-import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 import application.Navigation;
 import application.entities.SchoolInformations;
 import application.entities.StudentInformations;
-import application.repositories.CommonRepository;
 import application.services.CommonService;
 import application.services.SchoolService;
 import application.services.StudentService;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 public class AdminScreenController implements Initializable {
 	Navigation navigation = new Navigation();
