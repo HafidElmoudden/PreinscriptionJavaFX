@@ -31,7 +31,7 @@ public class FormationService {
 		return formations;
 	}
 	
-	static public void fillFormationPosts(TableView<FormationPost> table, String city){
+	static public void fillFormationPosts(TableView table, String city){
 		table.getItems().clear();
 		List<FormationPost> formations = getAllFormationPostsData(null, city);
 		for(FormationPost formation : formations) {

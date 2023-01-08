@@ -1,20 +1,20 @@
 package application.controllers;
 
-import java.awt.TextField;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ResourceBundle;
 
 import application.Navigation;
-import application.entities.FormationPost;
 import application.entities.StudentInformations;
 import application.repositories.StudentRepository;
 import application.services.CommonService;
 import application.services.FormationService;
 import application.services.StudentService;
+import application.utilities.DateParser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -137,6 +137,15 @@ public class StudentScreenController implements Initializable{
     @FXML
     private Button changePhoneBtn;
     
+    //My notifications table
+    @FXML
+    private TableView notifications_grid;
+    @FXML
+    private TableColumn<?, ?> etablissement_notifs;
+    @FXML
+    private TableColumn<?, ?> formation_notifs;
+    @FXML
+    private TableColumn<?, ?> ville_notifs;
     @FXML
     void handleButtonAction(ActionEvent event) {
     	
@@ -169,8 +178,11 @@ public class StudentScreenController implements Initializable{
 		cne_toshow.setText(student.getCne());
 		bactype_toshow.setText(student.getBac());
 		LocalDate parseDateNai = DateParser.parseDate(student.getDateNaissance());
-        Period age = Period.between(parseDateNai, LocalDate.now());
-		age_toshow.setText(String.valueOf(age.getYears()));
+		if(parseDateNai != null) {
+			Period age = Period.between(parseDateNai, LocalDate.now());
+			age_toshow.setText(String.valueOf(age.getYears()));
+		}
+			
 		bacyear_toshow.setText(student.getBacYear());
 		city_toshow.setText(student.getCity());
 		
@@ -258,26 +270,5 @@ public class StudentScreenController implements Initializable{
 
 		FormationService.fillMyNotifsGrid(notifications_grid, cne);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	@FXML
-    void change_num(ActionEvent event) {
-		if(new_phone.getText().length()==0 || confirm_phone.getText().length()==0) {
-			Alert alert = new Alert(Alert.AlertType.INFORMATION);
-		    alert.setTitle("Information");
-		    alert.setHeaderText("Message");
-		    alert.setContentText("Please fill the requerement first");
-		    alert.showAndWait();
-		}
-    }
 	
 }
