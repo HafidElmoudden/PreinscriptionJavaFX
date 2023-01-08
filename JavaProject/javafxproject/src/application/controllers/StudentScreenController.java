@@ -31,7 +31,10 @@ public class StudentScreenController implements Initializable{
 	private TableColumn<FormationPost, String> etablissement_apps, fromation_apps, ville_apps, note_apps, residuelle_apps, candidateur_code, action_apps; 
 	
 	@FXML
-	private TableView<FormationPost> my_applications_grid, student_grid_home;
+	private TableColumn<FormationPost, String> etablissement_notifs, formation_notifs, ville_notifs, date_notifs, decline_notifs, accept_notifs;
+	
+	@FXML
+	private TableView<FormationPost> my_applications_grid, student_grid_home, notifications_grid;
 
 	@FXML
     private Label student_pc,student_math, student_ang, student_svt, student_fra, student_num, student_email;
@@ -114,7 +117,8 @@ public class StudentScreenController implements Initializable{
 		fillOrUpdateMyApps((String)student.getCne());
 
 		
-		
+		//My Notifications
+		fillNotifications((String)student.getCne());
 		
 		
 		
@@ -144,7 +148,14 @@ public class StudentScreenController implements Initializable{
 	
 	
 	
-	
+	private void fillNotifications(String cne) {
+		
+		etablissement_notifs.setCellValueFactory(new PropertyValueFactory<>("etablissement"));
+		formation_notifs.setCellValueFactory(new PropertyValueFactory<>("formation"));
+		ville_notifs.setCellValueFactory(new PropertyValueFactory<>("ville"));
+
+		FormationService.fillMyNotifsGrid(notifications_grid, cne);
+	}
 	
 	
 	

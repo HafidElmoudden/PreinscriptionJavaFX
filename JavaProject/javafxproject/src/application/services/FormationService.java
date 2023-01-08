@@ -71,4 +71,42 @@ public class FormationService {
 	    return formations;
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public static void fillMyNotifsGrid(TableView<FormationPost> table, String cne) {
+	    table.getItems().clear();
+		List<FormationPost> formations = getMyNotifs(cne);
+		for(FormationPost formation : formations) {
+			table.getItems().add(formation);
+		}
+	}
+	
+	static public List<FormationPost> getMyNotifs(String cne){
+	    List<FormationPost> formations = new ArrayList<>();
+	    ResultSet result = FormationRepository.getNotifs(cne);
+	  
+		try {
+			while(result.next()) {
+				FormationPost formation = new FormationPost();
+				formation.setEtablissement(result.getString("ecole_nom"));
+				formation.setFormation(result.getString("formation_nom"));
+				formation.setVille(result.getString("ville"));
+				formation.setFormation_code(result.getString("formation_code"));
+				formations.add(formation);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	    return formations;
+	}
 }
