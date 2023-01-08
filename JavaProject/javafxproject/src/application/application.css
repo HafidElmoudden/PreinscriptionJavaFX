@@ -17,15 +17,27 @@
 	-fx-text-fill: #3e3e3e;
 }
 .scroll-bar {
-  -fx-background-color: transparent;
-  -fx-color: transparent;
+  	-fx-background-color: transparent;
+  	-fx-color: transparent;
   
 }
 .combo-box {
-  -fx-color: #1E90FF;
-  -fx-background-color: #fff;
-  -fx-border-color: #1E90FF;
-  -fx-border-radius: 5px;
+  	-fx-color: #1E90FF;
+  	-fx-background-color: #fff;
+  	-fx-border-color: #1E90FF;
+  	-fx-border-radius: 5px;
 	-fx-border-width: 0.2px;
 }
-
+.search-field{
+	-fx-color: #1E90FF;
+  	-fx-background-color: #fff;
+  	-fx-border-color: #1E90FF;
+  	-fx-border-radius: 5px;
+	-fx-border-width: 0.2px;
+}
+.input{
+	-fx-background-color: #fff;
+	-fx-border-color: #9A9A9A;
+  	-fx-border-radius: 5px;
+	-fx-border-width: 0.5px;
+}

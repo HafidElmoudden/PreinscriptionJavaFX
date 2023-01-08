@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -90,12 +91,12 @@
          <children>
             <Pane fx:id="admin_students_list" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ChoiceBox fx:id="admin_students_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #1E90FF; -fx-cursor: pointer; -fx-color: transparent;" styleClass="combo-box">
+                  <ChoiceBox fx:id="admin_students_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" styleClass="combo-box">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ChoiceBox>
-                  <ChoiceBox fx:id="admin_type_bac_filter" layoutX="250.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #1E90FF; -fx-cursor: pointer; -fx-color: transparent;" styleClass="combo-box">
+                  <ChoiceBox fx:id="admin_type_bac_filter" layoutX="250.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" styleClass="combo-box">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -116,11 +117,12 @@
                         <String fx:value="scroll-bar" />
                      </styleClass>
                   </TableView>
+                  <TextField layoutX="830.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" promptText="nom d'etablissement" styleClass="search-field" />
                </children>
             </Pane>
             <Pane fx:id="admin_school_list" layoutX="57.0" layoutY="78.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ChoiceBox fx:id="admin_school_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: #1E90FF; -fx-cursor: pointer; -fx-color: transparent;" styleClass="dropdown">
+                  <ChoiceBox fx:id="admin_school_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" styleClass="combo-box">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -136,6 +138,7 @@
                         <TableColumn prefWidth="40.0" styleClass="gridcolumn" />
                     </columns>
                   </TableView>
+                  <TextField layoutX="250.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" promptText="nom d'etablissement" styleClass="search-field" />
                </children>
             </Pane>
          </children></AnchorPane>

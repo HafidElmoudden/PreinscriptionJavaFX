@@ -1,26 +1,16 @@
 package application.controllers;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ResourceBundle;
 
 import application.Navigation;
 import application.entities.AccountType;
 import application.services.AuthentificationService;
-import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -29,11 +19,8 @@ import javafx.stage.Stage;
 
 
 public class AuthentificationController{
-	private Connection conn;
-	private PreparedStatement ps;
-	private ResultSet rs;
-    
-    @FXML
+	
+	@FXML
     private Button suivantbtn1, suivantbtn2, suivantbtn3;
     
     @FXML
@@ -61,6 +48,8 @@ public class AuthentificationController{
     
     
     
+    
+    
     @FXML
     private TextField email_login;
 
@@ -69,7 +58,7 @@ public class AuthentificationController{
 
     @FXML
     private PasswordField password_login;
-    
+
     public void handleLogin() {
     	Stage stage = (Stage) login_btn.getScene().getWindow();
 
@@ -95,4 +84,44 @@ public class AuthentificationController{
             alert.showAndWait();
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    @FXML
+    void starting_signup(ActionEvent event) {
+    	signup1.toFront();
+    }
+    @FXML
+    void suivantbtn1(ActionEvent event) {
+    	signup2.toFront();
+    }
+    @FXML
+    void suivantbtn2(ActionEvent event) {
+    	signup3.toFront();
+    }
+    @FXML
+    void backtologin(ActionEvent event) {
+    	login_forum.toFront();
+    }
+
 }
