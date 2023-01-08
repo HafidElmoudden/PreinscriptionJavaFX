@@ -10,7 +10,7 @@ public class StudentRepository {
 	public static ResultSet getStudentCneByEmail(String email) {
 		return dbClient.executeCommand(true, "SELECT cne FROM Etudiant WHERE email = ?", List.of(email));
 	}
-	
+    
 	public static ResultSet getStudentInformations(String email) {
 		List<Object> parameters = new ArrayList<>();
 		parameters.add(email);
@@ -38,15 +38,29 @@ public class StudentRepository {
 	}
 	public static void changeStudentPhone(String cne, String newPhone) {
 		List<Object> parameters = new ArrayList<>();
-		parameters.add(cne);
 		parameters.add(newPhone);
+		parameters.add(cne);
 		dbClient.executeCommand(false, "UPDATE Etudiant SET telephone = ? WHERE cne = ?", parameters);
 	}
-
+	
+	public static void changeStudentEmail(String oldEmail, String newEmail, String cne) {
+		List<Object> parameters = new ArrayList<>();
+		parameters.add(oldEmail);
+		dbClient.executeCommand(false, "UPDATE Etudiant SET email = NULL WHERE email = ?", parameters);
+		parameters = new ArrayList<>();
+		parameters.add(newEmail);
+		parameters.add(oldEmail);
+		dbClient.executeCommand(false, "UPDATE Users SET email = ? WHERE email = ?", parameters);
+		parameters = new ArrayList<>();
+		parameters.add(newEmail);
+		parameters.add(cne);
+		dbClient.executeCommand(false, "UPDATE Etudiant SET email = ? WHERE cne = ?", parameters);
+	}
+	
 	public static void changeStudentPassword(String email, String newPassword) {
 		List<Object> parameters = new ArrayList<>();
-		parameters.add(email);
 		parameters.add(newPassword);
+		parameters.add(email);
 		dbClient.executeCommand(false, "UPDATE Users SET password_ = ? WHERE email = ?", parameters);
 	}
 

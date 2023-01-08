@@ -30,7 +30,15 @@ public class StudentService {
 			while(result.next()) {
 				student.setBac(result.getString("baccalaureat"));
 				student.setBacYear(result.getString("bac_annee"));
-				student.setBacInformations(new BacInformations(result.getString("note_math"), result.getString("note_physic"), result.getString("note_svt"), result.getString("note_francais"), result.getString("note_anglais")));
+				student.getBacInformations().cne = result.getString(1);
+				student.getBacInformations().baccalaureat = result.getString(2);
+				student.getBacInformations().bac_anne = result.getString(3);
+				student.getBacInformations().note_math = result.getString(4);
+				student.getBacInformations().note_physic = result.getString(5);
+				student.getBacInformations().note_svt = result.getString(6);
+				student.getBacInformations().note_francais = result.getString(7);
+				student.getBacInformations().note_anglais = result.getString(8);
+				student.getBacInformations().note_bac = result.getString(9);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

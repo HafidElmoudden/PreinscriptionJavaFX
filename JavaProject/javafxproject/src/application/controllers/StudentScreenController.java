@@ -1,15 +1,17 @@
 package application.controllers;
 
-import java.awt.TextField;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ResourceBundle;
 
 import application.Navigation;
-import application.entities.FormationPost;
 import application.entities.StudentInformations;
+import application.repositories.StudentRepository;
 import application.services.CommonService;
 import application.services.FormationService;
 import application.services.StudentService;
+import application.utilities.DateParser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,6 +21,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -26,37 +29,123 @@ import javafx.stage.Stage;
 public class StudentScreenController implements Initializable{
 
 	Navigation navigation = new Navigation();
+	@FXML
+    private TableColumn<?, ?> actions_grid_home;
 
-	@FXML
-	private TableColumn<FormationPost, String> etablissement_apps, fromation_apps, ville_apps, note_apps, residuelle_apps, candidateur_code, action_apps; 
-	
-	@FXML
-	private TableColumn<FormationPost, String> etablissement_notifs, formation_notifs, ville_notifs, date_notifs, decline_notifs, accept_notifs;
-	
-	@FXML
-	private TableView<FormationPost> my_applications_grid, student_grid_home, notifications_grid;
+    @FXML
+    private ChoiceBox<?> student_schoollist_ville_filter;
+    @FXML
+    private Label age_toshow;
 
-	@FXML
-    private Label student_pc,student_math, student_ang, student_svt, student_fra, student_num, student_email;
-	
     @FXML
-    private TextField confirm_phone, new_phone;
-	
+    private Label bactype_toshow;
+
     @FXML
-    private ChoiceBox<String> student_schoollist_ville_filter;
+    private Label bacyear_toshow;
+
+    @FXML
+    private Label city_toshow;
+
+    @FXML
+    private Label cne_toshow;
+
+    @FXML
+    private Label email_toshow;
+
+    @FXML
+    private TableColumn<?, ?> etablissement_grid_home;
+
+    @FXML
+    private TableColumn<?, ?> formation_grid_home;
+
+    @FXML
+    private Label fullname_toshow;
+
+    @FXML
+    private TableColumn<?, ?> residuelle_grid_home;
+
+    @FXML
+    private Pane student_applications;
+
+    @FXML
+    private Button student_appsbtn;
+
+    @FXML
+    private TableView<?> student_grid_home;
+
+    @FXML
+    private Pane student_home;
+
+    @FXML
+    private Button student_homebtn;
+
+    @FXML
+    private Pane student_infos;
+
+    @FXML
+    private Button student_infosbtn;
+
+    @FXML
+    private Button student_logout;
+
+    @FXML
+    private Pane student_notifications;
+
+    @FXML
+    private Button student_notifsbtn;
+
+    @FXML
+    private TableColumn<?, ?> ville_grid_home;
     
+    //Student releve de notes
     @FXML
-    private Label age_toshow, email_toshow, bactype_toshow, bacyear_toshow, city_toshow, cne_toshow, fullname_toshow;
+    private Label anglaisNote;
+    @FXML
+    private Label phyNote;
+    @FXML
+    private Label svtNote;
+    @FXML
+    private Label frenchNote;
+    @FXML
+    private Label mathNote;
     
+    //Email fields
     @FXML
-    private TableColumn<?, ?> etablissement_grid_home,  formation_grid_home, residuelle_grid_home, ville_grid_home, viewschool_grid_home, apply_grid_home;
-
+    private Label emailActuel;
     @FXML
-    private Pane student_applications, student_home, student_infos, student_notifications;
-
+    private TextField newEmailField;
     @FXML
-    private Button student_appsbtn, student_homebtn, student_infosbtn, student_logout, student_notifsbtn;
+    private TextField confirmEmailField;
+    @FXML
+    private Button changeEmailBtn;
     
+    //Password fields
+    @FXML
+    private TextField currPassField;
+    @FXML
+    private TextField newPassField;
+    @FXML
+    private TextField confPassField;
+    @FXML
+    private Button changePassBtn;
+    
+    //Phone fields
+    @FXML
+    private TextField newPhoneField;
+    @FXML
+    private TextField confPhoneField;
+    @FXML
+    private Button changePhoneBtn;
+    
+    //My notifications table
+    @FXML
+    private TableView notifications_grid;
+    @FXML
+    private TableColumn<?, ?> etablissement_notifs;
+    @FXML
+    private TableColumn<?, ?> formation_notifs;
+    @FXML
+    private TableColumn<?, ?> ville_notifs;
     @FXML
     void handleButtonAction(ActionEvent event) {
     	
@@ -81,26 +170,32 @@ public class StudentScreenController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+		emailActuel.setText(Navigation.email);
 		StudentInformations student = StudentService.getStudentInformations(Navigation.email);
-		
+		//Header informations fill
 		fullname_toshow.setText(student.getFirstName() + " " + student.getLastName());
 		email_toshow.setText(student.getEmail());
 		cne_toshow.setText(student.getCne());
 		bactype_toshow.setText(student.getBac());
+		LocalDate parseDateNai = DateParser.parseDate(student.getDateNaissance());
+		if(parseDateNai != null) {
+			Period age = Period.between(parseDateNai, LocalDate.now());
+			age_toshow.setText(String.valueOf(age.getYears()));
+		}
+			
 		bacyear_toshow.setText(student.getBacYear());
 		city_toshow.setText(student.getCity());
 		
-		//Fill DropDown
-		CommonService.fillVilles(student_schoollist_ville_filter);
-		//Detect Filter 
-		student_schoollist_ville_filter.setOnAction(event -> {
-			String villeSelectedItem = (String) student_schoollist_ville_filter.getSelectionModel().getSelectedItem();
-			FormationService.fillFormationPosts(student_grid_home, villeSelectedItem);
-		});
+		//Notes fill
+		anglaisNote.setText(student.getBacInformations().note_anglais);
+		phyNote.setText(student.getBacInformations().note_physic);
+		svtNote.setText(student.getBacInformations().note_svt);
+		frenchNote.setText(student.getBacInformations().note_francais);
+		mathNote.setText(student.getBacInformations().note_math);
 		
 		//Fill Grid
 		fillFormations();
+		
 		
 		//My informations
 		student_pc.setText(student.getBacInformations().note_physic);
@@ -111,11 +206,17 @@ public class StudentScreenController implements Initializable{
 		student_num.setText(student.getTelephone());
 		student_email.setText(student.getEmail());
 		
+		
 		//My applications
 		fillOrUpdateMyApps((String)student.getCne());
+
 		
 		//My Notifications
 		fillNotifications((String)student.getCne());
+		
+		
+		
+		
 	}
 	
 	public void fillOrUpdateMyApps(String cne) {
@@ -134,7 +235,11 @@ public class StudentScreenController implements Initializable{
 		formation_grid_home.setCellValueFactory(new PropertyValueFactory<>("formation"));
 		ville_grid_home.setCellValueFactory(new PropertyValueFactory<>("ville"));
 		residuelle_grid_home.setCellValueFactory(new PropertyValueFactory<>("nbr_chaises_available"));
-
+		
+		student_schoollist_ville_filter.setOnAction(event -> {
+			String villeSelectedItem = (String) student_schoollist_ville_filter.getSelectionModel().getSelectedItem();
+			FormationService.fillFormationPosts(student_grid_home, villeSelectedItem);
+		});
 		FormationService.fillFormationPosts(student_grid_home, null);
 	}
 
@@ -146,6 +251,16 @@ public class StudentScreenController implements Initializable{
 
 		FormationService.fillMyNotifsGrid(notifications_grid, cne);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@FXML
     void change_num(ActionEvent event) {
