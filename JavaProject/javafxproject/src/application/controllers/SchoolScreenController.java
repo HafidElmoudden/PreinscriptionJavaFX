@@ -55,6 +55,7 @@ public class SchoolScreenController implements Initializable{
     @FXML
     private Pane school_candidateurs, school_selection, school_etudiants;
 
+    
     @FXML
     void handleButtonAction(ActionEvent event) {
     	
@@ -76,6 +77,9 @@ public class SchoolScreenController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+		action_grid_selection.setCellValueFactory(new PropertyValueFactory<>("selection"));
+		
 		identity.setText(Navigation.email);
 		CommonService.fillVilles(school_candi_ville_filter, true);
 		FormationService.fillFormationsChoiceBox(school_formaion_filter, Navigation.email);

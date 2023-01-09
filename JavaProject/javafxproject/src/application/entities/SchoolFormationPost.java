@@ -1,5 +1,8 @@
 package application.entities;
 
+import application.utilities.ImageUtils;
+import javafx.scene.control.Button;
+
 public class SchoolFormationPost{
 	private String ecole_nom;
 	private String max_chaises;
@@ -8,9 +11,11 @@ public class SchoolFormationPost{
 	private String formation_code;
 	private String cp_code;
 	private String formation_nom;
-
+	private Button selection = new Button();
+	
     public SchoolFormationPost(String ecole_code, String max_chaises, String nbr_chaises_reserver, String nbr_chaises_available, String formation_code, String cp_code, String formation_nom)
     {
+    	ImageUtils.setButtonImage(getClass(), selection, "select.png", 42, 100, false);
         this.max_chaises = max_chaises;
         this.nbr_chaises_reserver = nbr_chaises_reserver;
         this.nbr_chaises_available = nbr_chaises_available;
@@ -18,6 +23,17 @@ public class SchoolFormationPost{
         this.cp_code = cp_code;
         this.formation_nom = formation_nom;
     }
+
+    
+	public Button getSelection() {
+		return selection;
+	}
+
+
+	public void setSelection(Button selection) {
+		this.selection = selection;
+	}
+
 
 	public String getEcole_nom() {
 		return ecole_nom;
