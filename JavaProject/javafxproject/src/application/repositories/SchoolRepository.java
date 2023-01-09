@@ -94,5 +94,28 @@ public class SchoolRepository {
 		return dbClient.executeCommand(true, query, parameters);
 
 	}
+	
+	
+	
+	
+	
+	public static ResultSet getSchoolInfos(String ecole_code) {
+		List<Object> parameters = new ArrayList<Object>();
+        parameters.add(ecole_code);
+        String query="SELECT ecole_nom, ecole_adress, ecole_telephone, email FROM Ecole WHERE ecole_code= ?";
+        
+        return dbClient.executeCommand(true, query, parameters);
+	}
+	public static ResultSet getFormationByEcoleCode(String ecole_code) {
+		List<Object> parameters = new ArrayList<Object>();
+		parameters.add(ecole_code);
+		String query="SELECT DISTINCT formation_nom FROM Formation_Post WHERE ecole_code= ?";
+    
+		return dbClient.executeCommand(true, query, parameters);
+	}
+	
+	
+	
+	
 }
 

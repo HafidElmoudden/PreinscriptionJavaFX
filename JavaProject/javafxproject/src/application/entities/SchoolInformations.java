@@ -6,7 +6,9 @@ public class SchoolInformations {
 	private String email;
 	private String phone;
 	private String nombreFormations;
-	//public String ecole_code;
+	private String ecole_code;
+	private String description;
+	private String adress;
 
 	public SchoolInformations(String etablissement, String ville, String email, String phone, String nombreFormations) {
 		this.etablissement = etablissement;
@@ -14,6 +16,10 @@ public class SchoolInformations {
 		this.email = email;
 		this.phone = phone;
 		this.nombreFormations = nombreFormations;
+	}
+
+	public SchoolInformations() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getEtablissement() {
@@ -54,5 +60,29 @@ public class SchoolInformations {
 
 	public void setNombreFormations(String nombreFormations) {
 		this.nombreFormations = nombreFormations;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getAdress() {
+		return adress;
+	}
+
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+
+	public String getEcole_code() {
+		return ecole_code;
+	}
+
+	public void setEcole_code(String ecole_code) {
+		this.ecole_code = ecole_code;
 	}
 }

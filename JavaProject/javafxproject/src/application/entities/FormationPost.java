@@ -3,6 +3,7 @@ package application.entities;
 public class FormationPost
 {
     public String etablissement;
+    public String ecole_code;
     public String formation;
     public String ville;
     public String residuelle;
@@ -130,6 +131,12 @@ public class FormationPost
 		this.student_nom=nom;
 		this.student_ville=ville;
 		this.student_cne=cne;
+	}
+	public String getEcole_code() {
+		return ecole_code;
+	}
+	public void setEcole_code(String ecole_code) {
+		this.ecole_code = ecole_code;
 	}
 	
 }
