@@ -17,7 +17,18 @@ public class SchoolInformations {
 	private String ecole_code;
 	private String description;
 	private String adress;
+	private String logo;
+	private String banner;
+	private String website;
+	private String fax;
+	
+    private Button deleteUser = new Button();
+    private Button editUser = new Button();
 
+    public SchoolInformations() {
+    	
+    }
+    
 	public SchoolInformations(String etablissement, String ville, String email, String phone, String nombreFormations) {
 		this.etablissement = etablissement;
 		this.ville = ville;
