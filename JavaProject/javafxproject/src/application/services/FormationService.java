@@ -104,6 +104,9 @@ public class FormationService {
 	}
 	
 	static public void fillFormationsChoiceBox(ChoiceBox<String> cb, String email) {
+		
+		cb.getItems().add("Toutes les formations");
+		cb.setValue("Toutes les formations");
 		ResultSet result = FormationRepository.getSchoolFormationsPosts(email);
 		try {
 			while(result.next()) {

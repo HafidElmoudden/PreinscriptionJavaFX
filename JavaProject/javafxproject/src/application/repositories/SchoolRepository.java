@@ -38,5 +38,25 @@ public class SchoolRepository {
 		return dbClient.executeCommand(true, query, parameters);
 	}
 	
+	public static ResultSet getSelectedStudents(String email, String formation, String status) {
+		List<Object> parameters = new ArrayList<Object>();
+        parameters.add(email);
+		String  query = "SELECT DISTINCT F.formation_nom, C.cne, E1.nom, E1.prenom, E1.email, E2.ville, A.reponse FROM Formation_Post F, Ecole E2, Affectations A, Candidats C, Etudiant E1 WHERE F.ecole_code = E2.ecole_code AND F.cp_code = A.cp_code AND A.cne = C.cne AND C.cne = E1.cne AND E2.email = ?";
+        System.out.println("email = "+email+" formation = "+formation+" status = "+status);
+		if (!formation.equals("Toutes les formations") && formation.length() != 0 && formation != "")
+        {
+			System.out.println("isnde of formation if happened " + (formation != "Toutes les formations" && formation.length() != 0 && formation != ""));
+            query += " AND F.formation_nom= ? ";
+            parameters.add(formation);
+        }
+        if (!status.equals("Toutes les réponses") && status.length() != 0 && status != "")
+        {
+        	System.out.println("inside of status if happened " + (!status.equals("Toutes les réponses") && status.length() != 0 && status != ""));
+            query += " AND A.reponse= ? ";
+            parameters.add(status);
+        }
+		return dbClient.executeCommand(true, query, parameters);
+
+	}
 }
 

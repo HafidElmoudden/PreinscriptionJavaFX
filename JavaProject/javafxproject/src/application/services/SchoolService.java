@@ -93,4 +93,34 @@ public class SchoolService {
 		}
 	}
 	
+	public static List<StudentInformations> getSelectedStudentsList(String email, String formation, String status){
+		List<StudentInformations> studentsInfos = new ArrayList<StudentInformations>();
+		ResultSet result = SchoolRepository.getSelectedStudents(email, formation, status);
+		try {
+			while(result.next()){
+				StudentInformations studentInfo = new StudentInformations();
+				studentInfo.setFormationNom(result.getString(1));
+				studentInfo.setCne(result.getString(2));
+				studentInfo.setLastName(result.getString(3));
+				studentInfo.setFirstName(result.getString(4));
+				studentInfo.setEmail(result.getString(5));
+				studentInfo.setCity(result.getString(6));
+				studentInfo.setReponse(result.getString(7));
+				
+				studentsInfos.add(studentInfo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return studentsInfos;
+	}
+	
+	public static void fillSelectedStudentslist(TableView<StudentInformations> table, String email, String formation, String status) {
+		table.getItems().clear();
+		List<StudentInformations> studentsInfos = getSelectedStudentsList(email, formation, status);
+		for(StudentInformations studentInfo : studentsInfos) {
+			table.getItems().add(studentInfo);
+		}
+	}
+	
 }

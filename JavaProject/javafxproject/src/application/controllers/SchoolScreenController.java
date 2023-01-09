@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import application.Navigation;
 import application.entities.FormationPost;
 import application.entities.SchoolFormationPost;
+import application.entities.StudentInformations;
 import application.services.CommonService;
 import application.services.FormationService;
 import application.services.SchoolService;
@@ -41,7 +42,10 @@ public class SchoolScreenController implements Initializable{
     private ChoiceBox<String> school_candi_ville_filter, school_formaion_filter, school_etu_formation_filter, school_etu_statu_filter;
 
     @FXML
-    private TableView<FormationPost> shool_grid_etudiants, shcool_grid_candidats;
+    private TableView<FormationPost> shcool_grid_candidats;
+
+    @FXML
+    private TableView<StudentInformations> shool_grid_etudiants;
     @FXML
     private TableView<SchoolFormationPost> shool_grid_section;
     @FXML
@@ -74,9 +78,27 @@ public class SchoolScreenController implements Initializable{
 		identity.setText(Navigation.email);
 		CommonService.fillVilles(school_candi_ville_filter);
 		FormationService.fillFormationsChoiceBox(school_formaion_filter, Navigation.email);
+		FormationService.fillFormationsChoiceBox(school_etu_formation_filter, Navigation.email);
+		school_formaion_filter.getItems().add("Toutes les formations");
+		school_formaion_filter.setValue("Toutes les formations");
+		
+		school_etu_statu_filter.getItems().add("Toutes les réponses");
+		school_etu_statu_filter.setValue("Toutes les réponses");
+		school_etu_statu_filter.getItems().add("Accepted");
+		school_etu_statu_filter.getItems().add("Waiting");
+		school_etu_statu_filter.getItems().add("Declined");
+		
+		school_formaion_filter.setOnAction(e -> {
+			fillTheEtudiantsGrid();
+		});
+		
+		school_etu_statu_filter.setOnAction(e -> {
+			fillTheEtudiantsGrid();
+		});
+		
 		fillTheCandidatsGrids();
 		fillTheSelectionGrids();
-		
+		fillTheEtudiantsGrid();
 		
 		
 	}
@@ -102,6 +124,22 @@ public class SchoolScreenController implements Initializable{
 		
 		
 		SchoolService.fillSelectionlist(shool_grid_section, Navigation.email);
+	}
+	
+	public void fillTheEtudiantsGrid() {
+		cne_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("cne"));
+		ville_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("city"));
+		email_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("email"));
+		formation_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("formationNom"));
+		prenom_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+		nom_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+		statu_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("reponse"));
+		String reponse;
+		if(school_etu_statu_filter.getValue() != "Toutes les réponses")
+			reponse = school_etu_statu_filter.getValue().toLowerCase();
+		else
+			reponse = school_etu_statu_filter.getValue();
+		SchoolService.fillSelectedStudentslist(shool_grid_etudiants, Navigation.email,school_etu_formation_filter.getValue(), reponse);
 	}
 
 }

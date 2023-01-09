@@ -13,9 +13,25 @@ public class StudentInformations
     private String bacYear;
     private String city;
     private String bac;
+    private String formationNom;
+    private String reponse;
+    
     private BacInformations bacInformations = new BacInformations();
     
-    public String getFirstName() {
+    
+    public String getReponse() {
+		return reponse;
+	}
+	public void setReponse(String reponse) {
+		this.reponse = reponse;
+	}
+	public String getFormationNom() {
+		return formationNom;
+	}
+	public void setFormationNom(String formationNom) {
+		this.formationNom = formationNom;
+	}
+	public String getFirstName() {
 		return firstName;
 	}
 	public void setFirstName(String firstName) {
