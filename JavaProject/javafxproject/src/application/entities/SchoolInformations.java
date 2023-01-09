@@ -2,6 +2,8 @@ package application.entities;
 
 import java.util.Optional;
 
+import application.repositories.SchoolRepository;
+import application.services.SchoolService;
 import application.utilities.ConfirmationDialog;
 import application.utilities.ImageUtils;
 import application.utilities.SchoolEditDialog;
@@ -42,6 +44,8 @@ public class SchoolInformations {
     		ConfirmationDialog confirmationDialog = new ConfirmationDialog("Êtes-vous sûr de vouloir supprimer cet école ?");
     		Optional<Boolean> result = confirmationDialog.showAndWait();
     		if (result.get() && result.isPresent()) {
+    			String ecole_code = SchoolService.getEcoleCodeByEmail(email);
+    			SchoolRepository.deleteSchool(ecole_code, email);
     			System.out.println("user confirmed");
     		} else {
     			System.out.println("user declined");
