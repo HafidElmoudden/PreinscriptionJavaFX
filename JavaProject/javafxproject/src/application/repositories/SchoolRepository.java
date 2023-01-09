@@ -24,21 +24,22 @@ public class SchoolRepository {
 
 	    String query = "SELECT E.ecole_nom, E.ville, E.email, E.ecole_telephone,   (SELECT COUNT(cp_code) FROM Formation_Post WHERE ecole_code = E.ecole_code) AS num_formation_posts FROM Ecole E";
 
-	    if (searchTerm != null || (ville != null && !ville.equals("Toutes les villes"))) {
+	    if ((searchTerm != null && searchTerm.length() != 0) || (ville != null && !ville.equals("Toutes les villes"))) {
 	        query += " WHERE";
 	    }
-	    if (searchTerm != null) {
+	    if (searchTerm != null && searchTerm.length() != 0) {
 	        query += " (E.ecole_nom LIKE ? OR E.email LIKE ?)";
 	        parameters.add("%" + searchTerm + "%");
 	        parameters.add("%" + searchTerm + "%");
 	    }
 	    if (ville != null && !ville.equals("Toutes les villes")) {
-	        if (searchTerm != null) {
+	        if (searchTerm != null && searchTerm.length() != 0) {
 	            query += " AND";
 	        }
 	        query += " E.ville = ?";
 	        parameters.add(ville);
 	    }
+	    System.out.println("searchterm = "+ searchTerm +" query = "+query);
 	    return dbClient.executeCommand(true, query, parameters);
 	}
 

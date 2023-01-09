@@ -38,10 +38,9 @@ public class StudentRepository {
 	}*/
 	public static ResultSet getAllStudentsInformations(String city, String bacType, String searchTerm) {
 	    List<Object> parameters = new ArrayList<>();
-
 	    String query = "SELECT E.cne, E.nom, E.prenom, E.email, EB.baccalaureat, E.ville FROM Etudiant E, EtudiantBac EB WHERE E.cne = EB.cne";
 
-	    if (searchTerm != null) {
+	    if (searchTerm != null && searchTerm.length() != 0) {
 	        query += " AND (E.nom LIKE ? OR E.prenom LIKE ? OR E.email LIKE ? OR E.cne LIKE ?)";
 	        parameters.add("%" + searchTerm + "%");
 	        parameters.add("%" + searchTerm + "%");

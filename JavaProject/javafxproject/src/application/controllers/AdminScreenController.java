@@ -122,17 +122,17 @@ public class AdminScreenController implements Initializable {
 		
 		admin_school_ville_filter.setOnAction(event -> {
 			String selectedItem = admin_school_ville_filter.getSelectionModel().getSelectedItem();
-			SchoolService.fillSchoolsList(schools_table_view, selectedItem, null);
+			SchoolService.fillSchoolsList(schools_table_view, selectedItem, ecolesSearchInput.getText());
 		});
 		admin_students_ville_filter.setOnAction(event -> {
 			String bacSelectedItem = admin_type_bac_filter.getSelectionModel().getSelectedItem();
 			String villeSelectedItem = admin_students_ville_filter.getSelectionModel().getSelectedItem();
-			StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem, null);
+			StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem, studentsSearchInput.getText());
 		});
 		admin_type_bac_filter.setOnAction(event -> {
 			String bacSelectedItem = admin_type_bac_filter.getSelectionModel().getSelectedItem();
 			String villeSelectedItem = admin_students_ville_filter.getSelectionModel().getSelectedItem();
-			StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem, null);
+			StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem, studentsSearchInput.getText());
 		});
 
 		CommonService.fillVilles(admin_school_ville_filter, true);
