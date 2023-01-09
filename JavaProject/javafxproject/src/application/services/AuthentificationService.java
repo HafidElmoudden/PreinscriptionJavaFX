@@ -7,6 +7,8 @@ import java.util.List;
 import application.Navigation;
 import application.database.dbClient;
 import application.entities.AccountType;
+import application.entities.StudentInformations;
+import application.repositories.SignUpRepository;
 
 public class AuthentificationService {
 
@@ -39,4 +41,9 @@ public class AuthentificationService {
 		}
 		return AccountType.Etudiant;
 	}
+	static public void signUp(StudentInformations student)
+    {
+        SignUpRepository.addUser(student.getEmail(), student.getPassword(), "student");
+        SignUpRepository.addEtudiant(student.getCne(), student.getLastName(), student.getFirstName(), student.getCity(), student.getTelephone(), student.getDateNaissance(), student.getEmail(), student.getSexe());
+    }
 }

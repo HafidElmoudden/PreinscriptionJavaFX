@@ -7,8 +7,10 @@ import application.repositories.CommonRepository;
 import javafx.scene.control.ChoiceBox;
 
 public class CommonService {
-	public static void fillVilles(ChoiceBox<String> cb) {
+	public static void fillVilles(ChoiceBox<String> cb, boolean isFilter) {
+		if(isFilter) {
 		cb.getItems().add("Toutes les villes");
+		}
 		try {
 			ResultSet villes = CommonRepository.getVilles();
 			while(villes.next()) {
@@ -18,7 +20,10 @@ public class CommonService {
 			e.printStackTrace();
 		}
 	}
-	public static void fillBacs(ChoiceBox<String> cb) {
+	public static void fillBacs(ChoiceBox<String> cb, boolean isfilter) {
+		if(isfilter) {
+			cb.getItems().add("Tous types de BAC");
+		}
 		try {
 			ResultSet bacs = CommonRepository.getBacs();
 			while(bacs.next()) {
