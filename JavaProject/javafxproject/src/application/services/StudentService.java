@@ -45,9 +45,9 @@ public class StudentService {
 		return student;
 	}
 	
-	public static void fillStudentsList(TableView<StudentInformations> table, String city, String bac) {
+	public static void fillStudentsList(TableView<StudentInformations> table, String city, String bac, String searchTerm) {
 		table.getItems().clear();
-		ResultSet rs = StudentRepository.getAllStudentsInformations(city, bac);
+		ResultSet rs = StudentRepository.getAllStudentsInformations(city, bac, searchTerm);
 		try {
 			while (rs.next()) {
 				String cne = rs.getString("cne");

@@ -117,7 +117,7 @@
                         <String fx:value="scroll-bar" />
                      </styleClass>
                   </TableView>
-                  <TextField layoutX="830.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" promptText="nom d'etablissement" styleClass="search-field" />
+                  <TextField fx:id="studentsSearchInput" layoutX="830.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" promptText="Rechercher etudiant (CNE, Nom, Prenom, Email)" styleClass="search-field" />
                </children>
             </Pane>
             <Pane fx:id="admin_school_list" layoutX="57.0" layoutY="78.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -138,7 +138,7 @@
                         <TableColumn prefWidth="40.0" styleClass="gridcolumn" />
                     </columns>
                   </TableView>
-                  <TextField layoutX="250.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" promptText="nom d'etablissement" styleClass="search-field" />
+                  <TextField fx:id="ecolesSearchInput" layoutX="250.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" promptText="Rechercher ecole (Nom ou email)" styleClass="search-field" />
                </children>
             </Pane>
          </children></AnchorPane>

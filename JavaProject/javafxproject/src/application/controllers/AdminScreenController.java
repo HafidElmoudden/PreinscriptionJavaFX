@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -74,6 +75,10 @@ public class AdminScreenController implements Initializable {
 	private TableView<StudentInformations> students_table_view;
 	
 	@FXML
+	private TextField ecolesSearchInput;
+	@FXML
+	private TextField studentsSearchInput;
+	@FXML
 	void handleButtonAction(ActionEvent event) {
 
 		if (event.getSource() == admin_schools_listbtn) {
@@ -102,20 +107,32 @@ public class AdminScreenController implements Initializable {
 		stEmailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
 		bacCol.setCellValueFactory(new PropertyValueFactory<>("bac"));
 		stVilleCol.setCellValueFactory(new PropertyValueFactory<>("city"));
+		// Search
+		ecolesSearchInput.setOnAction(e -> {
+			String selectedItem = admin_school_ville_filter.getSelectionModel().getSelectedItem();
+			SchoolService.fillSchoolsList(schools_table_view, selectedItem, ecolesSearchInput.getText());			
+		});
+		studentsSearchInput.setOnAction(e -> {
+			String bacSelectedItem = admin_type_bac_filter.getSelectionModel().getSelectedItem();
+			String villeSelectedItem = admin_students_ville_filter.getSelectionModel().getSelectedItem();
+			StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem, studentsSearchInput.getText());
+		});
+		
+		
 		
 		admin_school_ville_filter.setOnAction(event -> {
 			String selectedItem = admin_school_ville_filter.getSelectionModel().getSelectedItem();
-			SchoolService.fillSchoolsList(schools_table_view, selectedItem);
+			SchoolService.fillSchoolsList(schools_table_view, selectedItem, null);
 		});
 		admin_students_ville_filter.setOnAction(event -> {
 			String bacSelectedItem = admin_type_bac_filter.getSelectionModel().getSelectedItem();
 			String villeSelectedItem = admin_students_ville_filter.getSelectionModel().getSelectedItem();
-			StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem);
+			StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem, null);
 		});
 		admin_type_bac_filter.setOnAction(event -> {
 			String bacSelectedItem = admin_type_bac_filter.getSelectionModel().getSelectedItem();
 			String villeSelectedItem = admin_students_ville_filter.getSelectionModel().getSelectedItem();
-			StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem);
+			StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem, null);
 		});
 
 		CommonService.fillVilles(admin_school_ville_filter, true);
@@ -124,7 +141,7 @@ public class AdminScreenController implements Initializable {
 		admin_students_ville_filter.getSelectionModel().select(0);
 		CommonService.fillBacs(admin_type_bac_filter, true);
 		admin_type_bac_filter.getSelectionModel().select(0);
-		SchoolService.fillSchoolsList(schools_table_view, admin_school_ville_filter.getValue());
-		StudentService.fillStudentsList(students_table_view, null, null);
+		SchoolService.fillSchoolsList(schools_table_view, admin_school_ville_filter.getValue(), null);
+		StudentService.fillStudentsList(students_table_view, null, null, null);
 	}
 }

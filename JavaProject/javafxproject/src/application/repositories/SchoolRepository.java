@@ -7,7 +7,7 @@ import java.util.List;
 import application.database.dbClient;
 
 public class SchoolRepository {
-	public static ResultSet getSchools(String ville) {
+	/*public static ResultSet getSchools(String ville, String searchTerm) {
 		if (ville == null || ville == "Toutes les villes")
         {
             return dbClient.executeCommand(true, "SELECT E.ecole_nom, E.ville, E.email, E.ecole_telephone,\r\n    (SELECT COUNT(cp_code) FROM Formation_Post WHERE ecole_code = E.ecole_code) AS num_formation_posts\r\nFROM Ecole E", null);
@@ -17,7 +17,32 @@ public class SchoolRepository {
             return dbClient.executeCommand(true, "SELECT E.ecole_nom, E.ville, E.email, E.ecole_telephone,\r\n    (SELECT COUNT(cp_code) FROM Formation_Post WHERE ecole_code = E.ecole_code) AS num_formation_posts\r\nFROM Ecole E WHERE E.ville = ?", List.of(ville));
         }
 		
+	}*/
+	
+	public static ResultSet getSchools(String ville, String searchTerm) {
+	    List<Object> parameters = new ArrayList<>();
+
+	    String query = "SELECT E.ecole_nom, E.ville, E.email, E.ecole_telephone,   (SELECT COUNT(cp_code) FROM Formation_Post WHERE ecole_code = E.ecole_code) AS num_formation_posts FROM Ecole E";
+
+	    if (searchTerm != null || (ville != null && !ville.equals("Toutes les villes"))) {
+	        query += " WHERE";
+	    }
+	    if (searchTerm != null) {
+	        query += " (E.ecole_nom LIKE ? OR E.email LIKE ?)";
+	        parameters.add("%" + searchTerm + "%");
+	        parameters.add("%" + searchTerm + "%");
+	    }
+	    if (ville != null && !ville.equals("Toutes les villes")) {
+	        if (searchTerm != null) {
+	            query += " AND";
+	        }
+	        query += " E.ville = ?";
+	        parameters.add(ville);
+	    }
+	    return dbClient.executeCommand(true, query, parameters);
 	}
+
+
 	
 	public static ResultSet getAllStudentsInformations(String cpCode, String city, String bacType) {
 		List<Object> parameters = new ArrayList<>();

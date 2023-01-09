@@ -23,9 +23,9 @@ import javafx.scene.control.TableView;
 import javafx.util.Callback;
 
 public class SchoolService {
-	public static void fillSchoolsList(TableView<SchoolInformations> table, String city) {
+	public static void fillSchoolsList(TableView<SchoolInformations> table, String city, String searchTerm) {
 		table.getItems().clear();
-		ResultSet rs = SchoolRepository.getSchools(city);
+		ResultSet rs = SchoolRepository.getSchools(city, searchTerm);
 		try {
 			while (rs.next()) {
 
