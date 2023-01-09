@@ -1,6 +1,13 @@
 package application.entities;
 
+import java.util.Optional;
+
+import application.utilities.ConfirmationDialog;
 import application.utilities.ImageUtils;
+import application.utilities.SchoolEditDialog;
+import application.utilities.SchoolEditDialog.SchoolEditData;
+import application.utilities.StudentEditDialog;
+import application.utilities.StudentEditDialog.StudentEditData;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -26,7 +33,7 @@ public class StudentInformations
     //for Sign Up
     private String password;
     private String bacCity;
-    private Button deleteUser= new Button();
+    private Button deleteUser = new Button();
     private Button editUser = new Button();
     
     private BacInformations bacInformations = new BacInformations();
@@ -36,9 +43,22 @@ public class StudentInformations
     	ImageUtils.setButtonImage(getClass(),editUser, "edit.png");
     	deleteUser.setOnAction(e -> {
     		System.out.println("yo yoyoyo Remove clicked : " + this.firstName + " " + this.lastName +" CNE : " + this.cne + " email : " + this.email);
+    		ConfirmationDialog confirmationDialog = new ConfirmationDialog("Êtes-vous sûr de vouloir supprimer cet etudiant ?");
+    		Optional<Boolean> result = confirmationDialog.showAndWait();
+    		if (result.get() && result.isPresent()) {
+    			System.out.println("user confirmed");
+    		} else {
+    			System.out.println("user declined");
+    		}
     	});
     	editUser.setOnAction(e -> {
     		System.out.println("yo yoyoyo Edit clicked : " + this.firstName + " " + this.lastName+" CNE : " + this.cne + " email : " + this.email);
+    		StudentEditDialog editDialog = new StudentEditDialog(this.lastName, this.firstName, this.email, this.city);
+    		Optional<StudentEditData> result = editDialog.showAndWait();
+    		if (result.isPresent()) {
+    		    StudentEditData editData = result.get();
+    		    System.out.println("email entered : " + editData.getEmail() + ", nom et prenom : "+editData.getNom() + " " + editData.getPrenom());
+    		}
     	});
     }
     

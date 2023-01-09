@@ -53,6 +53,10 @@ public class AdminScreenController implements Initializable {
 	private TableColumn<SchoolInformations, String> phoneCol;
 	@FXML
 	private TableColumn<SchoolInformations, String> nbFormationsCol;
+	@FXML
+	private TableColumn<SchoolInformations, Button> ecoleDeleteCol;
+	@FXML
+	private TableColumn<SchoolInformations, Button> ecoleEditCol;
 
 	//Admin student list columns
 	@FXML
@@ -105,7 +109,9 @@ public class AdminScreenController implements Initializable {
 		emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
 		phoneCol.setCellValueFactory(new PropertyValueFactory<>("phone"));
 		nbFormationsCol.setCellValueFactory(new PropertyValueFactory<>("nombreFormations"));
-
+		ecoleDeleteCol.setCellValueFactory(new PropertyValueFactory<>("deleteUser"));
+		ecoleEditCol.setCellValueFactory(new PropertyValueFactory<>("editUser"));
+		
 		//Student list
 		cneCol.setCellValueFactory(new PropertyValueFactory<>("cne"));
 		nomCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
