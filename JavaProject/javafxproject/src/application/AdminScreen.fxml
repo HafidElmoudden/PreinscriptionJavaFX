@@ -109,8 +109,8 @@
                         <TableColumn fx:id="stEmailCol" editable="false" prefWidth="200.0" resizable="false" styleClass="gridcolumn" text="Email" />
                         <TableColumn fx:id="bacCol" prefWidth="220.0" resizable="false" styleClass="gridcolumn" text="Baccalaureate" />
                         <TableColumn fx:id="stVilleCol" minWidth="140.0" prefWidth="140.0" resizable="false" styleClass="gridcolumn" text="Ville" />
-                        <TableColumn fx:id="stVilleCol1" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" resizable="false" styleClass="gridcolumn" />
-                        <TableColumn fx:id="stVilleCol11" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" resizable="false" styleClass="gridcolumn" />
+                        <TableColumn fx:id="deleteCol" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" resizable="false" styleClass="gridcolumn" />
+                        <TableColumn fx:id="editCol" maxWidth="45.0" minWidth="45.0" prefWidth="45.0" resizable="false" styleClass="gridcolumn" />
                      </columns>
                      <styleClass>
                         <String fx:value="gridview" />

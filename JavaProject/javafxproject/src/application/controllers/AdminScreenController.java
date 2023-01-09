@@ -14,6 +14,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -65,6 +67,10 @@ public class AdminScreenController implements Initializable {
 	private TableColumn<StudentInformations, String> bacCol;
 	@FXML
 	private TableColumn<StudentInformations, String> stVilleCol;
+	@FXML
+	private TableColumn<StudentInformations, Button> deleteCol;
+	@FXML
+	private TableColumn<StudentInformations, Button> editCol;
 
 	@FXML
 	private Button admin_students_listbtn, admin_schools_listbtn, admin_logout;
@@ -107,6 +113,9 @@ public class AdminScreenController implements Initializable {
 		stEmailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
 		bacCol.setCellValueFactory(new PropertyValueFactory<>("bac"));
 		stVilleCol.setCellValueFactory(new PropertyValueFactory<>("city"));
+		editCol.setCellValueFactory(new PropertyValueFactory<>("editUser"));
+		deleteCol.setCellValueFactory(new PropertyValueFactory<>("deleteUser"));
+		
 		// Search
 		ecolesSearchInput.setOnAction(e -> {
 			String selectedItem = admin_school_ville_filter.getSelectionModel().getSelectedItem();

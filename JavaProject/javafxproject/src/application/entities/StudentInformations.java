@@ -1,5 +1,13 @@
 package application.entities;
 
+import application.utilities.ImageUtils;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+
 public class StudentInformations
 {
 	private String firstName;
@@ -18,11 +26,36 @@ public class StudentInformations
     //for Sign Up
     private String password;
     private String bacCity;
+    private Button deleteUser= new Button();
+    private Button editUser = new Button();
     
     private BacInformations bacInformations = new BacInformations();
     
+    public StudentInformations() {
+    	ImageUtils.setButtonImage(getClass(),deleteUser, "Delete.png");
+    	ImageUtils.setButtonImage(getClass(),editUser, "edit.png");
+    	deleteUser.setOnAction(e -> {
+    		System.out.println("yo yoyoyo Remove clicked : " + this.firstName + " " + this.lastName +" CNE : " + this.cne + " email : " + this.email);
+    	});
+    	editUser.setOnAction(e -> {
+    		System.out.println("yo yoyoyo Edit clicked : " + this.firstName + " " + this.lastName+" CNE : " + this.cne + " email : " + this.email);
+    	});
+    }
     
-    public String getReponse() {
+
+    public Button getDeleteUser() {
+		return deleteUser;
+	}
+	public void setDeleteUser(Button deleteUser) {
+		this.deleteUser = deleteUser;
+	}
+	public Button getEditUser() {
+		return editUser;
+	}
+	public void setEditUser(Button editUser) {
+		this.editUser = editUser;
+	}
+	public String getReponse() {
 		return reponse;
 	}
 	public void setReponse(String reponse) {
