@@ -26,7 +26,7 @@ public class StudentInformations
     //for Sign Up
     private String password;
     private String bacCity;
-    private Button deleteUser= new Button();
+    private Button deleteUser = new Button();
     private Button editUser = new Button();
     
     private BacInformations bacInformations = new BacInformations();

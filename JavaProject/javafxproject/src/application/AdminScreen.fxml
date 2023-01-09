@@ -134,8 +134,8 @@
                         <TableColumn fx:id="emailCol" prefWidth="200.0" resizable="false" styleClass="gridcolumn" text="Email" />
                         <TableColumn fx:id="phoneCol" prefWidth="150.0" resizable="false" styleClass="gridcolumn" text="Telephone" />
                         <TableColumn fx:id="nbFormationsCol" prefWidth="100.0" resizable="false" styleClass="gridcolumn" text="N formations" />
-                        <TableColumn prefWidth="40.0" styleClass="gridcolumn" />
-                        <TableColumn prefWidth="40.0" styleClass="gridcolumn" />
+                        <TableColumn fx:id="ecoleDeleteCol" prefWidth="40.0" styleClass="gridcolumn" />
+                        <TableColumn fx:id="ecoleEditCol" prefWidth="40.0" styleClass="gridcolumn" />
                     </columns>
                   </TableView>
                   <TextField fx:id="ecolesSearchInput" layoutX="250.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" promptText="Rechercher ecole (Nom ou email)" styleClass="search-field" />
