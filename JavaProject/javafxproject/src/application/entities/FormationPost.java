@@ -67,7 +67,7 @@ public class FormationPost
     	ImageUtils.setButtonImage(getClass(),deleteApp, "decline.png", 32, 32, false);
     	
     	ImageUtils.setButtonImage(getClass(),applySchool, "Postuler.png", 30, 60, false);
-    	ImageUtils.setButtonImage(getClass(),viewSchool, "Postuler.png", 30, 60, false);
+    	ImageUtils.setButtonImage(getClass(),viewSchool, "Voir.png", 30, 60, false);
 	}
     
     
