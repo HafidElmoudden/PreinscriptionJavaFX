@@ -6,6 +6,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.database.dbClient;
 import application.entities.FormationPost;
 import application.entities.SchoolFormationPost;
 import application.repositories.FormationRepository;
@@ -13,14 +14,13 @@ import application.repositories.SchoolRepository;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
 
-
 public class FormationService {
-	
-	static public List<FormationPost> getAllFormationPostsData(String bacType, String city){
+
+	static public List<FormationPost> getAllFormationPostsData(String bacType, String city) {
 		List<FormationPost> formations = new ArrayList<>();
 		ResultSet result = FormationRepository.getAllFormationPostsData(bacType, city);
 		try {
-			while(result.next()) {
+			while (result.next()) {
 				FormationPost formation = new FormationPost();
 				formation.setEtablissement(result.getString("ecole_nom"));
 				formation.setFormation(result.getString("formation_nom"));
@@ -34,29 +34,29 @@ public class FormationService {
 		}
 		return formations;
 	}
-	
-	static public void fillFormationPosts(TableView<FormationPost> table, String city){
+
+	static public void fillFormationPosts(TableView<FormationPost> table, String city) {
 		table.getItems().clear();
 		List<FormationPost> formations = getAllFormationPostsData(null, city);
-		for(FormationPost formation : formations) {
+		for (FormationPost formation : formations) {
 			table.getItems().add(formation);
 		}
 	}
-	
+
 	public static void fillMyAppsGrid(TableView<FormationPost> table, String cne) {
-	    table.getItems().clear();
+		table.getItems().clear();
 		List<FormationPost> formations = getMyApps(cne);
-		for(FormationPost formation : formations) {
+		for (FormationPost formation : formations) {
 			table.getItems().add(formation);
 		}
 	}
-	
-	static public List<FormationPost> getMyApps(String cne){
-	    List<FormationPost> formations = new ArrayList<>();
-	    ResultSet result = FormationRepository.getAllMyApps(cne);
-	  
+
+	static public List<FormationPost> getMyApps(String cne) {
+		List<FormationPost> formations = new ArrayList<>();
+		ResultSet result = FormationRepository.getAllMyApps(cne);
+
 		try {
-			while(result.next()) {
+			while (result.next()) {
 				FormationPost formation = new FormationPost();
 				formation.setEtablissement(result.getString("ecole_nom"));
 				formation.setFormation(result.getString("formation_nom"));
@@ -72,24 +72,23 @@ public class FormationService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	    return formations;
+		return formations;
 	}
-	
-	
+
 	public static void fillMyNotifsGrid(TableView<FormationPost> table, String cne) {
-	    table.getItems().clear();
+		table.getItems().clear();
 		List<FormationPost> formations = getMyNotifs(cne);
-		for(FormationPost formation : formations) {
+		for (FormationPost formation : formations) {
 			table.getItems().add(formation);
 		}
 	}
-	
-	static public List<FormationPost> getMyNotifs(String cne){
-	    List<FormationPost> formations = new ArrayList<>();
-	    ResultSet result = FormationRepository.getNotifs(cne);
-	  
+
+	static public List<FormationPost> getMyNotifs(String cne) {
+		List<FormationPost> formations = new ArrayList<>();
+		ResultSet result = FormationRepository.getNotifs(cne);
+
 		try {
-			while(result.next()) {
+			while (result.next()) {
 				FormationPost formation = new FormationPost();
 				formation.setEtablissement(result.getString("ecole_nom"));
 				formation.setFormation(result.getString("formation_nom"));
@@ -100,38 +99,67 @@ public class FormationService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	    return formations;
+		return formations;
 	}
-	
+
 	static public void fillFormationsChoiceBox(ChoiceBox<String> cb, String email) {
-		
+
 		cb.getItems().add("Toutes les formations");
 		cb.setValue("Toutes les formations");
 		ResultSet result = FormationRepository.getSchoolFormationsPosts(email);
 		try {
-			while(result.next()) {
+			while (result.next()) {
 				cb.getItems().add(result.getString("formation_nom"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-    static public List<SchoolFormationPost> getSchoolFormationPosts(String email)
-    {
-        List<SchoolFormationPost> formationPosts = new ArrayList<SchoolFormationPost>();
-        ResultSet result = FormationRepository.getSchoolFormationsPosts(email);
-        try {
-			while (result.next())
-			{
-				SchoolFormationPost formationPost =new SchoolFormationPost(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6), result.getString(7));
-			    formationPost.setEcole_nom(SchoolService.getSchoolNameByEmail(email));
+
+	static public List<SchoolFormationPost> getSchoolFormationPosts(String email) {
+		List<SchoolFormationPost> formationPosts = new ArrayList<SchoolFormationPost>();
+		ResultSet result = FormationRepository.getSchoolFormationsPosts(email);
+		try {
+			while (result.next()) {
+				SchoolFormationPost formationPost = new SchoolFormationPost(result.getString(1), result.getString(2),
+						result.getString(3), result.getString(4), result.getString(5), result.getString(6),
+						result.getString(7));
+				formationPost.setEcole_nom(SchoolService.getSchoolNameByEmail(email));
 				formationPosts.add(formationPost);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-        
-        return formationPosts;
-    }
+
+		return formationPosts;
+	}
+
+	public static void addCandidatesToAffectation(String formationPostCode) {
+		try {
+			int chaisesAvailable = 0;
+			ResultSet reader = FormationRepository.getAvailableChaisesFormationPost(formationPostCode);
+			if (reader.next()) {
+				chaisesAvailable = reader.getInt(1);
+			}
+			reader.close();
+
+			List<String> candidates = new ArrayList<>();
+			reader = FormationRepository.getEligibleCandidats(formationPostCode);
+			while (reader.next()) {
+
+				candidates.add(reader.getString(1));
+
+			}
+			reader.close();
+			int i;
+			for (i = 0; i < chaisesAvailable && i < candidates.size(); i++) {
+				FormationRepository.insertIntoAffectations(candidates.get(i), formationPostCode, "En attendant");
+			}
+			
+			FormationRepository.updateFormationOccupeNumber(formationPostCode, String.valueOf(i+ 1));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

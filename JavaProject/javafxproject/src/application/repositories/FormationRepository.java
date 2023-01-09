@@ -43,4 +43,17 @@ public class FormationRepository {
     {
         return dbClient.executeCommand(true, "SELECT F.* FROM Formation_Post F, Ecole E WHERE E.ecole_code = F.ecole_code AND E.email= ?", List.of(email));
     }
+    static public ResultSet getAvailableChaisesFormationPost(String formationPostCode) {
+    	return dbClient.executeCommand(true, "SELECT max_chaises FROM Formation_Post WHERE cp_code = ?", List.of(formationPostCode));
+    }
+    static public ResultSet getEligibleCandidats(String formationPostCode) {
+    	return dbClient.executeCommand(true, "SELECT cne FROM Candidats WHERE cp_code = ? ORDER BY candidateur_note DESC", List.of(formationPostCode));
+    }
+    static public void insertIntoAffectations(String cne, String formationPostCode, String status) {
+    	dbClient.executeCommand(false, "INSERT INTO Affectations (cne, cp_code, reponse) VALUES (?, ?, ?)",List.of(cne, formationPostCode, status));
+    }
+    static public void updateFormationOccupeNumber(String formationPostCode, String nbrChaisesReserver) {
+    	dbClient.executeCommand(false, "UPDATE Formation_Post SET nbr_chaises_reserver = ? WHERE formation_code = ?",List.of(nbrChaisesReserver,formationPostCode));
+
+    }
 }

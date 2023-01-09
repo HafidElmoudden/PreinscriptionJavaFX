@@ -1,7 +1,12 @@
 package application.entities;
 
+import java.util.Optional;
+
+import application.services.FormationService;
 import application.utilities.ImageUtils;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 
 public class SchoolFormationPost{
 	private String ecole_nom;
@@ -16,6 +21,14 @@ public class SchoolFormationPost{
     public SchoolFormationPost(String ecole_code, String max_chaises, String nbr_chaises_reserver, String nbr_chaises_available, String formation_code, String cp_code, String formation_nom)
     {
     	ImageUtils.setButtonImage(getClass(), selection, "select.png", 42, 100, false);
+    	selection.setOnAction(e -> {
+    		Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+    		a.setContentText("êtes-vous sûr de vouloir affecter "+ nbr_chaises_available + " étudiants à cette formation");
+    		Optional<ButtonType> answer = a.showAndWait();
+    		if (answer.isPresent() && answer.get() == ButtonType.OK) {
+    			FormationService.addCandidatesToAffectation(formation_code);
+    		}
+    	});
         this.max_chaises = max_chaises;
         this.nbr_chaises_reserver = nbr_chaises_reserver;
         this.nbr_chaises_available = nbr_chaises_available;
