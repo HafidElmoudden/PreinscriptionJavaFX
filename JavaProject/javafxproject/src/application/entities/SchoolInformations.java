@@ -1,6 +1,11 @@
 package application.entities;
 
+import java.util.Optional;
+
+import application.utilities.ConfirmationDialog;
 import application.utilities.ImageUtils;
+import application.utilities.SchoolEditDialog;
+import application.utilities.SchoolEditDialog.SchoolEditData;
 import javafx.scene.control.Button;
 
 public class SchoolInformations {
@@ -16,14 +21,7 @@ public class SchoolInformations {
     private Button editUser = new Button();
 
     public SchoolInformations() {
-    	ImageUtils.setButtonImage(getClass(),deleteUser, "Delete.png");
-    	ImageUtils.setButtonImage(getClass(),editUser, "edit.png");
-    	deleteUser.setOnAction(e -> {
-    		System.out.println("yo yoyoyo Remove clicked : " + this.etablissement + " " + this.ville +" Phone : " + this.phone + " email : " + this.email);
-    	});
-    	editUser.setOnAction(e -> {
-    		System.out.println("yo yoyoyo Edit clicked : " + this.etablissement + " " + this.ville+" Phone : " + this.phone + " email : " + this.email);
-    	});
+    	
     }
     
 	public SchoolInformations(String etablissement, String ville, String email, String phone, String nombreFormations) {
@@ -36,9 +34,22 @@ public class SchoolInformations {
     	ImageUtils.setButtonImage(getClass(),editUser, "edit.png");
     	deleteUser.setOnAction(e -> {
     		System.out.println("yo yoyoyo Remove clicked : " + this.etablissement + " " + this.ville +" Phone : " + this.phone + " email : " + this.email);
+    		ConfirmationDialog confirmationDialog = new ConfirmationDialog("Êtes-vous sûr de vouloir supprimer cet école ?");
+    		Optional<Boolean> result = confirmationDialog.showAndWait();
+    		if (result.get() && result.isPresent()) {
+    			System.out.println("user confirmed");
+    		} else {
+    			System.out.println("user declined");
+    		}
     	});
     	editUser.setOnAction(e -> {
     		System.out.println("yo yoyoyo Edit clicked : " + this.etablissement + " " + this.ville+" Phone : " + this.phone + " email : " + this.email);
+    		SchoolEditDialog editDialog = new SchoolEditDialog(this.etablissement, this.ville, this.email, this.phone);
+    		Optional<SchoolEditData> result = editDialog.showAndWait();
+    		if (result.isPresent()) {
+    		    SchoolEditData editData = result.get();
+    		    System.out.println("email entered : " + editData.getEmail() + ", Etablissement : "+editData.getEtablissement());
+    		}
     	});
 	}
 
