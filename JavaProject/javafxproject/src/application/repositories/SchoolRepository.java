@@ -113,9 +113,41 @@ public class SchoolRepository {
     
 		return dbClient.executeCommand(true, query, parameters);
 	}
+	public static ResultSet getEcoleCodeByEmail(String email) {
+	    String selectEcoleCodeCommand = "SELECT ecole_code FROM Ecole WHERE email = ?";
+	    List<Object> selectEcoleCodeParameters = List.of(email);
+	    return dbClient.executeCommand(true, selectEcoleCodeCommand, selectEcoleCodeParameters);
+	}
+	public static void deleteSchool(String ecole_code, String email) {
+		String deleteAffectationsCommand = "DELETE FROM Affectations WHERE cp_code IN (SELECT cp_code FROM formation_post WHERE ecole_code = ?)";
+		dbClient.executeCommand(false, deleteAffectationsCommand, List.of(ecole_code));
+
+	    String deleteCandidatsCommand = "DELETE FROM Candidats WHERE cp_code IN (SELECT cp_code FROM formation_post WHERE ecole_code = ?)";
+	    dbClient.executeCommand(false, deleteCandidatsCommand, List.of(ecole_code));
+
+	    String deleteCandidatConstraintsCommand = "DELETE FROM Candidateur_Constraints WHERE cp_code IN (SELECT cp_code FROM formation_post WHERE ecole_code = ?)";
+	    dbClient.executeCommand(false, deleteCandidatConstraintsCommand, List.of(ecole_code));
+	    
+	    String deleteFormationPostsCommand = "DELETE FROM Formation_Post WHERE ecole_code = ?";
+	    dbClient.executeCommand(false, deleteFormationPostsCommand, List.of(ecole_code));
+	    
+	    String deleteEcoleCommand = "DELETE FROM Ecole WHERE ecole_code = ?";
+	    dbClient.executeCommand(false, deleteEcoleCommand, List.of(ecole_code));
+	    
+	    String deleteUserCommand = "DELETE FROM Users WHERE email = ?";
+	    dbClient.executeCommand(false, deleteUserCommand, List.of(email));
+	}
 	
-	
-	
+	public static void updateSchool(String ecole_code,String oldEmail, String etablissement, String ville, String email, String telephone) {
+	    String updateEcoleCommand = "UPDATE Ecole SET ecole_nom = ?, ville = ?, email = NULL, ecole_telephone = ? WHERE ecole_code = ?";
+	    dbClient.executeCommand(false, updateEcoleCommand, List.of(etablissement, ville, telephone, ecole_code));
+	    
+	    String updateUserCommand = "UPDATE Users SET email = ? WHERE email = ?";
+	    dbClient.executeCommand(false, updateUserCommand, List.of(email, oldEmail));
+	    
+	    String updateEcoleEmailCommand = "UPDATE Ecole SET email = ? WHERE ecole_code = ?";
+	    dbClient.executeCommand(false, updateEcoleEmailCommand, List.of(email, ecole_code));
+	}
 	
 }
 

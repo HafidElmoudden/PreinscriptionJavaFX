@@ -2,6 +2,8 @@ package application.entities;
 
 import java.util.Optional;
 
+import application.repositories.SchoolRepository;
+import application.services.SchoolService;
 import application.utilities.ConfirmationDialog;
 import application.utilities.ImageUtils;
 import application.utilities.SchoolEditDialog;
@@ -35,13 +37,15 @@ public class SchoolInformations {
 		this.email = email;
 		this.phone = phone;
 		this.nombreFormations = nombreFormations;
-    	ImageUtils.setButtonImage(getClass(),deleteUser, "Delete.png");
-    	ImageUtils.setButtonImage(getClass(),editUser, "edit.png");
+    	ImageUtils.setButtonImage(getClass(),deleteUser, "Delete.png", 32, 32, true);
+    	ImageUtils.setButtonImage(getClass(),editUser, "edit.png", 32, 32, true);
     	deleteUser.setOnAction(e -> {
     		System.out.println("yo yoyoyo Remove clicked : " + this.etablissement + " " + this.ville +" Phone : " + this.phone + " email : " + this.email);
     		ConfirmationDialog confirmationDialog = new ConfirmationDialog("Êtes-vous sûr de vouloir supprimer cet école ?");
     		Optional<Boolean> result = confirmationDialog.showAndWait();
     		if (result.get() && result.isPresent()) {
+    			String ecole_code = SchoolService.getEcoleCodeByEmail(email);
+    			SchoolRepository.deleteSchool(ecole_code, email);
     			System.out.println("user confirmed");
     		} else {
     			System.out.println("user declined");
@@ -52,8 +56,10 @@ public class SchoolInformations {
     		SchoolEditDialog editDialog = new SchoolEditDialog(this.etablissement, this.ville, this.email, this.phone);
     		Optional<SchoolEditData> result = editDialog.showAndWait();
     		if (result.isPresent()) {
+    			String ecole_code = SchoolService.getEcoleCodeByEmail(email);
     		    SchoolEditData editData = result.get();
     		    System.out.println("email entered : " + editData.getEmail() + ", Etablissement : "+editData.getEtablissement());
+    		    SchoolRepository.updateSchool(ecole_code, email, editData.getEtablissement(), editData.getVille(), editData.getEmail(),editData.getTelephone());
     		}
     	});
 	}

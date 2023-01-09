@@ -150,8 +150,20 @@ public class StudentScreenController implements Initializable {
 	@FXML
 	private TableColumn<?, ?> etablissement_apps, fromation_apps, ville_apps, note_apps, residuelle_apps, candidateur_code;
 	
-	
-	
+	//Table actions
+	//Notifications table
+	@FXML
+	private TableColumn<?,?> accept_notifs;
+	@FXML
+	private TableColumn<?,?> decline_notifs;
+	//My Applications table
+	@FXML
+	private TableColumn<?,?> delete_apps;
+	//Home table
+	@FXML
+	private TableColumn<?,?> viewschool_grid_home;
+	@FXML
+	private TableColumn<?,?> apply_grid_home;
 	
 
 	@FXML
@@ -237,34 +249,16 @@ public class StudentScreenController implements Initializable {
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		//Notifications table
+		accept_notifs.setCellValueFactory(new PropertyValueFactory<>("acceptNotif"));
+		decline_notifs.setCellValueFactory(new PropertyValueFactory<>("declineNotif"));
 		
+		//My Applications table
+		delete_apps.setCellValueFactory(new PropertyValueFactory<>("deleteApp"));
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		//Home table
+		viewschool_grid_home.setCellValueFactory(new PropertyValueFactory<>("viewSchool"));
+		apply_grid_home.setCellValueFactory(new PropertyValueFactory<>("applySchool"));
 		
 		emailActuel.setText(Navigation.email);
 		StudentInformations student = StudentService.getStudentInformations(Navigation.email);
