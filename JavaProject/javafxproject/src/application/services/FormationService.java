@@ -137,26 +137,26 @@ public class FormationService {
 	public static void addCandidatesToAffectation(String formationPostCode) {
 		try {
 			int chaisesAvailable = 0;
-			ResultSet reader = FormationRepository.getAvailableChaisesFormationPost(formationPostCode);
-			if (reader.next()) {
-				chaisesAvailable = reader.getInt(1);
+			ResultSet result = FormationRepository.getAvailableChaisesFormationPost(formationPostCode);
+			if (result.next()) {
+				chaisesAvailable = result.getInt(1);
 			}
-			reader.close();
+			result.close();
 
 			List<String> candidates = new ArrayList<>();
-			reader = FormationRepository.getEligibleCandidats(formationPostCode);
-			while (reader.next()) {
+			result = FormationRepository.getEligibleCandidats(formationPostCode);
+			while (result.next()) {
 
-				candidates.add(reader.getString(1));
+				candidates.add(result.getString(1));
 
 			}
-			reader.close();
+			result.close();
 			int i;
 			for (i = 0; i < chaisesAvailable && i < candidates.size(); i++) {
 				FormationRepository.insertIntoAffectations(candidates.get(i), formationPostCode, "En attendant");
 			}
 			
-			FormationRepository.updateFormationOccupeNumber(formationPostCode, String.valueOf(i+ 1));
+			FormationRepository.updateFormationOccupeNumber(formationPostCode, String.valueOf(i));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
