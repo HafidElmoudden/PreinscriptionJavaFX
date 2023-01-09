@@ -138,7 +138,16 @@ public class SchoolRepository {
 	    dbClient.executeCommand(false, deleteUserCommand, List.of(email));
 	}
 	
-	
+	public static void updateSchool(String ecole_code,String oldEmail, String etablissement, String ville, String email, String telephone) {
+	    String updateEcoleCommand = "UPDATE Ecole SET ecole_nom = ?, ville = ?, email = NULL, ecole_telephone = ? WHERE ecole_code = ?";
+	    dbClient.executeCommand(false, updateEcoleCommand, List.of(etablissement, ville, telephone, ecole_code));
+	    
+	    String updateUserCommand = "UPDATE Users SET email = ? WHERE email = ?";
+	    dbClient.executeCommand(false, updateUserCommand, List.of(email, oldEmail));
+	    
+	    String updateEcoleEmailCommand = "UPDATE Ecole SET email = ? WHERE ecole_code = ?";
+	    dbClient.executeCommand(false, updateEcoleEmailCommand, List.of(email, ecole_code));
+	}
 	
 }
 

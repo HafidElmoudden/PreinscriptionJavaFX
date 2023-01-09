@@ -56,8 +56,10 @@ public class SchoolInformations {
     		SchoolEditDialog editDialog = new SchoolEditDialog(this.etablissement, this.ville, this.email, this.phone);
     		Optional<SchoolEditData> result = editDialog.showAndWait();
     		if (result.isPresent()) {
+    			String ecole_code = SchoolService.getEcoleCodeByEmail(email);
     		    SchoolEditData editData = result.get();
     		    System.out.println("email entered : " + editData.getEmail() + ", Etablissement : "+editData.getEtablissement());
+    		    SchoolRepository.updateSchool(ecole_code, email, editData.getEtablissement(), editData.getVille(), editData.getEmail(),editData.getTelephone());
     		}
     	});
 	}

@@ -125,8 +125,7 @@ public class StudentRepository {
 	}
 
 	public static void updateStudent(String cne,String oldEmail, String nom, String prenom, String email, String ville) {
-		changeStudentEmail(Navigation.email, email, cne);
-		Navigation.email = email;
+		changeStudentEmail(oldEmail, email, cne);
 		String updateCommand = "UPDATE Etudiant SET nom = ?, prenom = ?, email = ?, ville = ? WHERE cne = ?";
 		List<Object> updateParameters = Arrays.asList(nom, prenom, email, ville, cne);
 		dbClient.executeCommand(false, updateCommand, updateParameters);
