@@ -1,5 +1,6 @@
 package application.controllers;
 
+import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.Period;
@@ -27,6 +28,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -182,8 +184,16 @@ public class StudentScreenController implements Initializable {
 		school_adress.setText(school.getAdress());
 		school_telephone.setText(school.getPhone());
 		school_email.setText(school.getEmail());
+		school_description.setText(school.getDescription());
+		school_fax.setText(school.getFax());
+		school_website.setText(school.getWebsite());
 		formation_inview_column.setCellValueFactory(new PropertyValueFactory<>("formation"));
 		SchoolService.fillFomationView(formation_inview, ecole_code);
+		
+		Image banner = new Image(getClass().getResource(school.getBanner()).toExternalForm());
+		Image logo = new Image(getClass().getResource(school.getLogo()).toExternalForm());
+		school_logo.setImage(logo);
+		school_bg.setImage(banner);
 	}
 	
 	public String getSelectedsCode() {
@@ -207,7 +217,7 @@ public class StudentScreenController implements Initializable {
 	
 	
     @FXML
-    private ImageView school_logo, school_bg;
+    private ImageView school_logo= new ImageView(), school_bg= new ImageView();
 	@FXML
 	private Label school_title, school_description, school_adress, school_telephone, school_fax, school_email;
     @FXML

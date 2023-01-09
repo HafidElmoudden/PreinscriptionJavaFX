@@ -102,7 +102,7 @@ public class SchoolRepository {
 	public static ResultSet getSchoolInfos(String ecole_code) {
 		List<Object> parameters = new ArrayList<Object>();
         parameters.add(ecole_code);
-        String query="SELECT ecole_nom, ecole_adress, ecole_telephone, email FROM Ecole WHERE ecole_code= ?";
+        String query="SELECT ecole_nom, fax, website, description,bg_img_url, logo_url, ecole_adress, ecole_telephone, email FROM Ecole WHERE ecole_code= ?";
         
         return dbClient.executeCommand(true, query, parameters);
 	}

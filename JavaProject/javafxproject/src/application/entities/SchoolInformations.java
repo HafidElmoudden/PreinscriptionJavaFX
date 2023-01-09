@@ -9,6 +9,11 @@ public class SchoolInformations {
 	private String ecole_code;
 	private String description;
 	private String adress;
+	private String logo;
+	private String banner;
+	private String website;
+	private String fax;
+	
 
 	public SchoolInformations(String etablissement, String ville, String email, String phone, String nombreFormations) {
 		this.etablissement = etablissement;
@@ -84,5 +89,37 @@ public class SchoolInformations {
 
 	public void setEcole_code(String ecole_code) {
 		this.ecole_code = ecole_code;
+	}
+
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+
+	public String getBanner() {
+		return banner;
+	}
+
+	public void setBanner(String banner) {
+		this.banner = banner;
+	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	public String getFax() {
+		return fax;
+	}
+
+	public void setFax(String fax) {
+		this.fax = fax;
 	}
 }

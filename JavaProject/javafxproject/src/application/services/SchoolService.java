@@ -132,7 +132,13 @@ public class SchoolService {
 				s.setEtablissement(result.getString("ecole_nom"));
 				s.setEmail(result.getString("email"));
 				s.setPhone(result.getString("ecole_telephone"));
+				s.setDescription(result.getString("description"));
+				s.setFax(result.getString("fax"));
+				s.setWebsite(result.getString("website"));
+				s.setBanner(result.getString("bg_img_url"));
+				s.setLogo(result.getString("logo_url"));
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
