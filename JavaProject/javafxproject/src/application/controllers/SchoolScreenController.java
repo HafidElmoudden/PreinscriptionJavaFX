@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -108,7 +109,15 @@ public class SchoolScreenController implements Initializable{
 		fillTheCandidatsGrids("Toutes les villes", "Toutes les formations");
 		fillTheEtudiantsGrid("Toutes les réponses", "Toutes les formations");
 		fillTheSelectionGrids();
+		changeGb();
 		
+		
+		
+		
+		
+		
+		
+
 	}
     
 	
@@ -145,5 +154,17 @@ public class SchoolScreenController implements Initializable{
 		
 		SchoolService.fillSelectedStudentslist(shool_grid_etudiants, Navigation.email,formation, reponse);
 	}
-
+	public void changeGb() {
+		shool_grid_etudiants.setRowFactory(tv -> {
+		    TableRow<StudentInformations> row = new TableRow<>();
+		    row.itemProperty().addListener((obs, oldValue, newValue) -> {
+		        if (newValue != null) {
+		            if (newValue.getReponse().equals("Refusé")) {
+		                row.setStyle("-fx-background-color: #F5DDE0");
+		            }
+		        }
+		    });
+		    return row;
+		});
+	}
 }
