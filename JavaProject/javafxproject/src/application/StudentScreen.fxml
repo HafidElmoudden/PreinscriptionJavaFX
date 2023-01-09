@@ -166,7 +166,7 @@
                         <TableColumn fx:id="ville_apps" prefWidth="150.0" resizable="false" styleClass="gridcolumn" text="Ville" />
                         <TableColumn fx:id="note_apps" prefWidth="100.0" resizable="false" styleClass="gridcolumn" text="Note" />
                         <TableColumn fx:id="residuelle_apps" prefWidth="100.0" resizable="false" styleClass="gridcolumn" text="Résiduelle" />
-                        <TableColumn fx:id="action_apps" prefWidth="109.0" resizable="false" styleClass="gridcolumn" />
+                        <TableColumn fx:id="delete_apps" prefWidth="109.0" resizable="false" styleClass="gridcolumn" />
                         <TableColumn fx:id="candidateur_code" prefWidth="109.0" resizable="false" styleClass="gridcolumn" visible="false" />
                      </columns>
                   </TableView>

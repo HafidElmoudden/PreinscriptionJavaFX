@@ -40,27 +40,21 @@ public class StudentInformations
     private BacInformations bacInformations = new BacInformations();
     
     public StudentInformations() {
-    	ImageUtils.setButtonImage(getClass(),deleteUser, "Delete.png");
-    	ImageUtils.setButtonImage(getClass(),editUser, "edit.png");
+    	ImageUtils.setButtonImage(getClass(),deleteUser, "Delete.png", 32, 32, true);
+    	ImageUtils.setButtonImage(getClass(),editUser, "edit.png", 32, 32, true);
     	deleteUser.setOnAction(e -> {
-    		System.out.println("yo yoyoyo Remove clicked : " + this.firstName + " " + this.lastName +" CNE : " + this.cne + " email : " + this.email);
     		ConfirmationDialog confirmationDialog = new ConfirmationDialog("Êtes-vous sûr de vouloir supprimer cet etudiant ?");
     		Optional<Boolean> result = confirmationDialog.showAndWait();
     		if (result.get() && result.isPresent()) {
     			StudentRepository.deleteEtudiant(cne, email);
-    			System.out.println("user confirmed");
-    		} else {
-    			System.out.println("user declined");
     		}
     	});
     	editUser.setOnAction(e -> {
-    		System.out.println("yo yoyoyo Edit clicked : " + this.firstName + " " + this.lastName+" CNE : " + this.cne + " email : " + this.email);
     		StudentEditDialog editDialog = new StudentEditDialog(this.lastName, this.firstName, this.email, this.city);
     		Optional<StudentEditData> result = editDialog.showAndWait();
     	    StudentEditDialog.StudentEditData data = result.get();
     		if (result.isPresent()) {
     		    StudentEditData editData = result.get();
-    		    System.out.println("email entered : " + editData.getEmail() + ", nom et prenom : "+editData.getNom() + " " + editData.getPrenom());
     		    StudentRepository.updateStudent(cne,email, editData.getNom(), editData.getPrenom(), editData.getEmail(), editData.getVille());
     		}
     	});

@@ -1,5 +1,8 @@
 package application.entities;
 
+import application.utilities.ImageUtils;
+import javafx.scene.control.Button;
+
 public class FormationPost
 {
     public String etablissement;
@@ -20,7 +23,16 @@ public class FormationPost
     public String student_email;
 	//to use in student application
     public String classement_note;
+    //Notifications table actions
+    private Button acceptNotif = new Button();
+    private Button declineNotif = new Button();
     
+    //My Applications table actions
+    private Button deleteApp = new Button();
+    
+    //Home table actions
+    private Button viewSchool = new Button();
+    private Button applySchool = new Button();
     
     public String getNbr_chaises_available() {
 		return nbr_chaises_available;
@@ -31,6 +43,7 @@ public class FormationPost
 
     public FormationPost(String formation_code, String etablissement, String formation, String ville, String residuelle)
     {
+
         this.formation_code = formation_code;
         this.etablissement = etablissement;
         this.formation = formation;
@@ -48,6 +61,45 @@ public class FormationPost
     }
     public FormationPost() {
 		// TODO Auto-generated constructor stub
+    	ImageUtils.setButtonImage(getClass(),acceptNotif, "accept.png", 32, 32, false);
+    	ImageUtils.setButtonImage(getClass(),declineNotif, "decline.png", 32, 32, false);
+ 
+    	ImageUtils.setButtonImage(getClass(),deleteApp, "decline.png", 32, 32, false);
+    	
+    	ImageUtils.setButtonImage(getClass(),applySchool, "Postuler.png", 30, 60, false);
+    	ImageUtils.setButtonImage(getClass(),viewSchool, "Postuler.png", 30, 60, false);
+	}
+    
+    
+	public Button getAcceptNotif() {
+		return acceptNotif;
+	}
+	public void setAcceptNotif(Button acceptNotif) {
+		this.acceptNotif = acceptNotif;
+	}
+	public Button getDeclineNotif() {
+		return declineNotif;
+	}
+	public void setDeclineNotif(Button declineNotif) {
+		this.declineNotif = declineNotif;
+	}
+	public Button getDeleteApp() {
+		return deleteApp;
+	}
+	public void setDeleteApp(Button deleteApp) {
+		this.deleteApp = deleteApp;
+	}
+	public Button getViewSchool() {
+		return viewSchool;
+	}
+	public void setViewSchool(Button viewSchool) {
+		this.viewSchool = viewSchool;
+	}
+	public Button getApplySchool() {
+		return applySchool;
+	}
+	public void setApplySchool(Button applySchool) {
+		this.applySchool = applySchool;
 	}
 	public String getEtablissement() {
 		return etablissement;
