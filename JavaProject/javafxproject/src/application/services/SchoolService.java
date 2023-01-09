@@ -42,17 +42,17 @@ public class SchoolService {
 		}
 	}
 	
-	public static void fillCandidatslist(TableView<FormationPost> table, String email) {
+	public static void fillCandidatslist(TableView<FormationPost> table, String email, String ville, String formation_) {
 		table.getItems().clear();
-		List<FormationPost> formations = getcandidats(email);
+		List<FormationPost> formations = getcandidats(email, ville, formation_);
 		for(FormationPost formation : formations) {
 			table.getItems().add(formation);
 		}
 	}
 	
-	public static List<FormationPost> getcandidats(String email){
+	public static List<FormationPost> getcandidats(String email, String ville, String formation_){
 		List<FormationPost> formations = new ArrayList<>();
-	    ResultSet result = SchoolRepository.getCandidateurs(email);
+	    ResultSet result = SchoolRepository.getCandidateurs(email, ville, formation_);
 	  
 		try {
 			while(result.next()) {

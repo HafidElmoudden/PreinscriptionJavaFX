@@ -57,10 +57,20 @@ public class SchoolRepository {
 		return dbClient.executeCommand(true, "SELECT ecole_nom FROM Ecole WHERE email=?", parameters);
 	}
 	
-	public static ResultSet getCandidateurs(String email) {
+	public static ResultSet getCandidateurs(String email, String ville, String formation) {
 		String query = "SELECT F.formation_nom, C.cne, E.nom, E.prenom, E.email, E.ville FROM Ecole EC, Candidats C, Etudiant E, EtudiantBac EB, Formation_Post F\r\nWHERE C.cne = E.cne AND EB.cne = C.cne AND C.cp_code = F.cp_code AND EC.ecole_code = F.ecole_code AND EC.email = ? ";
 		List<Object> parameters = new ArrayList<>();
 		parameters.add(email);
+		
+		if(!ville.equals("Toutes les villes")) {
+			query+=" AND E.ville= ?";
+			parameters.add(ville);
+		}
+		if(!formation.equals("Toutes les formations")) {
+			query+=" AND F.formation_nom = ?";
+			parameters.add(formation);
+		}
+		
 		return dbClient.executeCommand(true, query, parameters);
 	}
 	
@@ -69,15 +79,15 @@ public class SchoolRepository {
         parameters.add(email);
 		String  query = "SELECT DISTINCT F.formation_nom, C.cne, E1.nom, E1.prenom, E1.email, E2.ville, A.reponse FROM Formation_Post F, Ecole E2, Affectations A, Candidats C, Etudiant E1 WHERE F.ecole_code = E2.ecole_code AND F.cp_code = A.cp_code AND A.cne = C.cne AND C.cne = E1.cne AND E2.email = ?";
         System.out.println("email = "+email+" formation = "+formation+" status = "+status);
-		if (!formation.equals("Toutes les formations") && formation.length() != 0 && formation != "")
+		if (!formation.equals("Toutes les formations"))
         {
-			System.out.println("isnde of formation if happened " + (formation != "Toutes les formations" && formation.length() != 0 && formation != ""));
+			//System.out.println("isnde of formation if happened " + (formation != "Toutes les formations" && formation.length() != 0 && formation != ""));
             query += " AND F.formation_nom= ? ";
             parameters.add(formation);
         }
-        if (!status.equals("Toutes les réponses") && status.length() != 0 && status != "")
+        if (!status.equals("Toutes les réponses"))
         {
-        	System.out.println("inside of status if happened " + (!status.equals("Toutes les réponses") && status.length() != 0 && status != ""));
+        	//System.out.println("inside of status if happened " + (!status.equals("Toutes les réponses") && status.length() != 0 && status != ""));
             query += " AND A.reponse= ? ";
             parameters.add(status);
         }

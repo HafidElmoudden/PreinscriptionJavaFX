@@ -80,31 +80,39 @@ public class SchoolScreenController implements Initializable{
 		FormationService.fillFormationsChoiceBox(school_formaion_filter, Navigation.email);
 		FormationService.fillFormationsChoiceBox(school_etu_formation_filter, Navigation.email);
 		school_formaion_filter.getItems().add("Toutes les formations");
+		school_candi_ville_filter.setValue("Toutes les villes");
 		school_formaion_filter.setValue("Toutes les formations");
 		
 		school_etu_statu_filter.getItems().add("Toutes les réponses");
 		school_etu_statu_filter.setValue("Toutes les réponses");
-		school_etu_statu_filter.getItems().add("Accepted");
-		school_etu_statu_filter.getItems().add("Waiting");
-		school_etu_statu_filter.getItems().add("Declined");
+		school_etu_statu_filter.getItems().add("Accepté");
+		school_etu_statu_filter.getItems().add("En attendant");
+		school_etu_statu_filter.getItems().add("Refusé");
 		
 		school_formaion_filter.setOnAction(e -> {
-			fillTheEtudiantsGrid();
+			fillTheCandidatsGrids(school_candi_ville_filter.getValue(),school_formaion_filter.getValue());
+		});
+		
+		school_candi_ville_filter.setOnAction(e ->{
+			fillTheCandidatsGrids(school_candi_ville_filter.getValue(),school_formaion_filter.getValue());
 		});
 		
 		school_etu_statu_filter.setOnAction(e -> {
-			fillTheEtudiantsGrid();
+			fillTheEtudiantsGrid(school_etu_statu_filter.getValue(), school_etu_formation_filter.getValue());
 		});
 		
-		fillTheCandidatsGrids();
-		fillTheSelectionGrids();
-		fillTheEtudiantsGrid();
+		school_etu_formation_filter.setOnAction(e -> {
+			fillTheEtudiantsGrid(school_etu_statu_filter.getValue(), school_etu_formation_filter.getValue());
+		});
 		
+		fillTheCandidatsGrids("Toutes les villes", "Toutes les formations");
+		fillTheEtudiantsGrid("Toutes les réponses", "Toutes les formations");
+		fillTheSelectionGrids();
 		
 	}
     
 	
-	public void fillTheCandidatsGrids() {
+	public void fillTheCandidatsGrids(String ville, String formation) {
 		cne_grid_candida.setCellValueFactory(new PropertyValueFactory<>("student_cne"));
 		formation_grid_candida.setCellValueFactory(new PropertyValueFactory<>("formation"));
 		vill_grid_candida.setCellValueFactory(new PropertyValueFactory<>("student_ville"));
@@ -112,7 +120,7 @@ public class SchoolScreenController implements Initializable{
 		prenom_grid_candida.setCellValueFactory(new PropertyValueFactory<>("student_prenom"));
 		email_grid_candida.setCellValueFactory(new PropertyValueFactory<>("student_email"));
 		
-		SchoolService.fillCandidatslist(shcool_grid_candidats,Navigation.email);
+		SchoolService.fillCandidatslist(shcool_grid_candidats,Navigation.email, ville, formation);
 	}
 	
 	public void fillTheSelectionGrids() {
@@ -126,7 +134,7 @@ public class SchoolScreenController implements Initializable{
 		SchoolService.fillSelectionlist(shool_grid_section, Navigation.email);
 	}
 	
-	public void fillTheEtudiantsGrid() {
+	public void fillTheEtudiantsGrid(String reponse, String formation) {
 		cne_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("cne"));
 		ville_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("city"));
 		email_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -134,12 +142,8 @@ public class SchoolScreenController implements Initializable{
 		prenom_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("firstName"));
 		nom_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 		statu_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("reponse"));
-		String reponse;
-		if(school_etu_statu_filter.getValue() != "Toutes les réponses")
-			reponse = school_etu_statu_filter.getValue().toLowerCase();
-		else
-			reponse = school_etu_statu_filter.getValue();
-		SchoolService.fillSelectedStudentslist(shool_grid_etudiants, Navigation.email,school_etu_formation_filter.getValue(), reponse);
+		
+		SchoolService.fillSelectedStudentslist(shool_grid_etudiants, Navigation.email,formation, reponse);
 	}
 
 }
