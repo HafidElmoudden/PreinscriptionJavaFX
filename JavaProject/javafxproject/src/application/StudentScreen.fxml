@@ -3,6 +3,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -278,6 +279,124 @@
                   </AnchorPane>
                </children>
             </Pane>
+            <Pane fx:id="view_school" prefHeight="640.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane layoutX="20.0" layoutY="20.0" maxHeight="600.0" minHeight="600.0" prefHeight="586.0" prefWidth="1010.0" style="-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 3, 0, 0, 0); -fx-background-radius: 8; -fx-background-color: fff;">
+                     <children>
+                        <ImageView fx:id="school_bg" fitHeight="250.0" fitWidth="1010.0" layoutX="134.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="385.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <image>
+                              <Image url="@../../../resources/esta_bg.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="school_logo" fitHeight="130.0" fitWidth="130.0" layoutX="50.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/esta_logo.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="school_title" layoutX="210.0" layoutY="258.0" text="Ecole supérieure de Technologie Agadir">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="school_description" ellipsisString="" layoutX="210.0" layoutY="293.0" prefHeight="20.0" prefWidth="766.0" text="L’EST D’agadir vous offre Une formation pluridisciplinaire attrayante, diversifiéeet inscrite dans les préoccupations régionales et nationales." textFill="#7b7b7b" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="50.0" layoutY="363.0" text="À propos">
+                           <font>
+                              <Font name="Segoe UI Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="50.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/Adress.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="50.0" layoutY="423.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/call_.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="50.0" layoutY="453.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/print.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="50.0" layoutY="483.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/mail.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="82.0" layoutY="395.0" text="Adresse : ">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="82.0" layoutY="425.0" text="Téléphone : ">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="82.0" layoutY="455.0" text="Fax : ">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="82.0" layoutY="485.0" text="Email : ">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="school_fax" layoutX="121.0" layoutY="455.0" text="XXXXXXXXXXXXXXXX">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="school_telephone" layoutX="167.0" layoutY="425.0" text="XXXXXXXXXXXXXXXX">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="school_adress" layoutX="149.0" layoutY="395.0" text="XXXXXXXXXXXXXXXX">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="school_email" layoutX="134.0" layoutY="485.0" text="XXXXXXXXXXXXXXXX">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="50.0" layoutY="513.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/site.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="82.0" layoutY="515.0" text="Site web :">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Hyperlink fx:id="school_website" layoutX="153.0" layoutY="512.0" text="XXXXXXXXXXXXXXXX">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Hyperlink>
+                        <TableView fx:id="formation_inview" layoutX="445.0" layoutY="395.0" prefHeight="146.0" prefWidth="500.0" styleClass="gridview">
+                          <columns>
+                            <TableColumn fx:id="formation_inview_column" prefWidth="498.0" styleClass="gridcolumn" text="Les formations" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="445.0" layoutY="363.0" text="Les formations">
+                           <font>
+                              <Font name="Segoe UI Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </Pane>
             <Pane fx:id="student_home" layoutX="569.0" layoutY="213.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ChoiceBox fx:id="student_schoollist_ville_filter" focusTraversable="false" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" style="-fx-cursor: pointer; -fx-focus-color: transparent; -fx-background-color: fff;" styleClass="combo-box">
@@ -294,8 +413,10 @@
                         <TableColumn fx:id="viewschool_grid_home" prefWidth="90.0" resizable="false" styleClass="gridcolumn" />
                         <TableColumn prefWidth="180.0" resizable="false" text="cp_code" visible="false" />
                         <TableColumn fx:id="apply_grid_home" prefWidth="88.0" resizable="false" styleClass="gridcolumn" />
+                        <TableColumn fx:id="school_code" prefWidth="88.0" resizable="false" styleClass="gridcolumn" />
                      </columns>
                   </TableView>
+                  <Button layoutX="917.0" layoutY="23.0" mnemonicParsing="false" onAction="#view_selected_school" text="View selected" />
                </children>
             </Pane>
          </children>

@@ -2,7 +2,6 @@ package application.entities;
 
 public class SchoolFormationPost{
 	private String ecole_nom;
-	private String ecole_code;
 	private String max_chaises;
 	private String nbr_chaises_reserver;
 	private String nbr_chaises_available;
@@ -12,7 +11,6 @@ public class SchoolFormationPost{
 
     public SchoolFormationPost(String ecole_code, String max_chaises, String nbr_chaises_reserver, String nbr_chaises_available, String formation_code, String cp_code, String formation_nom)
     {
-        this.ecole_code = ecole_code;
         this.max_chaises = max_chaises;
         this.nbr_chaises_reserver = nbr_chaises_reserver;
         this.nbr_chaises_available = nbr_chaises_available;
@@ -29,13 +27,6 @@ public class SchoolFormationPost{
 		this.ecole_nom = ecole_nom;
 	}
 
-	public String getEcole_code() {
-		return ecole_code;
-	}
-
-	public void setEcole_code(String ecole_code) {
-		this.ecole_code = ecole_code;
-	}
 
 	public String getMax_chaises() {
 		return max_chaises;

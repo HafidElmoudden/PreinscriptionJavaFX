@@ -9,7 +9,7 @@ import application.entities.SchoolFormationPost;
 
 public class FormationRepository {
 	static public ResultSet getAllFormationPostsData(String bacType, String city) {
-	    String query = "SELECT F.cp_code, E.ecole_nom, F.formation_nom, E.ville, F.nbr_chaises_available FROM Ecole E,Formation_Post F WHERE F.ecole_code = E.ecole_code";
+	    String query = "SELECT F.cp_code, E.ecole_nom,E.ecole_code, F.formation_nom, E.ville, F.nbr_chaises_available FROM Ecole E,Formation_Post F WHERE F.ecole_code = E.ecole_code";
 	    List<Object> params = new ArrayList<>();
 	    if ((city == null || city.equals("Toutes les villes")) && (bacType == null || bacType.equals("All"))) {
 	        // Do nothing

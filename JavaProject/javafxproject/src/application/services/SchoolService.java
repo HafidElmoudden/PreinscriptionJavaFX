@@ -123,4 +123,41 @@ public class SchoolService {
 		}
 	}
 	
+	public static SchoolInformations getSchoolInformations(String ecole_code) {
+		SchoolInformations s= new SchoolInformations();
+		ResultSet result = SchoolRepository.getSchoolInfos(ecole_code);
+		try {
+			while(result.next()){
+				s.setAdress(result.getString("ecole_adress"));
+				s.setEtablissement(result.getString("ecole_nom"));
+				s.setEmail(result.getString("email"));
+				s.setPhone(result.getString("ecole_telephone"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return s;
+	}
+	
+	public static void fillFomationView(TableView<FormationPost> table, String ecole_code){
+		table.getItems().clear();
+		List<FormationPost> formas = new ArrayList<FormationPost>();
+		ResultSet result = SchoolRepository.getFormationByEcoleCode(ecole_code);
+		try {
+			while(result.next()){
+				FormationPost f = new FormationPost();
+				f.setFormation(result.getString(1));
+				
+				formas.add(f);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		for(FormationPost forma : formas) {
+			table.getItems().add(forma);
+		}
+	}
+	
 }
