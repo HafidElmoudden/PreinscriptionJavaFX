@@ -36,6 +36,7 @@ public class FormationPost
     //Notifications table actions
     private Button acceptNotif = new Button();
     private Button declineNotif = new Button();
+    private String date_;
     
     //My Applications table actions
     private Button deleteApp = new Button();
@@ -238,6 +239,12 @@ public class FormationPost
 	}
 	public void setEcole_code(String ecole_code) {
 		this.ecole_code = ecole_code;
+	}
+	public String getDate_() {
+		return date_;
+	}
+	public void setDate_(String date_) {
+		this.date_ = date_;
 	}
 	
 }

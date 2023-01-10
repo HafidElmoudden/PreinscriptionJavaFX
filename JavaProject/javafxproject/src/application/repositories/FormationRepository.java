@@ -37,7 +37,7 @@ public class FormationRepository {
 	    return dbClient.executeCommand(true, query, params);
 	}
 	public static ResultSet getNotifs(String cne) {
-		String query= "SELECT F.formation_nom, E.ecole_nom, E.ville, F.formation_code FROM Formation_Post F, Ecole E, Affectations A WHERE F.ecole_code = E.ecole_code AND F.cp_code = A.cp_code AND A.reponse = 'En attendant' AND A.cne = ?";
+		String query= "SELECT A.date_, F.formation_nom, E.ecole_nom, E.ville, F.formation_code FROM Formation_Post F, Ecole E, Affectations A WHERE F.ecole_code = E.ecole_code AND F.cp_code = A.cp_code AND A.reponse = 'En attendant' AND A.cne = ?";
 		List<Object> params = new ArrayList<>();
 		params.add(cne);
 		return dbClient.executeCommand(true, query , params);
@@ -59,7 +59,7 @@ public class FormationRepository {
     	return dbClient.executeCommand(true, "SELECT cne FROM Candidats WHERE cp_code = ? ORDER BY candidateur_note DESC", List.of(formationPostCode));
     }
     static public void insertIntoAffectations(String cne, String formationPostCode, String status) {
-    	dbClient.executeCommand(false, "INSERT INTO Affectations (cne, cp_code, reponse) VALUES (?, ?, ?)",List.of(cne, formationPostCode, status));
+    	dbClient.executeCommand(false, "INSERT INTO Affectations (cne, cp_code, reponse, date_) VALUES (?, ?, ?, getdate())",List.of(cne, formationPostCode, status));
     }
     static public void updateFormationOccupeNumber(String formationPostCode, String nbrChaisesReserver) {
     	dbClient.executeCommand(false, "UPDATE Formation_Post SET nbr_chaises_reserver = nbr_chaises_reserver + ? WHERE formation_code = ?",List.of(nbrChaisesReserver,formationPostCode));

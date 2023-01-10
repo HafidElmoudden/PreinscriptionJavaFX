@@ -97,6 +97,7 @@ public class FormationService {
 				formation.setFormation(result.getString("formation_nom"));
 				formation.setVille(result.getString("ville"));
 				formation.setFormation_code(result.getString("formation_code"));
+				formation.setDate_(result.getString("date_"));
 				formations.add(formation);
 			}
 		} catch (SQLException e) {
