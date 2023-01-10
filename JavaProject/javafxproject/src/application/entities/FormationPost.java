@@ -71,10 +71,10 @@ public class FormationPost
         this.candida_code = candida_code;
     }
     public FormationPost() {
-    	ImageUtils.setButtonImage(getClass(),acceptNotif, "accept.png", 32, 32, false);
-    	ImageUtils.setButtonImage(getClass(),declineNotif, "decline.png", 32, 32, false);
+    	ImageUtils.setButtonImage(getClass(),acceptNotif, "accept.png", 20, 20, false);
+    	ImageUtils.setButtonImage(getClass(),declineNotif, "decline.png", 20, 20, false);
  
-    	ImageUtils.setButtonImage(getClass(),deleteApp, "Delete.png", 32, 32, false);
+    	ImageUtils.setButtonImage(getClass(),deleteApp, "Delete.png", 20, 20, false);
     	deleteApp.setOnAction(e -> {
     		Alert a = new Alert(Alert.AlertType.CONFIRMATION);
     		a.setContentText("Êtes-vous sûr de vouloir supprimer l'application dans la formation : " + formation);
@@ -86,8 +86,8 @@ public class FormationPost
     		}
     	});
     	
-    	ImageUtils.setButtonImage(getClass(),applySchool, "Postuler.png", 20, 60, false);
-    	ImageUtils.setButtonImage(getClass(),viewSchool, "Voir.png", 20, 60, false);
+    	ImageUtils.setButtonImage(getClass(),applySchool, "Postuler.png", 21, 60, false);
+    	ImageUtils.setButtonImage(getClass(),viewSchool, "Voir.png", 21, 60, false);
     	viewSchool.setOnContextMenuRequested(e->{
     		System.out.println(this.ecole_code);
     	});
