@@ -75,7 +75,6 @@ public class FormationRepository {
     }
     static public void insertIntoApplications(int cp_code, String cne, float can_note) {
     	List<Object> parameters = new ArrayList<>();
-    	System.out.println("cen from insert "+ cne);
     	parameters.add(cne);
     	int aa = 0, bb = 0;
         // Check if the student has an accepted affectation

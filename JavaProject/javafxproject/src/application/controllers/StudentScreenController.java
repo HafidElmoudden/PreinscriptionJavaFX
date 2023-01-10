@@ -201,7 +201,6 @@ public class StudentScreenController implements Initializable {
 		  }
 		  
 		  FormationPost selected = student_grid_home.getItems().get(selectedIndex);
-		  System.out.println(selected.getEcole_code());
 		  
 		  return selected.getEcole_code();
 	}
