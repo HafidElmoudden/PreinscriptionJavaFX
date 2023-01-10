@@ -38,8 +38,9 @@
 	-fx-padding: 7px 10px;
 }
 .scroll-bar {
-  	-fx-background-color: transparent;
-  	-fx-color: transparent;
+  	-fx-background-color: #fff;
+  	-fx-color: #fff;
+  	-fx-width: 5px;
   
 }
 .combo-box {

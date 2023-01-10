@@ -38,8 +38,8 @@ public class SchoolInformations {
 		this.email = email;
 		this.phone = phone;
 		this.nombreFormations = nombreFormations;
-    	ImageUtils.setButtonImage(getClass(),deleteUser, "Delete.png", 32, 32, true);
-    	ImageUtils.setButtonImage(getClass(),editUser, "edit.png", 32, 32, true);
+    	ImageUtils.setButtonImage(getClass(),deleteUser, "Delete.png", 20, 20, false);
+    	ImageUtils.setButtonImage(getClass(),editUser, "edit.png", 20, 20, false);
     	deleteUser.setOnAction(e -> {
     		ConfirmationDialog confirmationDialog = new ConfirmationDialog("Êtes-vous sûr de vouloir supprimer cet école ?");
     		Optional<Boolean> result = confirmationDialog.showAndWait();

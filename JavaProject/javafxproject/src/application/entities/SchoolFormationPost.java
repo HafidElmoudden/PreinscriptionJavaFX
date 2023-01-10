@@ -21,7 +21,7 @@ public class SchoolFormationPost{
 	
     public SchoolFormationPost(String ecole_code, String max_chaises, String nbr_chaises_reserver, String nbr_chaises_available, String formation_code, String cp_code, String formation_nom)
     {
-    	ImageUtils.setButtonImage(getClass(), selection, "select.png", 42, 100, false);
+    	ImageUtils.setButtonImage(getClass(), selection, "select.png", 20, 65, false);
     	selection.setOnAction(e -> {
     		Alert a = new Alert(Alert.AlertType.CONFIRMATION);
     		a.setContentText("êtes-vous sûr de vouloir affecter "+ nbr_chaises_available + " étudiants à cette formation");
