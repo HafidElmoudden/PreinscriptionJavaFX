@@ -37,7 +37,7 @@ public class FormationRepository {
 	    return dbClient.executeCommand(true, query, params);
 	}
 	public static ResultSet getNotifs(String cne) {
-		String query= "SELECT A.date_, F.formation_nom, E.ecole_nom, E.ville, F.formation_code FROM Formation_Post F, Ecole E, Affectations A WHERE F.ecole_code = E.ecole_code AND F.cp_code = A.cp_code AND A.reponse = 'En attendant' AND A.cne = ?";
+		String query= "SELECT A.date_, A.cp_code, F.formation_nom, E.ecole_nom, E.ville, F.formation_code FROM Formation_Post F, Ecole E, Affectations A WHERE F.ecole_code = E.ecole_code AND F.cp_code = A.cp_code AND A.reponse = 'En attendant' AND A.cne = ?";
 		List<Object> params = new ArrayList<>();
 		params.add(cne);
 		return dbClient.executeCommand(true, query , params);
@@ -138,5 +138,14 @@ public class FormationRepository {
 		alert.setAlertType(Alert.AlertType.INFORMATION);
 		alert.setContentText("Applied succesefully to Formation !");
 		alert.show();
+    }
+    
+    
+    static public  ResultSet setDecline(String cne,String cp_code) {
+    	List<Object> parameters = new ArrayList<>();
+        parameters.add(cne);
+        parameters.add(cp_code);
+        return dbClient.executeCommand(false, "UPDATE Affectations SET reponse = 'Refusé' WHERE cne= ? AND cp_code= ?;", parameters);
+    	
     }
 }

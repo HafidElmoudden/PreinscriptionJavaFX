@@ -98,6 +98,7 @@ public class FormationService {
 				formation.setVille(result.getString("ville"));
 				formation.setFormation_code(result.getString("formation_code"));
 				formation.setDate_(result.getString("date_"));
+				formation.setCandida_code(result.getString("cp_code"));
 				formations.add(formation);
 			}
 		} catch (SQLException e) {

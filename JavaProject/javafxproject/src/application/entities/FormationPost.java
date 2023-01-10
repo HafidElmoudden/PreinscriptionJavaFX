@@ -92,8 +92,6 @@ public class FormationPost
     		System.out.println(this.ecole_code);
     	});
     	applySchool.setOnAction(e -> {
-    		Navigation navigation = new Navigation();
-    		
     		
     		StudentInformations student = StudentService.getStudentInformations(Navigation.email);
     		String cp_code = this.candida_code;
@@ -114,8 +112,19 @@ public class FormationPost
             float candidateur_note = ((Float.parseFloat(cofs.cof_math) * nm) + (Float.parseFloat(cofs.cof_physic) * nph) + (Float.parseFloat(cofs.cof_svt) * ns) + (Float.parseFloat(cofs.cof_fran) * nf)) / ((Float.parseFloat(cofs.cof_fran)) + (Float.parseFloat(cofs.cof_svt)) + (Float.parseFloat(cofs.cof_physic)) + (Float.parseFloat(cofs.cof_math)));
             System.out.println(candidateur_note);
             FormationRepository.insertIntoApplications(Integer.parseInt(cp_code), student.getCne(),candidateur_note);
-
-
+    	});
+    	
+    	declineNotif.setOnAction(e->{
+    		StudentInformations student = StudentService.getStudentInformations(Navigation.email);
+    		String cp_code = this.candida_code;
+    		Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+    		a.setContentText("Êtes-vous sûr de rejeter cette admission ?" + formation);
+    		Optional<ButtonType> answer = a.showAndWait();
+    		if (answer.isPresent() && answer.get() == ButtonType.OK) {
+    			FormationRepository.setDecline((String) student.getCne(),cp_code);
+    			if(GlobalControllers.studentController != null)
+    				GlobalControllers.studentController.updateTableViews();
+    		}
     	});
     	
 	}

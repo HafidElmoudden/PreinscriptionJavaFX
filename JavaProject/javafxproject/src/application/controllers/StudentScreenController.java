@@ -145,7 +145,7 @@ public class StudentScreenController implements Initializable {
 	@FXML
 	private TableColumn<?, ?> etablissement_notifs;
 	@FXML
-	private TableColumn<?, ?> formation_notifs;
+	private TableColumn<?, ?> formation_notifs, cpcode_notifs;
 	@FXML
 	private TableColumn<?, ?> ville_notifs, date_notifs;
 	@FXML
@@ -407,7 +407,7 @@ public class StudentScreenController implements Initializable {
 		formation_notifs.setCellValueFactory(new PropertyValueFactory<>("formation"));
 		ville_notifs.setCellValueFactory(new PropertyValueFactory<>("ville"));
 		date_notifs.setCellValueFactory(new PropertyValueFactory<>("date_"));
-		
+		cpcode_notifs.setCellValueFactory(new PropertyValueFactory<>("candida_code"));
 		FormationService.fillMyNotifsGrid(notifications_grid, cne);
 	}
 

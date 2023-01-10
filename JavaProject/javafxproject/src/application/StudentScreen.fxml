@@ -415,6 +415,7 @@
                         <TableColumn fx:id="date_notifs" prefWidth="180.0" resizable="false" styleClass="gridcolumn" text="Date" />
                         <TableColumn fx:id="decline_notifs" prefWidth="78.0" resizable="false" styleClass="gridcolumn" text="Decline" />
                         <TableColumn fx:id="accept_notifs" prefWidth="77.0" resizable="false" styleClass="gridcolumn" text="Accept" />
+                        <TableColumn fx:id="cpcode_notifs" prefWidth="77.0" resizable="false" styleClass="gridcolumn" />
                      </columns>
                   </TableView>
                </children>
