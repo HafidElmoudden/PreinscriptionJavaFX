@@ -144,7 +144,23 @@ public class SchoolService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return s;
+	}
+	public static SchoolInformations getSchoolLogoByEmail(String email) {
+		SchoolInformations s = new SchoolInformations();
+		List<Object> parameters = new ArrayList<Object>();
+        parameters.add(email);
+        String query="SELECT logo_url FROM Ecole WHERE email= ?";
+        
+        ResultSet result = dbClient.executeCommand(true, query, parameters);
+		try {
+			while (result.next()) {
+				s.setLogo(result.getString("logo_url"));
+			}
 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return s;
 	}
 

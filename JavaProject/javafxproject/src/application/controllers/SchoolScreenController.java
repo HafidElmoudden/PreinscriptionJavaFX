@@ -7,6 +7,7 @@ import application.GlobalControllers;
 import application.Navigation;
 import application.entities.FormationPost;
 import application.entities.SchoolFormationPost;
+import application.entities.SchoolInformations;
 import application.entities.StudentInformations;
 import application.services.CommonService;
 import application.services.FormationService;
@@ -25,6 +26,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class SchoolScreenController implements Initializable{
 
@@ -52,7 +55,8 @@ public class SchoolScreenController implements Initializable{
     private TableView<SchoolFormationPost> shool_grid_section;
     @FXML
     private Button logoutbtn, school_candidateurbtn, school_selectionbtn, school_studentbtn;
-    
+    @FXML
+    private ImageView school_logo;
     @FXML
     private Pane school_candidateurs, school_selection, school_etudiants;
 
@@ -84,6 +88,9 @@ public class SchoolScreenController implements Initializable{
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		SchoolInformations school= SchoolService.getSchoolLogoByEmail(Navigation.email);
+		Image logo = new Image(getClass().getResource(school.getLogo()).toExternalForm());
+		school_logo.setImage(logo);
 		GlobalControllers.schoolController = this;
 		action_grid_selection.setCellValueFactory(new PropertyValueFactory<>("selection"));
 		
