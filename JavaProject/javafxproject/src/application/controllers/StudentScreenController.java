@@ -239,6 +239,8 @@ public class StudentScreenController implements Initializable {
     private TableView<FormationPost> formation_inview;
     @FXML
     private TableColumn<?, ?>  formation_inview_column;
+    @FXML
+    private TableColumn<?, ?> imagein_frofilegrid;
     
     StudentInformations student;
     @FXML
@@ -253,12 +255,13 @@ public class StudentScreenController implements Initializable {
     		fillNotifications((String) student.getCne());
     		fillFormations();
     	}
-
     }
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		GlobalControllers.studentController = this;
+		imagein_frofilegrid.setCellValueFactory(new PropertyValueFactory<>("checkImage"));
+		
 		//Notifications table
 		accept_notifs.setCellValueFactory(new PropertyValueFactory<>("acceptNotif"));
 		decline_notifs.setCellValueFactory(new PropertyValueFactory<>("declineNotif"));
