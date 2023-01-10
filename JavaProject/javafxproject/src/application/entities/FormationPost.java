@@ -1,5 +1,13 @@
 package application.entities;
 
+import java.util.Optional;
+
+import application.GlobalControllers;
+import application.Navigation;
+import application.repositories.FormationRepository;
+import application.repositories.StudentRepository;
+import application.services.FormationService;
+import application.services.StudentService;
 import application.utilities.ImageUtils;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
