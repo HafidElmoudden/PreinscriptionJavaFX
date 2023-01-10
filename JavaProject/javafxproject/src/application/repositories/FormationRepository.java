@@ -37,7 +37,7 @@ public class FormationRepository {
 	    return dbClient.executeCommand(true, query, params);
 	}
 	public static ResultSet getNotifs(String cne) {
-		String query= "SELECT A.date_, A.cp_code, F.formation_nom, E.ecole_nom, E.ville, F.formation_code FROM Formation_Post F, Ecole E, Affectations A WHERE F.ecole_code = E.ecole_code AND F.cp_code = A.cp_code AND A.reponse = 'En attendant' AND A.cne = ?";
+		String query= "SELECT A.date_, A.cp_code, F.formation_nom, F.rep_avant, E.ecole_nom, E.ville, F.formation_code FROM Formation_Post F, Ecole E, Affectations A WHERE F.ecole_code = E.ecole_code AND F.cp_code = A.cp_code AND A.reponse = 'En attendant' AND A.cne = ? AND GETDATE() < F.rep_avant";
 		List<Object> params = new ArrayList<>();
 		params.add(cne);
 		return dbClient.executeCommand(true, query , params);
@@ -67,23 +67,11 @@ public class FormationRepository {
     static public void updateChaisesAvailableNumber(String formationPostCode, String nbrChaisesAvailable) {
     	dbClient.executeCommand(false, "UPDATE Formation_Post SET nbr_chaises_available = nbr_chaises_available - ? WHERE formation_code = ?",List.of(nbrChaisesAvailable,formationPostCode));
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     static public  ResultSet getFormationCofs(String cp_code,String bac) {
     	List<Object> parameters = new ArrayList<>();
         parameters.add(cp_code);
         parameters.add(bac);
         return dbClient.executeCommand(true, "SELECT cof_math, cof_physic, cof_svt, cof_francais FROM Candidateur_Constraints WHERE cp_code= ? AND baccalaureat= ?", parameters);
-    	
     }
     static public void insertIntoApplications(int cp_code, String cne, float can_note) {
     	List<Object> parameters = new ArrayList<>();
@@ -156,4 +144,10 @@ public class FormationRepository {
         ResultSet B = dbClient.executeCommand(false, "UPDATE Affectations SET reponse = 'Refusé' WHERE cp_code != ? AND cne= ?", parameters);
     	
     }
+    static public void setDateAvantRepondre(String formationCode,String repondreAvant) {
+    	dbClient.executeCommand(false, "UPDATE Formation_Post SET rep_avant = ? WHERE cp_code= ?", List.of(repondreAvant, formationCode));
+    }
+	public static void deleteEnAttendantAndDeclinedStudents(String formationCode) {
+	    dbClient.executeCommand(false, "DELETE FROM Affectations WHERE reponse = 'Refusé' OR reponse = 'En attendant' AND cp_code = ?", List.of(formationCode));
+	}
 }

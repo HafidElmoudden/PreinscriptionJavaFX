@@ -166,7 +166,10 @@ public class StudentScreenController implements Initializable {
 	@FXML
 	private TableColumn<?,?> apply_grid_home;
 	
-
+	
+	@FXML
+	private TableColumn<?,?> repondreAvant_notifs;
+	
 	@FXML
 	void handleButtonAction(ActionEvent event) {
 
@@ -280,7 +283,9 @@ public class StudentScreenController implements Initializable {
 		email_toshow.setText(student.getEmail());
 		cne_toshow.setText(student.getCne());
 		bactype_toshow.setText(student.getBac());
-		LocalDate parseDateNai = DateParser.parseDate(student.getDateNaissance());
+		LocalDate parseDateNai = null;
+		if(student.getDateNaissance() != null)
+			parseDateNai = DateParser.parseDate(student.getDateNaissance());
 		if (parseDateNai != null) {
 			Period age = Period.between(parseDateNai, LocalDate.now());
 			age_toshow.setText(String.valueOf(age.getYears()));
@@ -409,6 +414,7 @@ public class StudentScreenController implements Initializable {
 		ville_notifs.setCellValueFactory(new PropertyValueFactory<>("ville"));
 		date_notifs.setCellValueFactory(new PropertyValueFactory<>("date_"));
 		cpcode_notifs.setCellValueFactory(new PropertyValueFactory<>("candida_code"));
+		repondreAvant_notifs.setCellValueFactory(new PropertyValueFactory<>("repondreAvant"));
 		FormationService.fillMyNotifsGrid(notifications_grid, cne);
 	}
 

@@ -152,7 +152,7 @@
                         <TableColumn fx:id="formation_notifs" minWidth="6.0" prefWidth="200.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Formation" />
                         <TableColumn fx:id="ville_notifs" prefWidth="120.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Ville" />
                         <TableColumn fx:id="date_notifs" prefWidth="155.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Date" />
-                        <TableColumn fx:id="date_notifs1" prefWidth="151.5" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="À répondre avant" />
+                        <TableColumn fx:id="repondreAvant_notifs" prefWidth="151.5" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="À répondre avant" />
                         <TableColumn fx:id="decline_notifs" prefWidth="40.0" resizable="false" styleClass="gridcolumn" />
                         <TableColumn fx:id="accept_notifs" prefWidth="40.0" resizable="false" styleClass="gridcolumn" />
                         <TableColumn fx:id="cpcode_notifs" prefWidth="77.0" resizable="false" styleClass="gridcolumn" visible="false" />

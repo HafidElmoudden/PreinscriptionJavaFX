@@ -37,6 +37,7 @@ public class FormationPost
     private Button acceptNotif = new Button();
     private Button declineNotif = new Button();
     private String date_;
+    private String repondreAvant;
     
     //My Applications table actions
     private Button deleteApp = new Button();
@@ -55,7 +56,13 @@ public class FormationPost
 		this.nbr_chaises_available = nbr_chaises_available;
 	}
 
-    public FormationPost(String formation_code, String etablissement, String formation, String ville, String residuelle)
+    public String getRepondreAvant() {
+		return repondreAvant;
+	}
+	public void setRepondreAvant(String repondreAvant) {
+		this.repondreAvant = repondreAvant;
+	}
+	public FormationPost(String formation_code, String etablissement, String formation, String ville, String residuelle)
     {
 
         this.formation_code = formation_code;
@@ -105,6 +112,8 @@ public class FormationPost
     		System.out.println(student.getCne());
             String bac = student.getBacInformations().baccalaureat;
 
+            
+            
             //Cofes Notes
             FormationService cofs = FormationService.getCofs(cp_code, bac);
             System.out.println(cofs.cof_math + cofs.cof_physic + cofs.cof_svt + cofs.cof_fran);
