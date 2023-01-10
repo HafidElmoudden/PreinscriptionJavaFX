@@ -141,11 +141,19 @@ public class FormationRepository {
     }
     
     
-    static public  ResultSet setDecline(String cne,String cp_code) {
+    static public  void setDecline(String cne,String cp_code) {
     	List<Object> parameters = new ArrayList<>();
         parameters.add(cne);
         parameters.add(cp_code);
-        return dbClient.executeCommand(false, "UPDATE Affectations SET reponse = 'Refusé' WHERE cne= ? AND cp_code= ?;", parameters);
+        ResultSet A = dbClient.executeCommand(false, "UPDATE Affectations SET reponse = 'Refusé' WHERE cne= ? AND cp_code= ?;", parameters);
+    	
+    }
+    static public  void setAccept(String cne,String cp_code) {
+    	List<Object> parameters = new ArrayList<>();
+        parameters.add(cp_code);
+        parameters.add(cne);
+        ResultSet A = dbClient.executeCommand(false, "UPDATE Affectations SET reponse = 'Accepté' WHERE  cp_code= ? AND cne= ?", parameters);
+        ResultSet B = dbClient.executeCommand(false, "UPDATE Affectations SET reponse = 'Refusé' WHERE cp_code != ? AND cne= ?", parameters);
     	
     }
 }

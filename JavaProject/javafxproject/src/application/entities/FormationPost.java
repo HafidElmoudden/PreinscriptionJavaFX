@@ -118,10 +118,24 @@ public class FormationPost
     		StudentInformations student = StudentService.getStudentInformations(Navigation.email);
     		String cp_code = this.candida_code;
     		Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-    		a.setContentText("Êtes-vous sûr de rejeter cette admission ?" + formation);
+    		a.setContentText("Êtes-vous sûr de rejeter cette admission ? " + formation);
     		Optional<ButtonType> answer = a.showAndWait();
     		if (answer.isPresent() && answer.get() == ButtonType.OK) {
     			FormationRepository.setDecline((String) student.getCne(),cp_code);
+    			if(GlobalControllers.studentController != null)
+    				GlobalControllers.studentController.updateTableViews();
+    		}
+    	});
+    	
+    	acceptNotif.setOnAction(e->{
+    		StudentInformations student = StudentService.getStudentInformations(Navigation.email);
+    		String cp_code = this.candida_code;
+    		
+    		Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+    		a.setContentText("Si vous acceptez cette admission, toutes les admissions seront annulées et vous ne pourrez pas postuler pour d'autres formation" + formation);
+    		Optional<ButtonType> answer = a.showAndWait();
+    		if (answer.isPresent() && answer.get() == ButtonType.OK) {
+    			FormationRepository.setAccept((String) student.getCne(),cp_code);
     			if(GlobalControllers.studentController != null)
     				GlobalControllers.studentController.updateTableViews();
     		}
