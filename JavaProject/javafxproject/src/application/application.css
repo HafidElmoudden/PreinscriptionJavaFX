@@ -47,6 +47,7 @@
   	-fx-border-color: #1E90FF;
   	-fx-border-radius: 5px;
 	-fx-border-width: 0.2px;
+	-fx-padding: 0 0 0 30px;
 }
 .search-field{
 	-fx-color: #1E90FF;

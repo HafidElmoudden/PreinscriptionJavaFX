@@ -1,6 +1,5 @@
 package application.controllers;
 
-import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.Period;
@@ -46,19 +45,7 @@ public class StudentScreenController implements Initializable {
 	private Label age_toshow;
 
 	@FXML
-	private Label bactype_toshow;
-
-	@FXML
-	private Label bacyear_toshow;
-
-	@FXML
-	private Label city_toshow;
-
-	@FXML
-	private Label cne_toshow;
-
-	@FXML
-	private Label email_toshow;
+	private Label bactype_toshow, bacyear_toshow, city_toshow, cne_toshow, email_toshow;
 
 	@FXML
 	private TableColumn<?, ?> etablissement_grid_home;
@@ -105,7 +92,6 @@ public class StudentScreenController implements Initializable {
 	@FXML
 	private TableColumn<?, ?> ville_grid_home;
 	
-	// Student releve de notes
 	@FXML
 	private Label anglaisNote;
 	@FXML
@@ -188,12 +174,6 @@ public class StudentScreenController implements Initializable {
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
 	public void fillSchoolViewer(String ecole_code) {
 		SchoolInformations school= SchoolService.getSchoolInformations(ecole_code);
 		school_title.setText(school.getEtablissement());
@@ -225,10 +205,6 @@ public class StudentScreenController implements Initializable {
 		  
 		  return selected.getEcole_code();
 	}
-
-
-	
-	
 	
     @FXML
     private ImageView school_logo= new ImageView(), school_bg= new ImageView();
@@ -236,7 +212,8 @@ public class StudentScreenController implements Initializable {
 	private Label school_title, school_description, school_adress, school_telephone, school_fax, school_email;
     @FXML
     private Hyperlink school_website;
-    @FXML
+    @SuppressWarnings("exports")
+	@FXML
 	public Pane view_school;
     @FXML
     private TableView<FormationPost> formation_inview;
@@ -246,11 +223,6 @@ public class StudentScreenController implements Initializable {
     private TableColumn<?, ?> imagein_frofilegrid;
     
     StudentInformations student;
-    @FXML
-    public void view_selected_school(ActionEvent event) {
-    	fillSchoolViewer(getSelectedsCode());
-    	view_school.toFront();
-    }
     
     public void updateTableViews() {
     	if(student != null) {
