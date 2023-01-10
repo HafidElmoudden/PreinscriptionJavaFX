@@ -22,9 +22,9 @@
    <left>
       <VBox prefHeight="670.0" prefWidth="150.0" style="-fx-background-color: #1E90FF;" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="611.0" prefWidth="150.0">
+            <VBox prefHeight="594.0" prefWidth="150.0">
                <children>
-                  <Button fx:id="admin_schools_listbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="150.0" style="-fx-background-color: #1E90FF;" text="Ecoles" textAlignment="RIGHT" textFill="WHITE" textOverrun="CLIP">
+                  <Button fx:id="admin_schools_listbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="150.0" styleClass="nav-btn" text="Ecoles" textAlignment="RIGHT" textFill="WHITE" textOverrun="CLIP">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -41,7 +41,7 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button fx:id="admin_students_listbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="150.0" style="-fx-background-color: #1E90FF;" text="Etudiants" textFill="WHITE">
+                  <Button fx:id="admin_students_listbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="150.0" styleClass="nav-btn" text="Etudiants" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -57,7 +57,7 @@
                      </VBox.margin></Button>
                </children>
             </VBox>
-            <Button fx:id="admin_logout" alignment="TOP_LEFT" graphicTextGap="10.0" minHeight="30.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="150.0" style="-fx-background-color: #1E90FF;" text="Se déconnecter" textFill="WHITE">
+            <Button fx:id="admin_logout" alignment="TOP_LEFT" graphicTextGap="10.0" minHeight="30.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="150.0" styleClass="nav-btn" text="Se déconnecter" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>

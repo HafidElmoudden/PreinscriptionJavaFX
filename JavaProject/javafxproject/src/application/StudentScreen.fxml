@@ -68,11 +68,11 @@
       </HBox>
    </top>
    <left>
-      <VBox prefHeight="200.0" prefWidth="150.0" spacing="470.0" style="-fx-background-color: #1E90FF;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="150.0" spacing="445.0" style="-fx-background-color: #1E90FF;" BorderPane.alignment="CENTER">
          <children>
             <VBox prefHeight="136.0" prefWidth="150.0">
                <children>
-                  <Button fx:id="student_homebtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="204.0" style="-fx-background-color: #1E90FF;" text="Accueil" textFill="WHITE">
+                  <Button fx:id="student_homebtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="150.0" styleClass="nav-btn" text="Accueil" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -84,7 +84,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="student_infosbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="204.0" style="-fx-background-color: #1E90FF;" text="Mes informations" textFill="WHITE">
+                  <Button fx:id="student_infosbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="204.0" styleClass="nav-btn" text="Mes informations" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -96,7 +96,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="student_notifsbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="204.0" style="-fx-background-color: #1E90FF;" text="Notifications" textFill="WHITE">
+                  <Button fx:id="student_notifsbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="204.0" styleClass="nav-btn" text="Notifications" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -108,7 +108,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="student_appsbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="204.0" style="-fx-background-color: #1E90FF;" text="Mes candidateurs" textFill="WHITE">
+                  <Button fx:id="student_appsbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="204.0" styleClass="nav-btn" text="Mes candidateurs" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -124,7 +124,7 @@
             </VBox>
             <VBox prefHeight="34.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="student_logout" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="204.0" style="-fx-background-color: #1E90FF;" text="Se déconnecter" textFill="WHITE">
+                  <Button fx:id="student_logout" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="204.0" styleClass="nav-btn" text="Se déconnecter" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -282,44 +282,6 @@
                   </AnchorPane>
                </children>
             </Pane>
-            <Pane fx:id="student_home" layoutX="569.0" layoutY="213.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <ChoiceBox fx:id="student_schoollist_ville_filter" focusTraversable="false" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" style="-fx-cursor: pointer; -fx-focus-color: transparent; -fx-background-color: fff;" styleClass="combo-box">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ChoiceBox>
-                  <TableView fx:id="student_grid_home" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="20.0" layoutY="66.0" prefHeight="564.0" prefWidth="1010.0" scaleShape="false" styleClass="gridview">
-                     <columns>
-                        <TableColumn fx:id="etablissement_grid_home" prefWidth="300.0" resizable="false" style="-fx-padding: 7px 10px;" text="Etablissement">
-                           <styleClass>
-                              <String fx:value="gridcolumn" />
-                              <String fx:value="not-btn" />
-                           </styleClass></TableColumn>
-                        <TableColumn fx:id="formation_grid_home" minWidth="6.0" prefWidth="250.0" resizable="false" style="-fx-padding: 7px 10px;" text="Formation">
-                           <styleClass>
-                              <String fx:value="gridcolumn" />
-                              <String fx:value="not-btn" />
-                           </styleClass></TableColumn>
-                        <TableColumn fx:id="ville_grid_home" prefWidth="160.0" resizable="false" style="-fx-padding: 7px 10px;" text="Ville">
-                           <styleClass>
-                              <String fx:value="gridcolumn" />
-                              <String fx:value="not-btn" />
-                           </styleClass></TableColumn>
-                        <TableColumn fx:id="residuelle_grid_home" prefWidth="118.0" resizable="false" style="-fx-padding: 7px 10px;" text="Résiduelle">
-                           <styleClass>
-                              <String fx:value="gridcolumn" />
-                              <String fx:value="not-btn" />
-                           </styleClass></TableColumn>
-                        <TableColumn fx:id="viewschool_grid_home" prefWidth="90.0" resizable="false" styleClass="gridcolumn" />
-                        <TableColumn fx:id="cp_code" prefWidth="180.0" resizable="false" text="cp_code" visible="false" />
-                        <TableColumn fx:id="apply_grid_home" prefWidth="88.0" resizable="false" styleClass="gridcolumn" />
-                        <TableColumn fx:id="school_code" prefWidth="88.0" resizable="false" styleClass="gridcolumn" visible="false" />
-                     </columns>
-                  </TableView>
-                  <Button layoutX="917.0" layoutY="23.0" mnemonicParsing="false" onAction="#view_selected_school" text="View selected" />
-               </children>
-            </Pane>
             <Pane fx:id="view_school" prefHeight="640.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane layoutX="20.0" layoutY="20.0" maxHeight="600.0" minHeight="600.0" prefHeight="586.0" prefWidth="1010.0" style="-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 3, 0, 0, 0); -fx-background-radius: 8; -fx-background-color: fff;">
@@ -424,10 +386,14 @@
                               <Font size="14.0" />
                            </font>
                         </Hyperlink>
-                        <TableView fx:id="formation_inview" layoutX="445.0" layoutY="377.0" prefHeight="180.0" prefWidth="500.0" styleClass="profile-grid">
+                        <TableView fx:id="formation_inview" layoutX="445.0" layoutY="368.0" prefHeight="227.0" prefWidth="500.0" styleClass="profile-grid">
                           <columns>
                             <TableColumn fx:id="imagein_frofilegrid" prefWidth="40.0" styleClass="gridcolumn" />
-                              <TableColumn fx:id="formation_inview_column" prefWidth="458.0" styleClass="gridcolumn" />
+                              <TableColumn fx:id="formation_inview_column" prefWidth="457.0" style="-fx-padding: 7px 10px;">
+                                 <styleClass>
+                                    <String fx:value="gridcolumn" />
+                                    <String fx:value="not-btn" />
+                                 </styleClass></TableColumn>
                           </columns>
                         </TableView>
                         <Label layoutX="445.0" layoutY="363.0" text="Les formations">
@@ -437,6 +403,44 @@
                         </Label>
                      </children>
                   </AnchorPane>
+               </children>
+            </Pane>
+            <Pane fx:id="student_home" layoutX="569.0" layoutY="213.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ChoiceBox fx:id="student_schoollist_ville_filter" focusTraversable="false" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" style="-fx-cursor: pointer; -fx-focus-color: transparent; -fx-background-color: fff;" styleClass="combo-box">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ChoiceBox>
+                  <TableView fx:id="student_grid_home" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="20.0" layoutY="66.0" prefHeight="564.0" prefWidth="1010.0" scaleShape="false" styleClass="gridview">
+                     <columns>
+                        <TableColumn fx:id="etablissement_grid_home" prefWidth="300.0" resizable="false" style="-fx-padding: 7px 10px;" text="Etablissement">
+                           <styleClass>
+                              <String fx:value="gridcolumn" />
+                              <String fx:value="not-btn" />
+                           </styleClass></TableColumn>
+                        <TableColumn fx:id="formation_grid_home" minWidth="6.0" prefWidth="250.0" resizable="false" style="-fx-padding: 7px 10px;" text="Formation">
+                           <styleClass>
+                              <String fx:value="gridcolumn" />
+                              <String fx:value="not-btn" />
+                           </styleClass></TableColumn>
+                        <TableColumn fx:id="ville_grid_home" prefWidth="160.0" resizable="false" style="-fx-padding: 7px 10px;" text="Ville">
+                           <styleClass>
+                              <String fx:value="gridcolumn" />
+                              <String fx:value="not-btn" />
+                           </styleClass></TableColumn>
+                        <TableColumn fx:id="residuelle_grid_home" prefWidth="118.0" resizable="false" style="-fx-padding: 7px 10px;" text="Résiduelle">
+                           <styleClass>
+                              <String fx:value="gridcolumn" />
+                              <String fx:value="not-btn" />
+                           </styleClass></TableColumn>
+                        <TableColumn fx:id="viewschool_grid_home" prefWidth="90.0" resizable="false" styleClass="gridcolumn" />
+                        <TableColumn fx:id="cp_code" prefWidth="180.0" resizable="false" text="cp_code" visible="false" />
+                        <TableColumn fx:id="apply_grid_home" prefWidth="88.0" resizable="false" styleClass="gridcolumn" />
+                        <TableColumn fx:id="school_code" prefWidth="88.0" resizable="false" styleClass="gridcolumn" visible="false" />
+                     </columns>
+                  </TableView>
+                  <Button layoutX="917.0" layoutY="23.0" mnemonicParsing="false" onAction="#view_selected_school" text="View selected" />
                </children>
             </Pane>
          </children>

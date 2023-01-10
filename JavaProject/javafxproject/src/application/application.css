@@ -40,8 +40,6 @@
 .scroll-bar {
   	-fx-background-color: #fff;
   	-fx-color: #fff;
-  	-fx-width: 5px;
-  
 }
 .combo-box {
   	-fx-color: #1E90FF;
@@ -68,6 +66,15 @@
 	-fx-border-color: #BCBCBC;
 	-fx-border-radius: 5px;
 	-fx-background-color: #fff;
+}
+.nav-btn{
+	-fx-background-color:  #1E90FF;
+	-fx-padding: 8px 10px;
+	-fx-pref-height: 40px;
+	-fx-background-radius: 0;
+}
+.nav-btn:hover{
+	-fx-background-color: #A3D1FF;
 }
 
 

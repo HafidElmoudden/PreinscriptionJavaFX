@@ -33,11 +33,11 @@
       </HBox>
    </top>
    <left>
-      <VBox prefHeight="200.0" prefWidth="150.0" spacing="506.0" style="-fx-background-color: #1E90FF;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="636.0" prefWidth="150.0" spacing="480.0" style="-fx-background-color: #1E90FF;" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="102.0" prefWidth="150.0">
+            <VBox prefHeight="108.0" prefWidth="150.0">
                <children>
-                  <Button fx:id="school_candidateurbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="213.0" style="-fx-background-color: #1E90FF;" text="Candidateurs" textFill="WHITE">
+                  <Button fx:id="school_candidateurbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="213.0" styleClass="nav-btn" text="Candidateurs" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -49,7 +49,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="school_selectionbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="213.0" style="-fx-background-color: #1E90FF;" text="Selection" textFill="WHITE">
+                  <Button fx:id="school_selectionbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="213.0" styleClass="nav-btn" text="Selection" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -61,7 +61,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="school_studentbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="213.0" style="-fx-background-color: #1E90FF;" text="Etudiants" textFill="WHITE">
+                  <Button fx:id="school_studentbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="213.0" styleClass="nav-btn" text="Etudiants" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -75,7 +75,7 @@
                   </Button>
                </children>
             </VBox>
-            <Button fx:id="logoutbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="213.0" style="-fx-background-color: #1E90FF;" text="Se déconnecter" textFill="WHITE">
+            <Button fx:id="logoutbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="62.0" prefWidth="150.0" styleClass="nav-btn" text="Se déconnecter" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
