@@ -210,18 +210,16 @@ public class StudentScreenController implements Initializable {
 	}
 	
 	public String getSelectedsCode() {
-		  // Get the selection model
 		  TableView.TableViewSelectionModel<FormationPost> selectionModel = student_grid_home.getSelectionModel();
-		  // Get the selected row
+		  
 		  int selectedIndex = selectionModel.getSelectedIndex();
 		  if (selectedIndex < 0) {
-		    // No row is selected, return null
 		    return null;
 		  }
-		  // Get the person object for the selected row
+		  
 		  FormationPost selected = student_grid_home.getItems().get(selectedIndex);
 		  System.out.println(selected.getEcole_code());
-		  // Return the email of the selected person
+		  
 		  return selected.getEcole_code();
 	}
 
@@ -236,7 +234,7 @@ public class StudentScreenController implements Initializable {
     @FXML
     private Hyperlink school_website;
     @FXML
-    private Pane view_school;
+	public Pane view_school;
     @FXML
     private TableView<FormationPost> formation_inview;
     @FXML
@@ -244,7 +242,7 @@ public class StudentScreenController implements Initializable {
     
     StudentInformations student;
     @FXML
-    void view_selected_school(ActionEvent event) {
+    public void view_selected_school(ActionEvent event) {
     	fillSchoolViewer(getSelectedsCode());
     	view_school.toFront();
     }
