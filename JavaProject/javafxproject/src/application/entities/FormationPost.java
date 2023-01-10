@@ -141,6 +141,13 @@ public class FormationPost
     		}
     	});
     	
+    	viewSchool.setOnAction(e -> {
+    		if(GlobalControllers.studentController != null) {
+    			GlobalControllers.studentController.fillSchoolViewer(ecole_code);
+    			GlobalControllers.studentController.view_school.toFront();    			
+    		}
+    	});
+    	
 	}
     
     
