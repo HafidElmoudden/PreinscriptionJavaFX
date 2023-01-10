@@ -89,14 +89,45 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" BorderPane.alignment="CENTER">
          <children>
-            <Pane fx:id="admin_students_list" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane fx:id="admin_school_list" layoutX="57.0" layoutY="78.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" styleClass="scroll-bar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ChoiceBox fx:id="admin_students_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" styleClass="combo-box">
+                  <ChoiceBox fx:id="admin_school_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="250.0" styleClass="combo-box">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ChoiceBox>
-                  <ChoiceBox fx:id="admin_type_bac_filter" layoutX="250.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" styleClass="combo-box">
+                  <TableView fx:id="schools_table_view" focusTraversable="false" layoutX="20.0" layoutY="70.0" prefHeight="560.0" prefWidth="1010.0" styleClass="gridview" stylesheets="@application.css">
+                    <columns>
+                      <TableColumn fx:id="etaCol" editable="false" prefWidth="330.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Etablissement" />
+                      <TableColumn fx:id="villeCol" minWidth="6.0" prefWidth="140.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Ville" />
+                        <TableColumn fx:id="emailCol" prefWidth="195.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Email" />
+                        <TableColumn fx:id="phoneCol" prefWidth="148.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Telephone" />
+                        <TableColumn fx:id="nbFormationsCol" prefWidth="100.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="N formations" />
+                        <TableColumn fx:id="ecoleDeleteCol" prefWidth="40.0" styleClass="gridcolumn" />
+                        <TableColumn fx:id="ecoleEditCol" prefWidth="40.0" styleClass="gridcolumn" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="ecolesSearchInput" layoutX="780.0" layoutY="20.0" prefHeight="30.0" prefWidth="250.0" promptText="Rechercher ecole (Nom ou email)" styleClass="search-field" />
+                  <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="1001.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/search.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="25.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/local_filter.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane fx:id="admin_students_list" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ChoiceBox fx:id="admin_students_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="250.0" styleClass="combo-box">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ChoiceBox>
+                  <ChoiceBox fx:id="admin_type_bac_filter" layoutX="290.0" layoutY="20.0" prefHeight="30.0" prefWidth="250.0" styleClass="combo-box">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -117,28 +148,22 @@
                         <String fx:value="scroll-bar" />
                      </styleClass>
                   </TableView>
-                  <TextField fx:id="studentsSearchInput" layoutX="830.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" promptText="Rechercher etudiant (CNE, Nom, Prenom, Email)" styleClass="search-field" />
-               </children>
-            </Pane>
-            <Pane fx:id="admin_school_list" layoutX="57.0" layoutY="78.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" styleClass="scroll-bar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <ChoiceBox fx:id="admin_school_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" styleClass="combo-box">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ChoiceBox>
-                  <TableView fx:id="schools_table_view" focusTraversable="false" layoutX="20.0" layoutY="70.0" prefHeight="560.0" prefWidth="1010.0" styleClass="gridview" stylesheets="@application.css">
-                    <columns>
-                      <TableColumn fx:id="etaCol" editable="false" prefWidth="330.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Etablissement" />
-                      <TableColumn fx:id="villeCol" minWidth="6.0" prefWidth="140.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Ville" />
-                        <TableColumn fx:id="emailCol" prefWidth="195.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Email" />
-                        <TableColumn fx:id="phoneCol" prefWidth="148.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Telephone" />
-                        <TableColumn fx:id="nbFormationsCol" prefWidth="100.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="N formations" />
-                        <TableColumn fx:id="ecoleDeleteCol" prefWidth="40.0" styleClass="gridcolumn" />
-                        <TableColumn fx:id="ecoleEditCol" prefWidth="40.0" styleClass="gridcolumn" />
-                    </columns>
-                  </TableView>
-                  <TextField fx:id="ecolesSearchInput" layoutX="250.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" promptText="Rechercher ecole (Nom ou email)" styleClass="search-field" />
+                  <TextField fx:id="studentsSearchInput" layoutX="780.0" layoutY="20.0" prefHeight="30.0" prefWidth="250.0" promptText="Rechercher etudiant (CNE, Nom, Pre..." styleClass="search-field" />
+                  <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="1001.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/search.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="25.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/local_filter.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="296.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/types.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
          </children></AnchorPane>
