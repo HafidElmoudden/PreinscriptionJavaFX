@@ -275,6 +275,13 @@ public class StudentScreenController implements Initializable {
 		// Email Change Action
 		changeEmailBtn.setOnAction(e -> {
 			Alert alert = new Alert(Alert.AlertType.NONE);
+			if(newEmailField.getText().length() == 0 || confirmEmailField.getText().length() == 0) {
+				alert.setAlertType(Alert.AlertType.ERROR);
+				alert.setContentText("Veuillez remplir les champs d'email!");
+				alert.show();
+				return;
+			}
+				
 			if (newEmailField.getText().equals(Navigation.email)) {
 				alert.setAlertType(Alert.AlertType.ERROR);
 				alert.setContentText("L'email entrée est l'e-mail actuel");
@@ -303,7 +310,10 @@ public class StudentScreenController implements Initializable {
 			Alert alert = new Alert(Alert.AlertType.NONE);
 
 			if (currPassField.getText().equals(Navigation.password)
-					&& newPassField.getText().equals(confPassField.getText())) {
+					&& newPassField.getText().equals(confPassField.getText())
+					&& currPassField.getText().length() != 0
+					&& newPassField.getText().length() != 0
+					&& confPassField.getText().length() != 0) {
 				StudentRepository.changeStudentPassword(Navigation.email, newPassField.getText());
 				Navigation.password = newPassField.getText();
 				alert.setAlertType(Alert.AlertType.CONFIRMATION);
@@ -319,8 +329,8 @@ public class StudentScreenController implements Initializable {
 		// Phone change action
 		changePhoneBtn.setOnAction(e -> {
 			Alert alert = new Alert(Alert.AlertType.NONE);
-
-			if (newPhoneField.getText().equals(confPhoneField.getText())) {
+			
+			if (newPhoneField.getText().equals(confPhoneField.getText()) && newPhoneField.getText().length() != 0 && confPhoneField.getText().length() != 0) {
 				StudentRepository.changeStudentPhone(student.getCne(), newPhoneField.getText());
 				student.setTelephone(newPhoneField.getText());
 				student_num.setText(newPhoneField.getText());
