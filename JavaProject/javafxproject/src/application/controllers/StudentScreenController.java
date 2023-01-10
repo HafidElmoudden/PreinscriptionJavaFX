@@ -161,7 +161,7 @@ public class StudentScreenController implements Initializable {
 	private TableColumn<?,?> delete_apps;
 	//Home table
 	@FXML
-	private TableColumn<?,?> viewschool_grid_home;
+	private TableColumn<?,?> viewschool_grid_home, cp_code;
 	@FXML
 	private TableColumn<?,?> apply_grid_home;
 	
@@ -379,7 +379,9 @@ public class StudentScreenController implements Initializable {
 		ville_grid_home.setCellValueFactory(new PropertyValueFactory<>("ville"));
 		residuelle_grid_home.setCellValueFactory(new PropertyValueFactory<>("nbr_chaises_available"));
 		school_code.setCellValueFactory(new PropertyValueFactory<>("ecole_code"));
-
+		cp_code.setCellValueFactory(new PropertyValueFactory<>("candida_code"));
+		
+		
 		student_schoollist_ville_filter.setOnAction(event -> {
 			String villeSelectedItem = (String) student_schoollist_ville_filter.getSelectionModel().getSelectedItem();
 			FormationService.fillFormationPosts(student_grid_home, villeSelectedItem);

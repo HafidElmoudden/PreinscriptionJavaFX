@@ -411,7 +411,7 @@
                         <TableColumn fx:id="ville_grid_home" prefWidth="160.0" resizable="false" styleClass="gridcolumn" text="Ville" />
                         <TableColumn fx:id="residuelle_grid_home" prefWidth="120.0" resizable="false" styleClass="gridcolumn" text="Résiduelle" />
                         <TableColumn fx:id="viewschool_grid_home" prefWidth="90.0" resizable="false" styleClass="gridcolumn" />
-                        <TableColumn prefWidth="180.0" resizable="false" text="cp_code" visible="false" />
+                        <TableColumn fx:id="cp_code" prefWidth="180.0" resizable="false" text="cp_code" visible="false" />
                         <TableColumn fx:id="apply_grid_home" prefWidth="88.0" resizable="false" styleClass="gridcolumn" />
                         <TableColumn fx:id="school_code" prefWidth="88.0" resizable="false" styleClass="gridcolumn" />
                      </columns>

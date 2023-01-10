@@ -15,6 +15,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
 
 public class FormationService {
+	
 
 	static public List<FormationPost> getAllFormationPostsData(String bacType, String city) {
 		List<FormationPost> formations = new ArrayList<>();
@@ -26,6 +27,7 @@ public class FormationService {
 				formation.setFormation(result.getString("formation_nom"));
 				formation.setVille(result.getString("ville"));
 				formation.setNbr_chaises_available(result.getString("nbr_chaises_available"));
+				formation.setCandida_code(result.getString("cp_code"));;
 				formation.setEcole_code(result.getString("ecole_code"));
 				formations.add(formation);
 			}
@@ -161,5 +163,34 @@ public class FormationService {
 			e.printStackTrace();
 		}
 	}
+	 public String cof_math;
+     public String cof_physic;
+     public String cof_svt;
+     public String cof_fran;
 
+     public FormationService(String cof_math, String cof_physic, String cof_svt, String cof_fran)
+     {
+         this.cof_math = cof_math;
+         this.cof_physic = cof_physic;
+         this.cof_svt = cof_svt;
+         this.cof_fran = cof_fran;
+     }
+     public FormationService()
+     {
+     }
+	static public FormationService getCofs(String cp_code, String bac)
+    {
+        FormationService formationCofs = new FormationService();
+        ResultSet result = FormationRepository.getFormationCofs(cp_code, bac);
+        try {
+			while (result.next())
+			{
+			    formationCofs = new FormationService(result.getString("cof_math"), result.getString("cof_physic"), result.getString("cof_svt"), result.getString("cof_francais"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+        
+        return formationCofs;
+    }
 }
