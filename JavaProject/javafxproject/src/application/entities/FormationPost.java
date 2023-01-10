@@ -77,6 +77,8 @@ public class FormationPost
     		Optional<ButtonType> answer = a.showAndWait();
     		if (answer.isPresent() && answer.get() == ButtonType.OK) {
     			StudentRepository.deleteMyApplication(candida_code);
+    			if(GlobalControllers.studentController != null)
+    				GlobalControllers.studentController.updateTableViews();
     		}
     	});
     	

@@ -242,10 +242,20 @@ public class StudentScreenController implements Initializable {
     @FXML
     private TableColumn<?, ?>  formation_inview_column;
     
+    StudentInformations student;
     @FXML
     void view_selected_school(ActionEvent event) {
     	fillSchoolViewer(getSelectedsCode());
     	view_school.toFront();
+    }
+    
+    public void updateTableViews() {
+    	if(student != null) {
+    		fillOrUpdateMyApps((String) student.getCne());
+    		fillNotifications((String) student.getCne());
+    		fillFormations();
+    	}
+
     }
     
 	@Override
@@ -263,7 +273,7 @@ public class StudentScreenController implements Initializable {
 		apply_grid_home.setCellValueFactory(new PropertyValueFactory<>("applySchool"));
 		
 		emailActuel.setText(Navigation.email);
-		StudentInformations student = StudentService.getStudentInformations(Navigation.email);
+		student = StudentService.getStudentInformations(Navigation.email);
 		// Header informations fill
 		fullname_toshow.setText(student.getFirstName() + " " + student.getLastName());
 		email_toshow.setText(student.getEmail());
