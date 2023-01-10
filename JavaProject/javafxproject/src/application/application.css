@@ -12,7 +12,7 @@
 }
 .gridview .gridcolumn{
 	-fx-font-weight: 300;
-	-fx-padding: 6px 10px;
+	/*-fx-padding: 6px 10px;*/
 	-fx-background-color: #fff;
 	-fx-border-color: #1E90FF;
 	-fx-border-width: 0.1px;
