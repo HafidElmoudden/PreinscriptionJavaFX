@@ -79,7 +79,7 @@ public class AdminScreenController implements Initializable {
 	private TableColumn<StudentInformations, Button> editCol;
 
 	@FXML
-	private Button admin_students_listbtn, admin_schools_listbtn, admin_logout;
+	private Button admin_students_listbtn, admin_schools_listbtn, admin_logout, clear_search, clear_search1;
 	//TableView
 	@FXML
 	private TableView<SchoolInformations> schools_table_view;
@@ -106,7 +106,21 @@ public class AdminScreenController implements Initializable {
 			navigation.backToLogin(stage);
 		}
 	}
-
+	@FXML
+    void clear_search(ActionEvent event) {
+		if (event.getSource() == clear_search) {
+			studentsSearchInput.setText("");
+			String bacSelectedItem = admin_type_bac_filter.getSelectionModel().getSelectedItem();
+			String villeSelectedItem = admin_students_ville_filter.getSelectionModel().getSelectedItem();
+			StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem, studentsSearchInput.getText());
+		} else if (event.getSource() == clear_search1) {
+			ecolesSearchInput.setText("");
+			String selectedItem = admin_school_ville_filter.getSelectionModel().getSelectedItem();
+			SchoolService.fillSchoolsList(schools_table_view, selectedItem, ecolesSearchInput.getText());
+		}
+		clear_search.setVisible(false);
+		clear_search1.setVisible(false);
+    }
 	public void updateTableViews() {
 		String selectedItem = admin_school_ville_filter.getSelectionModel().getSelectedItem();
 		SchoolService.fillSchoolsList(schools_table_view, selectedItem, ecolesSearchInput.getText());
@@ -141,14 +155,15 @@ public class AdminScreenController implements Initializable {
 		// Search
 		ecolesSearchInput.setOnAction(e -> {
 			String selectedItem = admin_school_ville_filter.getSelectionModel().getSelectedItem();
-			SchoolService.fillSchoolsList(schools_table_view, selectedItem, ecolesSearchInput.getText());			
+			SchoolService.fillSchoolsList(schools_table_view, selectedItem, ecolesSearchInput.getText());
+			clear_search1.setVisible(true);
 		});
 		studentsSearchInput.setOnAction(e -> {
 			String bacSelectedItem = admin_type_bac_filter.getSelectionModel().getSelectedItem();
 			String villeSelectedItem = admin_students_ville_filter.getSelectionModel().getSelectedItem();
 			StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem, studentsSearchInput.getText());
+			clear_search.setVisible(true);
 		});
-		
 		
 		
 		admin_school_ville_filter.setOnAction(event -> {

@@ -32,7 +32,7 @@ public class SchoolScreenController implements Initializable{
 	@FXML
 	private Label identity;
     @FXML
-    private TableColumn<SchoolFormationPost, String> action_grid_selection, disponible_grid_selection, etablissement_grid_selection, formation_grid_selection, occupee_grid_selection,residuelle_grid_selection ;
+    private TableColumn<SchoolFormationPost, String> action_grid_selection, disponible_grid_selection, etablissement_grid_selection, formation_grid_selection, occupee_grid_selection,residuelle_grid_selection ,nextselect_grid_selection;
     
     @FXML
     private TableColumn<FormationPost, String> cne_grid_etudiants, ville_grid_etudiants, email_grid_etudiants, formation_grid_etudiants, prenom_grid_etudiants, nom_grid_etudiants, statu_grid_etudiants;
@@ -120,18 +120,8 @@ public class SchoolScreenController implements Initializable{
 		fillTheCandidatsGrids("Toutes les villes", "Toutes les formations");
 		fillTheEtudiantsGrid("Toutes les réponses", "Toutes les formations");
 		fillTheSelectionGrids();
-		changeGb();
-		
-		
-		
-		
-		
-		
-		
-
 	}
     
-	
 	public void fillTheCandidatsGrids(String ville, String formation) {
 		cne_grid_candida.setCellValueFactory(new PropertyValueFactory<>("student_cne"));
 		formation_grid_candida.setCellValueFactory(new PropertyValueFactory<>("formation"));
@@ -149,7 +139,7 @@ public class SchoolScreenController implements Initializable{
 		formation_grid_selection.setCellValueFactory(new PropertyValueFactory<>("formation_nom"));
 		occupee_grid_selection.setCellValueFactory(new PropertyValueFactory<>("nbr_chaises_reserver"));
 		residuelle_grid_selection.setCellValueFactory(new PropertyValueFactory<>("max_chaises"));
-		
+		nextselect_grid_selection.setCellValueFactory(new PropertyValueFactory<>("re_avant"));
 		
 		SchoolService.fillSelectionlist(shool_grid_section, Navigation.email);
 	}
@@ -164,18 +154,5 @@ public class SchoolScreenController implements Initializable{
 		statu_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("reponse"));
 		
 		SchoolService.fillSelectedStudentslist(shool_grid_etudiants, Navigation.email,formation, reponse);
-	}
-	public void changeGb() {
-		shool_grid_etudiants.setRowFactory(tv -> {
-		    TableRow<StudentInformations> row = new TableRow<>();
-		    row.itemProperty().addListener((obs, oldValue, newValue) -> {
-		        if (newValue != null) {
-		            if (newValue.getReponse().equals("Refusé")) {
-		                row.setStyle("-fx-background-color: #F5DDE0");
-		            }
-		        }
-		    });
-		    return row;
-		});
 	}
 }

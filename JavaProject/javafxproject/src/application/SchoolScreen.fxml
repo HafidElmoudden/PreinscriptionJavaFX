@@ -172,8 +172,8 @@
                         <TableColumn prefWidth="180.0" resizable="false" text="cp_code" visible="false" />
                         <TableColumn fx:id="residuelle_grid_selection" prefWidth="100.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Résiduelle" />
                         <TableColumn fx:id="occupee_grid_selection" prefWidth="100.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Occupée" />
-                        <TableColumn fx:id="disponible_grid_selection" prefWidth="130.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Disponible" />
-                        <TableColumn fx:id="nextselect_grid_selection" prefWidth="120.0" resizable="false" styleClass="gridcolumn" />
+                        <TableColumn fx:id="disponible_grid_selection" prefWidth="100.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Disponible" />
+                        <TableColumn fx:id="nextselect_grid_selection" prefWidth="150.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" />
                         <TableColumn fx:id="action_grid_selection" prefWidth="85.0" resizable="false" styleClass="gridcolumn" />
                      </columns>
                   </TableView>

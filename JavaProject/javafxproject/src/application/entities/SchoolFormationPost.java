@@ -23,9 +23,10 @@ public class SchoolFormationPost{
 	private String formation_code;
 	private String cp_code;
 	private String formation_nom;
+	private String re_avant;
 	private Button selection = new Button();
 	
-    public SchoolFormationPost(String ecole_code, String max_chaises, String nbr_chaises_reserver, String nbr_chaises_available, String formation_code, String cp_code, String formation_nom)
+    public SchoolFormationPost(String ecole_code, String max_chaises, String nbr_chaises_reserver, String nbr_chaises_available, String formation_code, String cp_code, String formation_nom, String re_avant)
     {
     	ImageUtils.setButtonImage(getClass(), selection, "select.png", 20, 65, false);
     	selection.setOnAction(e -> {
@@ -61,6 +62,7 @@ public class SchoolFormationPost{
         this.formation_code = formation_code;
         this.cp_code = cp_code;
         this.formation_nom = formation_nom;
+        this.re_avant=re_avant;
     }
 
     
@@ -129,6 +131,16 @@ public class SchoolFormationPost{
 
 	public void setFormation_nom(String formation_nom) {
 		this.formation_nom = formation_nom;
+	}
+
+
+	public String getRe_avant() {
+		return re_avant;
+	}
+
+
+	public void setRe_avant(String re_avant) {
+		this.re_avant = re_avant;
 	}    
     
 }

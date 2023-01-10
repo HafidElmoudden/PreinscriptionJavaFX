@@ -77,7 +77,11 @@
 .nav-btn:hover{
 	-fx-background-color: #A3D1FF;
 }
-
+.cancel-btn{
+	-fx-background-color: #FFF;
+	-fx-background-radius: 20px;
+	-fx-border-color: #FFF;
+}
 
 
 
