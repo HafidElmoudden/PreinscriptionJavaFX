@@ -15,7 +15,7 @@ public class FormationRepository {
 	    String query = "SELECT F.cp_code, E.ecole_nom,E.ecole_code, F.formation_nom, E.ville, F.nbr_chaises_available FROM Ecole E,Formation_Post F WHERE F.ecole_code = E.ecole_code";
 	    List<Object> params = new ArrayList<>();
 	    if ((city == null || city.equals("Toutes les villes")) && (bacType == null || bacType.equals("All"))) {
-	        // Do nothing
+
 	    } else if (city == null || city.equals("Toutes les villes")) {
 	        query += " AND CC.baccalaureat = ?";
 	        params.add(bacType);
@@ -77,7 +77,7 @@ public class FormationRepository {
     	List<Object> parameters = new ArrayList<>();
     	parameters.add(cne);
     	int aa = 0, bb = 0;
-        // Check if the student has an accepted affectation
+
     	ResultSet reader = dbClient.executeCommand(true, "SELECT Count(*) as aa FROM Affectations WHERE cne = ? AND reponse = 'Accepté'", parameters);
     	parameters.add(cp_code);
     	ResultSet reader1= dbClient.executeCommand(true, "SELECT  Count(C.cp_code) as bb FROM Candidats C where cne = ? and cp_code = ?", parameters);
@@ -100,7 +100,7 @@ public class FormationRepository {
 			e.printStackTrace();
 		}
         if(aa!=0) {
-        	// If the student has an accepted affectation, do not insert a new record into the Candidats table
+        	
         	Alert alert = new Alert(Alert.AlertType.NONE);
 			alert.setAlertType(Alert.AlertType.ERROR);
 			alert.setContentText("Student already has an accepted affectation and cannot apply to another school.");
@@ -108,14 +108,12 @@ public class FormationRepository {
 		    return;
         }
         else if(bb!=0){
-        	// Si l'etudiant est déja applique pur cette formation
         	Alert alert = new Alert(Alert.AlertType.NONE);
 			alert.setAlertType(Alert.AlertType.ERROR);
 			alert.setContentText("Vous avez déja appliqué pour cette formation");
 			alert.show();
 		    return;
         }
-        // If the student does not have an accepted affectation, insert a new record into the Candidats table
         List<Object> parameters1 = new ArrayList<>();
         parameters1.add(cp_code);
         parameters1.add(cne);
