@@ -2,6 +2,8 @@ package application.entities;
 
 import java.util.Optional;
 
+import application.GlobalControllers;
+import application.controllers.StudentScreenController;
 import application.repositories.StudentRepository;
 import application.utilities.ConfirmationDialog;
 import application.utilities.ImageUtils;
@@ -47,6 +49,8 @@ public class StudentInformations
     		Optional<Boolean> result = confirmationDialog.showAndWait();
     		if (result.get() && result.isPresent()) {
     			StudentRepository.deleteEtudiant(cne, email);
+    			if(GlobalControllers.adminController != null)
+    				GlobalControllers.adminController.updateTableViews();
     		}
     	});
     	editUser.setOnAction(e -> {
@@ -56,6 +60,8 @@ public class StudentInformations
     		if (result.isPresent()) {
     		    StudentEditData editData = result.get();
     		    StudentRepository.updateStudent(cne,email, editData.getNom(), editData.getPrenom(), editData.getEmail(), editData.getVille());
+    			if(GlobalControllers.adminController != null)
+    				GlobalControllers.adminController.updateTableViews();
     		}
     	});
     }

@@ -3,6 +3,7 @@ package application.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.GlobalControllers;
 import application.Navigation;
 import application.entities.FormationPost;
 import application.entities.SchoolFormationPost;
@@ -75,9 +76,15 @@ public class SchoolScreenController implements Initializable{
     	}
     }
 
+    public void updateTableViews() {
+    	fillTheSelectionGrids();
+		fillTheEtudiantsGrid(school_etu_statu_filter.getValue(), school_etu_formation_filter.getValue());
+		fillTheCandidatsGrids(school_candi_ville_filter.getValue(),school_formaion_filter.getValue());
+    }
+    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+		GlobalControllers.schoolController = this;
 		action_grid_selection.setCellValueFactory(new PropertyValueFactory<>("selection"));
 		
 		identity.setText(Navigation.email);

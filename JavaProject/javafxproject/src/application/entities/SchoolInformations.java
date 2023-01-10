@@ -2,6 +2,7 @@ package application.entities;
 
 import java.util.Optional;
 
+import application.GlobalControllers;
 import application.repositories.SchoolRepository;
 import application.services.SchoolService;
 import application.utilities.ConfirmationDialog;
@@ -45,6 +46,8 @@ public class SchoolInformations {
     		if (result.get() && result.isPresent()) {
     			String ecole_code = SchoolService.getEcoleCodeByEmail(email);
     			SchoolRepository.deleteSchool(ecole_code, email);
+    			if(GlobalControllers.adminController != null)
+    				GlobalControllers.adminController.updateTableViews();
     		}
     	});
     	editUser.setOnAction(e -> {
@@ -54,6 +57,8 @@ public class SchoolInformations {
     			String ecole_code = SchoolService.getEcoleCodeByEmail(email);
     		    SchoolEditData editData = result.get();
     		    SchoolRepository.updateSchool(ecole_code, email, editData.getEtablissement(), editData.getVille(), editData.getEmail(),editData.getTelephone());
+    			if(GlobalControllers.adminController != null)
+    				GlobalControllers.adminController.updateTableViews();
     		}
     	});
 	}

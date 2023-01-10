@@ -1,11 +1,9 @@
 package application.entities;
 
-import application.Navigation;
-import application.repositories.FormationRepository;
-import application.services.FormationService;
-import application.services.StudentService;
 import application.utilities.ImageUtils;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 
 public class FormationPost
 {
@@ -64,11 +62,20 @@ public class FormationPost
         this.candida_code = candida_code;
     }
     public FormationPost() {
-		// TODO Auto-generated constructor stub
     	ImageUtils.setButtonImage(getClass(),acceptNotif, "accept.png", 32, 32, false);
     	ImageUtils.setButtonImage(getClass(),declineNotif, "decline.png", 32, 32, false);
  
-    	ImageUtils.setButtonImage(getClass(),deleteApp, "decline.png", 32, 32, false);
+    	ImageUtils.setButtonImage(getClass(),deleteApp, "Delete.png", 32, 32, false);
+    	deleteApp.setOnAction(e -> {
+    		Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+    		a.setContentText("Êtes-vous sûr de vouloir supprimer l'application dans la formation : " + formation);
+    		Optional<ButtonType> answer = a.showAndWait();
+    		if (answer.isPresent() && answer.get() == ButtonType.OK) {
+    			StudentRepository.deleteMyApplication(candida_code);
+    			if(GlobalControllers.studentController != null)
+    				GlobalControllers.studentController.updateTableViews();
+    		}
+    	});
     	
     	ImageUtils.setButtonImage(getClass(),applySchool, "Postuler.png", 30, 60, false);
     	ImageUtils.setButtonImage(getClass(),viewSchool, "Voir.png", 30, 60, false);

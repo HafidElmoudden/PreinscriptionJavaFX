@@ -11,6 +11,7 @@ import application.entities.FormationPost;
 import application.entities.SchoolFormationPost;
 import application.repositories.FormationRepository;
 import application.repositories.SchoolRepository;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
 
@@ -145,20 +146,40 @@ public class FormationService {
 			}
 			result.close();
 
+			int maxChaises = 0;
+			result = FormationRepository.getMaxChaisesFormationPost(formationPostCode);
+			if (result.next()) {
+				maxChaises = result.getInt(1);
+			}
+			result.close();
+			
+			int numberOccupied = 0;
+			result = FormationRepository.getNumberOccupeFormationPost(formationPostCode);
+			if (result.next()) {
+				numberOccupied = result.getInt(1);
+			}
+			result.close();
+			
+			
 			List<String> candidates = new ArrayList<>();
 			result = FormationRepository.getEligibleCandidats(formationPostCode);
 			while (result.next()) {
-
 				candidates.add(result.getString(1));
-
 			}
-			result.close();
+
+			if(numberOccupied >= maxChaises) {
+				Alert a = new Alert(Alert.AlertType.ERROR);
+				a.setContentText("Vous avez atteint le nombre maximum de candidats à votre poste de formation");
+				a.showAndWait();
+				return;
+			}
 			int i;
 			for (i = 0; i < chaisesAvailable && i < candidates.size(); i++) {
 				FormationRepository.insertIntoAffectations(candidates.get(i), formationPostCode, "En attendant");
 			}
 			
 			FormationRepository.updateFormationOccupeNumber(formationPostCode, String.valueOf(i));
+			FormationRepository.updateChaisesAvailableNumber(formationPostCode, String.valueOf(i));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

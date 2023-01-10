@@ -3,6 +3,7 @@ package application.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.GlobalControllers;
 import application.Navigation;
 import application.entities.SchoolInformations;
 import application.entities.StudentInformations;
@@ -101,8 +102,17 @@ public class AdminScreenController implements Initializable {
 		}
 	}
 
+	public void updateTableViews() {
+		String selectedItem = admin_school_ville_filter.getSelectionModel().getSelectedItem();
+		SchoolService.fillSchoolsList(schools_table_view, selectedItem, ecolesSearchInput.getText());
+		
+		String bacSelectedItem = admin_type_bac_filter.getSelectionModel().getSelectedItem();
+		String villeSelectedItem = admin_students_ville_filter.getSelectionModel().getSelectedItem();
+		StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem, studentsSearchInput.getText());
+	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		GlobalControllers.adminController = this;
 		//School list
 		etaCol.setCellValueFactory(new PropertyValueFactory<>("etablissement"));
 		villeCol.setCellValueFactory(new PropertyValueFactory<>("ville"));
