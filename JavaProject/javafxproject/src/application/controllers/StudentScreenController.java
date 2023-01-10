@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ResourceBundle;
 
+import application.GlobalControllers;
 import application.Navigation;
 import application.entities.FormationPost;
 import application.entities.SchoolInformations;
@@ -249,6 +250,7 @@ public class StudentScreenController implements Initializable {
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		GlobalControllers.studentController = this;
 		//Notifications table
 		accept_notifs.setCellValueFactory(new PropertyValueFactory<>("acceptNotif"));
 		decline_notifs.setCellValueFactory(new PropertyValueFactory<>("declineNotif"));
@@ -361,7 +363,7 @@ public class StudentScreenController implements Initializable {
 		fillNotifications((String) student.getCne());
 
 	}
-
+	
 	public void fillOrUpdateMyApps(String cne) {
 		etablissement_apps.setCellValueFactory(new PropertyValueFactory<>("etablissement"));
 		fromation_apps.setCellValueFactory(new PropertyValueFactory<>("formation"));

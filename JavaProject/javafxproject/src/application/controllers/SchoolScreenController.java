@@ -3,6 +3,7 @@ package application.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.GlobalControllers;
 import application.Navigation;
 import application.entities.FormationPost;
 import application.entities.SchoolFormationPost;
@@ -77,7 +78,7 @@ public class SchoolScreenController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+		GlobalControllers.schoolController = this;
 		action_grid_selection.setCellValueFactory(new PropertyValueFactory<>("selection"));
 		
 		identity.setText(Navigation.email);
