@@ -179,9 +179,6 @@ public class FormationService {
 			for (i = 0; i < chaisesAvailable && i < candidates.size(); i++) {
 				FormationRepository.insertIntoAffectations(candidates.get(i), formationPostCode, "En attendant");
 			}
-			
-			FormationRepository.updateFormationOccupeNumber(formationPostCode, String.valueOf(i));
-			FormationRepository.updateChaisesAvailableNumber(formationPostCode, String.valueOf(i));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

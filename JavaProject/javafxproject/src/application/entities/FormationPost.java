@@ -99,7 +99,7 @@ public class FormationPost
     		System.out.println(student.getCne());
             String bac = student.getBacInformations().baccalaureat;
 
-          //Cofes Notes
+            //Cofes Notes
             FormationService cofs = FormationService.getCofs(cp_code, bac);
             System.out.println(cofs.cof_math + cofs.cof_physic + cofs.cof_svt + cofs.cof_fran);
             //Studet Notes
@@ -112,6 +112,8 @@ public class FormationPost
             float candidateur_note = ((Float.parseFloat(cofs.cof_math) * nm) + (Float.parseFloat(cofs.cof_physic) * nph) + (Float.parseFloat(cofs.cof_svt) * ns) + (Float.parseFloat(cofs.cof_fran) * nf)) / ((Float.parseFloat(cofs.cof_fran)) + (Float.parseFloat(cofs.cof_svt)) + (Float.parseFloat(cofs.cof_physic)) + (Float.parseFloat(cofs.cof_math)));
             System.out.println(candidateur_note);
             FormationRepository.insertIntoApplications(Integer.parseInt(cp_code), student.getCne(),candidateur_note);
+			if(GlobalControllers.studentController != null)
+				GlobalControllers.studentController.updateTableViews();
     	});
     	
     	declineNotif.setOnAction(e->{
@@ -136,6 +138,8 @@ public class FormationPost
     		Optional<ButtonType> answer = a.showAndWait();
     		if (answer.isPresent() && answer.get() == ButtonType.OK) {
     			FormationRepository.setAccept((String) student.getCne(),cp_code);
+    			FormationRepository.updateFormationOccupeNumber(cp_code, String.valueOf(1));
+    			FormationRepository.updateChaisesAvailableNumber(cp_code, String.valueOf(1));
     			if(GlobalControllers.studentController != null)
     				GlobalControllers.studentController.updateTableViews();
     		}
