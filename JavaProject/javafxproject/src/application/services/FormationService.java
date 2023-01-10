@@ -162,15 +162,12 @@ public class FormationService {
 			List<String> candidates = new ArrayList<>();
 			result = FormationRepository.getEligibleCandidats(formationPostCode);
 			while (result.next()) {
-
 				candidates.add(result.getString(1));
-
 			}
 
-			System.out.println("number = " + numberOccupied);
 			if(numberOccupied >= maxChaises) {
 				Alert a = new Alert(Alert.AlertType.ERROR);
-				a.setContentText("vous avez atteint le nombre maximum de candidats à votre poste de formation");
+				a.setContentText("Vous avez atteint le nombre maximum de candidats à votre poste de formation");
 				a.showAndWait();
 				return;
 			}

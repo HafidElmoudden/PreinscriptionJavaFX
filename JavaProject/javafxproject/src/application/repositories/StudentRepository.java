@@ -131,4 +131,7 @@ public class StudentRepository {
 		dbClient.executeCommand(false, updateCommand, updateParameters);
 	}
 
+	public static void deleteMyApplication(String candidaCode) {
+		dbClient.executeCommand(false, "DELETE FROM Candidats WHERE candidateur_code = ?", List.of(candidaCode));
+	}
 }
