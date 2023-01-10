@@ -101,8 +101,6 @@ public class FormationPost
     	
     	ImageUtils.setButtonImage(getClass(),applySchool, "Postuler.png", 21, 60, false);
     	ImageUtils.setButtonImage(getClass(),viewSchool, "Voir.png", 21, 60, false);
-    	viewSchool.setOnContextMenuRequested(e->{
-    	});
     	applySchool.setOnAction(e -> {
     		
     		StudentInformations student = StudentService.getStudentInformations(Navigation.email);
