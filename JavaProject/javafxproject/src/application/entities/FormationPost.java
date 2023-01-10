@@ -45,6 +45,9 @@ public class FormationPost
     private Button viewSchool = new Button();
     private Button applySchool = new Button();
     
+    //School Profile Formation List Check Image
+    private Button checkImage = new Button();
+    
     public String getNbr_chaises_available() {
 		return nbr_chaises_available;
 	}
@@ -73,8 +76,11 @@ public class FormationPost
     public FormationPost() {
     	ImageUtils.setButtonImage(getClass(),acceptNotif, "accept.png", 20, 20, false);
     	ImageUtils.setButtonImage(getClass(),declineNotif, "decline.png", 20, 20, false);
- 
+    	
+    	ImageUtils.setButtonImage(getClass(),checkImage, "check_small.png", 20, 20, false);
+
     	ImageUtils.setButtonImage(getClass(),deleteApp, "Delete.png", 20, 20, false);
+    	
     	deleteApp.setOnAction(e -> {
     		Alert a = new Alert(Alert.AlertType.CONFIRMATION);
     		a.setContentText("Êtes-vous sûr de vouloir supprimer l'application dans la formation : " + formation);
@@ -134,7 +140,7 @@ public class FormationPost
     		String cp_code = this.candida_code;
     		
     		Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-    		a.setContentText("Si vous acceptez cette admission, toutes les admissions seront annulées et vous ne pourrez pas postuler pour d'autres formation" + formation);
+    		a.setContentText("Si vous acceptez cette admission, toutes les admissions seront annulées et vous ne pourrez pas postuler pour d'autres formation : " + formation);
     		Optional<ButtonType> answer = a.showAndWait();
     		if (answer.isPresent() && answer.get() == ButtonType.OK) {
     			FormationRepository.setAccept((String) student.getCne(),cp_code);
@@ -155,6 +161,13 @@ public class FormationPost
 	}
     
     
+    
+	public Button getCheckImage() {
+		return checkImage;
+	}
+	public void setCheckImage(Button checkImage) {
+		this.checkImage = checkImage;
+	}
 	public Button getAcceptNotif() {
 		return acceptNotif;
 	}
