@@ -38,12 +38,14 @@ public class StudentInformations
     private String bacCity;
     private Button deleteUser = new Button();
     private Button editUser = new Button();
+    private Button statuicon = new Button();
     
     private BacInformations bacInformations = new BacInformations();
     
     public StudentInformations() {
     	ImageUtils.setButtonImage(getClass(),deleteUser, "Delete.png", 20, 20, false);
     	ImageUtils.setButtonImage(getClass(),editUser, "edit.png", 20, 20, false);
+    	
     	deleteUser.setOnAction(e -> {
     		ConfirmationDialog confirmationDialog = new ConfirmationDialog("Êtes-vous sûr de vouloir supprimer cet etudiant ?");
     		Optional<Boolean> result = confirmationDialog.showAndWait();
@@ -64,6 +66,7 @@ public class StudentInformations
     				GlobalControllers.adminController.updateTableViews();
     		}
     	});
+    	
     }
     
 
@@ -84,6 +87,17 @@ public class StudentInformations
 	}
 	public void setReponse(String reponse) {
 		this.reponse = reponse;
+    	if(this.reponse!=null) {	
+    		if(this.reponse.equals("En attendant")) {
+        		ImageUtils.setButtonImage(getClass(),statuicon, "enattent.png", 20, 20, false);
+        	}
+    		else if(this.reponse.equals("Refusé")) {
+        		ImageUtils.setButtonImage(getClass(),statuicon, "refuse.png", 20, 20, false);
+        	}
+    		else if(this.reponse.equals("Accepté")) {
+        		ImageUtils.setButtonImage(getClass(),statuicon, "accepte.png", 20, 20, false);
+        	}
+    	}
 	}
 	public String getFormationNom() {
 		return formationNom;
@@ -174,6 +188,16 @@ public class StudentInformations
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+
+	public Button getStatuicon() {
+		return statuicon;
+	}
+
+
+	public void setStatuicon(Button statuicon) {
+		this.statuicon = statuicon;
 	}
 
 }

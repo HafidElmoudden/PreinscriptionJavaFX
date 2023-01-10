@@ -151,7 +151,8 @@ public class SchoolScreenController implements Initializable{
 		formation_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("formationNom"));
 		prenom_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("firstName"));
 		nom_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-		statu_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("reponse"));
+		statu_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("statuicon"));
+		//statu_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("reponse"));
 		
 		SchoolService.fillSelectedStudentslist(shool_grid_etudiants, Navigation.email,formation, reponse);
 	}
