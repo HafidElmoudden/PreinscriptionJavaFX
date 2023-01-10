@@ -76,6 +76,12 @@ public class SchoolScreenController implements Initializable{
     	}
     }
 
+    public void updateTableViews() {
+    	fillTheSelectionGrids();
+		fillTheEtudiantsGrid(school_etu_statu_filter.getValue(), school_etu_formation_filter.getValue());
+		fillTheCandidatsGrids(school_candi_ville_filter.getValue(),school_formaion_filter.getValue());
+    }
+    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		GlobalControllers.schoolController = this;

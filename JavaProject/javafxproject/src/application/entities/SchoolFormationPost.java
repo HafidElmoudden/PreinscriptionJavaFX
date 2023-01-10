@@ -2,6 +2,7 @@ package application.entities;
 
 import java.util.Optional;
 
+import application.GlobalControllers;
 import application.services.FormationService;
 import application.utilities.ImageUtils;
 import javafx.scene.control.Alert;
@@ -27,6 +28,8 @@ public class SchoolFormationPost{
     		Optional<ButtonType> answer = a.showAndWait();
     		if (answer.isPresent() && answer.get() == ButtonType.OK) {
     			FormationService.addCandidatesToAffectation(formation_code);
+    			if(GlobalControllers.schoolController != null)
+    				GlobalControllers.schoolController.updateTableViews();
     		}
     	});
         this.max_chaises = max_chaises;
