@@ -103,7 +103,7 @@ public class FormationRepository {
         	
         	Alert alert = new Alert(Alert.AlertType.NONE);
 			alert.setAlertType(Alert.AlertType.ERROR);
-			alert.setContentText("Student already has an accepted affectation and cannot apply to another school.");
+			alert.setContentText("L'élève a déjà une affectation acceptée et ne peut postuler dans une autre école.");
 			alert.show();
 		    return;
         }
@@ -121,7 +121,7 @@ public class FormationRepository {
         dbClient.executeCommand(false, "INSERT INTO Candidats Values (?,?,?)", parameters1);
         Alert alert = new Alert(Alert.AlertType.NONE);
 		alert.setAlertType(Alert.AlertType.INFORMATION);
-		alert.setContentText("Applied succesefully to Formation !");
+		alert.setContentText("Appliqué avec succès à la Formation !");
 		alert.show();
     }
     
