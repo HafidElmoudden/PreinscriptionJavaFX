@@ -86,8 +86,8 @@ public class FormationPost
     		}
     	});
     	
-    	ImageUtils.setButtonImage(getClass(),applySchool, "Postuler.png", 30, 60, false);
-    	ImageUtils.setButtonImage(getClass(),viewSchool, "Voir.png", 30, 60, false);
+    	ImageUtils.setButtonImage(getClass(),applySchool, "Postuler.png", 20, 60, false);
+    	ImageUtils.setButtonImage(getClass(),viewSchool, "Voir.png", 20, 60, false);
     	viewSchool.setOnContextMenuRequested(e->{
     		System.out.println(this.ecole_code);
     	});

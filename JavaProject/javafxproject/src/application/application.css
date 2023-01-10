@@ -5,7 +5,9 @@
 	-fx-border-color: #1E90FF;
 	-fx-border-radius: 5px;
 	-fx-border-width: 0.1px;
-	
+	-fx-font-size: 13;
+	-fx-valignment: center;
+
 
 }
 .gridview .gridcolumn{
@@ -15,6 +17,7 @@
 	-fx-border-color: #1E90FF;
 	-fx-border-width: 0.1px;
 	-fx-text-fill: #3e3e3e;
+	-fx-valignment: center;
 }
 .scroll-bar {
   	-fx-background-color: transparent;

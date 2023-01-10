@@ -383,28 +383,6 @@
                   </AnchorPane>
                </children>
             </Pane>
-            <Pane fx:id="student_home" layoutX="569.0" layoutY="213.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <ChoiceBox fx:id="student_schoollist_ville_filter" focusTraversable="false" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" style="-fx-cursor: pointer; -fx-focus-color: transparent; -fx-background-color: fff;" styleClass="combo-box">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ChoiceBox>
-                  <TableView fx:id="student_grid_home" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="20.0" layoutY="66.0" prefHeight="564.0" prefWidth="1010.0" scaleShape="false" styleClass="gridview">
-                     <columns>
-                        <TableColumn fx:id="etablissement_grid_home" prefWidth="300.0" resizable="false" styleClass="gridcolumn" text="Etablissement" />
-                        <TableColumn fx:id="formation_grid_home" minWidth="6.0" prefWidth="250.0" resizable="false" styleClass="gridcolumn" text="Formation" />
-                        <TableColumn fx:id="ville_grid_home" prefWidth="160.0" resizable="false" styleClass="gridcolumn" text="Ville" />
-                        <TableColumn fx:id="residuelle_grid_home" prefWidth="120.0" resizable="false" styleClass="gridcolumn" text="Résiduelle" />
-                        <TableColumn fx:id="viewschool_grid_home" prefWidth="90.0" resizable="false" styleClass="gridcolumn" />
-                        <TableColumn fx:id="cp_code" prefWidth="180.0" resizable="false" text="cp_code" visible="false" />
-                        <TableColumn fx:id="apply_grid_home" prefWidth="88.0" resizable="false" styleClass="gridcolumn" />
-                        <TableColumn fx:id="school_code" prefWidth="88.0" resizable="false" styleClass="gridcolumn" />
-                     </columns>
-                  </TableView>
-                  <Button layoutX="917.0" layoutY="23.0" mnemonicParsing="false" onAction="#view_selected_school" text="View selected" />
-               </children>
-            </Pane>
             <Pane fx:id="student_notifications" layoutX="579.0" layoutY="223.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <TableView fx:id="notifications_grid" focusTraversable="false" layoutX="20.0" layoutY="20.0" prefHeight="354.0" prefWidth="1010.0" styleClass="gridview">
@@ -418,6 +396,28 @@
                         <TableColumn fx:id="cpcode_notifs" prefWidth="77.0" resizable="false" styleClass="gridcolumn" />
                      </columns>
                   </TableView>
+               </children>
+            </Pane>
+            <Pane fx:id="student_home" layoutX="569.0" layoutY="213.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ChoiceBox fx:id="student_schoollist_ville_filter" focusTraversable="false" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" style="-fx-cursor: pointer; -fx-focus-color: transparent; -fx-background-color: fff;" styleClass="combo-box">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ChoiceBox>
+                  <TableView fx:id="student_grid_home" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="20.0" layoutY="66.0" prefHeight="564.0" prefWidth="1010.0" scaleShape="false" styleClass="gridview">
+                     <columns>
+                        <TableColumn fx:id="etablissement_grid_home" prefWidth="300.0" resizable="false" styleClass="gridcolumn" text="Etablissement" />
+                        <TableColumn fx:id="formation_grid_home" minWidth="6.0" prefWidth="250.0" resizable="false" styleClass="gridcolumn" text="Formation" />
+                        <TableColumn fx:id="ville_grid_home" prefWidth="160.0" resizable="false" styleClass="gridcolumn" text="Ville" />
+                        <TableColumn fx:id="residuelle_grid_home" prefWidth="118.0" resizable="false" styleClass="gridcolumn" text="Résiduelle" />
+                        <TableColumn fx:id="viewschool_grid_home" prefWidth="90.0" resizable="false" styleClass="gridcolumn" />
+                        <TableColumn fx:id="cp_code" prefWidth="180.0" resizable="false" text="cp_code" visible="false" />
+                        <TableColumn fx:id="apply_grid_home" prefWidth="88.0" resizable="false" styleClass="gridcolumn" />
+                        <TableColumn fx:id="school_code" prefWidth="88.0" resizable="false" styleClass="gridcolumn" visible="false" />
+                     </columns>
+                  </TableView>
+                  <Button layoutX="917.0" layoutY="23.0" mnemonicParsing="false" onAction="#view_selected_school" text="View selected" />
                </children>
             </Pane>
          </children>

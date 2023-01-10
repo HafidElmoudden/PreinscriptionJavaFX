@@ -56,6 +56,38 @@ public class AuthentificationController implements Initializable{
     
     
     
+
+    @FXML
+    private Button filladmin;
+
+    @FXML
+    private Button fillschool;
+
+    @FXML
+    private Button fillstudent;
+    
+    
+    @FXML
+    void developmentMode(ActionEvent event) {
+    	if (event.getSource() == filladmin) {
+			
+    		email_login.setText("admin");
+    		password_login.setText("admin");
+    		handleLogin();
+		} else if (event.getSource() == fillschool) {
+			
+			email_login.setText("esta@ac.uiz.ma");
+    		password_login.setText("esta12agadir");
+			handleLogin();
+		} else if (event.getSource() == fillstudent) {
+			
+			email_login.setText("mohamedjada@gmail.com");
+    		password_login.setText("a");
+			handleLogin();
+		}
+    }
+    
+    
     
     
     @FXML
