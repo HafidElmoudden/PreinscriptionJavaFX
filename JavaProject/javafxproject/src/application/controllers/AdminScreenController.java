@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -89,6 +90,10 @@ public class AdminScreenController implements Initializable {
 	private TextField ecolesSearchInput;
 	@FXML
 	private TextField studentsSearchInput;
+	
+	@FXML
+	private Label adminSessionEmail;
+	
 	@FXML
 	void handleButtonAction(ActionEvent event) {
 
@@ -113,6 +118,7 @@ public class AdminScreenController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		GlobalControllers.adminController = this;
+		adminSessionEmail.setText(Navigation.email);
 		//School list
 		etaCol.setCellValueFactory(new PropertyValueFactory<>("etablissement"));
 		villeCol.setCellValueFactory(new PropertyValueFactory<>("ville"));

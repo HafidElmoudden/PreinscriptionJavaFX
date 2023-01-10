@@ -81,7 +81,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="150.0" layoutY="42.0" style="-fx-background-color: fff;" text="MEO DE MEOW" textFill="#2197ff" />
+                  <Label fx:id="adminSessionEmail" layoutX="150.0" layoutY="42.0" style="-fx-background-color: fff;" text="MEO DE MEOW" textFill="#2197ff" />
                </children>
             </AnchorPane>
          </children></HBox>

@@ -37,6 +37,7 @@ public class FormationPost
     private Button acceptNotif = new Button();
     private Button declineNotif = new Button();
     private String date_;
+    private String repondreAvant;
     
     //My Applications table actions
     private Button deleteApp = new Button();
@@ -55,7 +56,13 @@ public class FormationPost
 		this.nbr_chaises_available = nbr_chaises_available;
 	}
 
-    public FormationPost(String formation_code, String etablissement, String formation, String ville, String residuelle)
+    public String getRepondreAvant() {
+		return repondreAvant;
+	}
+	public void setRepondreAvant(String repondreAvant) {
+		this.repondreAvant = repondreAvant;
+	}
+	public FormationPost(String formation_code, String etablissement, String formation, String ville, String residuelle)
     {
 
         this.formation_code = formation_code;
@@ -94,29 +101,23 @@ public class FormationPost
     	
     	ImageUtils.setButtonImage(getClass(),applySchool, "Postuler.png", 21, 60, false);
     	ImageUtils.setButtonImage(getClass(),viewSchool, "Voir.png", 21, 60, false);
-    	viewSchool.setOnContextMenuRequested(e->{
-    		System.out.println(this.ecole_code);
-    	});
     	applySchool.setOnAction(e -> {
     		
     		StudentInformations student = StudentService.getStudentInformations(Navigation.email);
     		String cp_code = this.candida_code;
-    		System.out.println("cp_cpde"+cp_code);
-    		System.out.println(student.getCne());
             String bac = student.getBacInformations().baccalaureat;
 
+            
+            
             //Cofes Notes
             FormationService cofs = FormationService.getCofs(cp_code, bac);
-            System.out.println(cofs.cof_math + cofs.cof_physic + cofs.cof_svt + cofs.cof_fran);
             //Studet Notes
             float nm= Float.parseFloat(student.getBacInformations().note_math),
             nph= Float.parseFloat(student.getBacInformations().note_physic),
             ns= Float.parseFloat(student.getBacInformations().note_svt),
             nf= Float.parseFloat(student.getBacInformations().note_francais);
-            System.out.println(nph+" "+ns+" "+nm+" "+nf);
             //Calculate Note
             float candidateur_note = ((Float.parseFloat(cofs.cof_math) * nm) + (Float.parseFloat(cofs.cof_physic) * nph) + (Float.parseFloat(cofs.cof_svt) * ns) + (Float.parseFloat(cofs.cof_fran) * nf)) / ((Float.parseFloat(cofs.cof_fran)) + (Float.parseFloat(cofs.cof_svt)) + (Float.parseFloat(cofs.cof_physic)) + (Float.parseFloat(cofs.cof_math)));
-            System.out.println(candidateur_note);
             FormationRepository.insertIntoApplications(Integer.parseInt(cp_code), student.getCne(),candidateur_note);
 			if(GlobalControllers.studentController != null)
 				GlobalControllers.studentController.updateTableViews();

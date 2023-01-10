@@ -106,15 +106,9 @@ public class AuthentificationController implements Initializable{
         String password = password_login.getText();
         AccountType userType = AuthentificationService.isLoginValid(email, password);
         if (userType != AccountType.NotFound) {
-        	Navigation navigation = new Navigation();
+        	// Login succeded
+			Navigation navigation = new Navigation();
         	navigation.toAfterLogin(stage,userType);
-        	
-            // Login successful
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Login Successful : " + userType);
-            alert.setHeaderText("Welcome to the app!");
-            alert.showAndWait();
-            // Redirect the user to another page, or perform some other action
         } else {
             // Login failed
             Alert alert = new Alert(AlertType.ERROR);

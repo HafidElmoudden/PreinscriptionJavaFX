@@ -3,11 +3,17 @@ package application.entities;
 import java.util.Optional;
 
 import application.GlobalControllers;
+import application.repositories.FormationRepository;
+import application.repositories.SchoolRepository;
 import application.services.FormationService;
 import application.utilities.ImageUtils;
+import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
 public class SchoolFormationPost{
 	private String ecole_nom;
@@ -23,13 +29,30 @@ public class SchoolFormationPost{
     {
     	ImageUtils.setButtonImage(getClass(), selection, "select.png", 20, 65, false);
     	selection.setOnAction(e -> {
+    		String repondreAvant = "";
     		Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-    		a.setContentText("êtes-vous sûr de vouloir affecter "+ nbr_chaises_available + " étudiants à cette formation");
+    		Label label = new Label("Choisir le dernière délai pour répondre :");
+    		VBox vBox = new VBox();
+    		DatePicker datePicker = new DatePicker();
+    		Label label2 = new Label("Êtes-vous sûr de vouloir affecter " + nbr_chaises_available + " étudiants à cette formation");
+    		label2.setPadding(new Insets(10, 0, 0, 0));
+    		vBox.getChildren().addAll(label, datePicker, label2);
+    		a.getDialogPane().setContent(vBox);
     		Optional<ButtonType> answer = a.showAndWait();
-    		if (answer.isPresent() && answer.get() == ButtonType.OK) {
-    			FormationService.addCandidatesToAffectation(formation_code);
-    			if(GlobalControllers.schoolController != null)
-    				GlobalControllers.schoolController.updateTableViews();
+    		if (answer.isPresent() && answer.get() == ButtonType.OK ) {
+    			if(datePicker.getValue() != null) {
+    				repondreAvant = datePicker.getValue().toString();
+    				FormationRepository.setDateAvantRepondre(formation_code, repondreAvant);
+    				FormationRepository.deleteEnAttendantAndDeclinedStudents(formation_code);
+    				FormationService.addCandidatesToAffectation(formation_code);
+    				
+    				if(GlobalControllers.schoolController != null)
+    					GlobalControllers.schoolController.updateTableViews();
+    			} else {
+    	    		a = new Alert(Alert.AlertType.ERROR);
+    	    		a.setContentText("Veuillez choisir une date!");
+    	    		a.showAndWait();
+    			}
     		}
     	});
         this.max_chaises = max_chaises;

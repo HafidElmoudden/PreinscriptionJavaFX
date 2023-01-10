@@ -99,6 +99,7 @@ public class FormationService {
 				formation.setFormation_code(result.getString("formation_code"));
 				formation.setDate_(result.getString("date_"));
 				formation.setCandida_code(result.getString("cp_code"));
+				formation.setRepondreAvant(result.getString("rep_avant"));
 				formations.add(formation);
 			}
 		} catch (SQLException e) {
