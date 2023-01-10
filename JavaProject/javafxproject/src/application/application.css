@@ -18,6 +18,22 @@
 	-fx-text-fill: #3e3e3e;
 	-fx-valignment: center;
 }
+.profile-grid{
+	-fx-font-weight: 300;
+	-fx-background-color: #fff;
+	-fx-border-color: #FFF;
+	-fx-border-width: 0.1px;
+	-fx-text-fill: #3e3e3e;
+	-fx-valignment: center;
+}
+.profile-grid .gridcolumn{
+	-fx-font-weight: 300;
+	-fx-background-color: #fff;
+	-fx-border-color: #FFF;
+	-fx-border-width: 0.1px;
+	-fx-text-fill: #3e3e3e;
+	-fx-valignment: center;
+}
 .fridview .not-btn{
 	-fx-padding: 7px 10px;
 }
