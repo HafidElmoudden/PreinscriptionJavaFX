@@ -66,12 +66,15 @@ public class SchoolScreenController implements Initializable{
     	
     	if(event.getSource()==school_candidateurbtn) {
     		school_candidateurs.toFront();
+    		toggleStyleClass(school_candidateurbtn);
     	}
     	else if(event.getSource()==school_selectionbtn) {
     		school_selection.toFront();
+    		toggleStyleClass(school_selectionbtn);
     	}
     	else if(event.getSource()==school_studentbtn) {
     		school_etudiants.toFront();
+    		toggleStyleClass(school_studentbtn);
     	}
     	else if(event.getSource()==logoutbtn) {
     		Navigation navigation = new Navigation();
@@ -88,6 +91,7 @@ public class SchoolScreenController implements Initializable{
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		toggleStyleClass(school_candidateurbtn);
 		SchoolInformations school= SchoolService.getSchoolLogoByEmail(Navigation.email);
 		Image logo = new Image(getClass().getResource(school.getLogo()).toExternalForm());
 		school_logo.setImage(logo);
@@ -162,5 +166,68 @@ public class SchoolScreenController implements Initializable{
 		//statu_grid_etudiants.setCellValueFactory(new PropertyValueFactory<>("reponse"));
 		
 		SchoolService.fillSelectedStudentslist(shool_grid_etudiants, Navigation.email,formation, reponse);
+	}
+	public void toggleStyleClass(Button event) {
+		
+		
+		Image image1 = new Image(getClass().getResourceAsStream("imgs/default.jpg"));
+		Image image2 = new Image(getClass().getResourceAsStream("imgs/default.jpg"));
+		Image image3 = new Image(getClass().getResourceAsStream("imgs/default.jpg"));
+		Image image4 = new Image(getClass().getResourceAsStream("imgs/default.jpg"));
+		
+		ImageView imageView1 = new ImageView(image1);
+		ImageView imageView2 = new ImageView(image2);
+		ImageView imageView3 = new ImageView(image3);
+		ImageView imageView4 = new ImageView(image4);
+		
+
+		if (event == school_candidateurbtn) {
+
+			school_candidateurbtn.getStyleClass().add("active");
+			school_selectionbtn.getStyleClass().remove("active");
+			school_studentbtn.getStyleClass().remove("active");
+			
+			image1 = new Image(getClass().getResourceAsStream("imgs/school_b.png"));
+			image2 = new Image(getClass().getResourceAsStream("imgs/selec_w.png"));
+			image3 = new Image(getClass().getResourceAsStream("imgs/student_w.png"));
+
+		}
+		else if (event == school_selectionbtn) {
+
+			school_candidateurbtn.getStyleClass().remove("active");
+			school_selectionbtn.getStyleClass().add("active");
+			school_studentbtn.getStyleClass().remove("active");
+			
+			image1 = new Image(getClass().getResourceAsStream("imgs/school_w.png"));
+			image2 = new Image(getClass().getResourceAsStream("imgs/selec_b.png"));
+			image3 = new Image(getClass().getResourceAsStream("imgs/student_w.png"));
+		}
+		else if(event == school_studentbtn) {
+			
+			school_candidateurbtn.getStyleClass().remove("active");
+			school_selectionbtn.getStyleClass().remove("active");
+			school_studentbtn.getStyleClass().add("active");
+			
+			image1 = new Image(getClass().getResourceAsStream("imgs/school_w.png"));
+			image2 = new Image(getClass().getResourceAsStream("imgs/selec_w.png"));
+			image3 = new Image(getClass().getResourceAsStream("imgs/student_b.png"));
+		}
+		
+		imageView1 = new ImageView(image1);
+		imageView2 = new ImageView(image2);
+		imageView3 = new ImageView(image3);
+
+		imageView1.setFitWidth(24);
+		imageView1.setFitHeight(24);
+
+		imageView2.setFitWidth(24);
+		imageView2.setFitHeight(24);
+		
+		imageView3.setFitWidth(24);
+		imageView3.setFitHeight(24);
+		
+		school_candidateurbtn.setGraphic(imageView1);
+		school_selectionbtn.setGraphic(imageView2);
+		school_studentbtn.setGraphic(imageView3);
 	}
 }

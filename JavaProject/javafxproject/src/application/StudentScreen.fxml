@@ -68,7 +68,7 @@
       </HBox>
    </top>
    <left>
-      <VBox prefHeight="200.0" prefWidth="150.0" spacing="443.0" style="-fx-background-color: #1E90FF;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="150.0" spacing="440.0" style="-fx-background-color: #1E90FF;" BorderPane.alignment="CENTER">
          <children>
             <VBox prefHeight="136.0" prefWidth="150.0">
                <children>

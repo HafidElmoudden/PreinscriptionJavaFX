@@ -75,14 +75,21 @@
 	-fx-background-radius: 0;
 }
 .nav-btn:hover{
-	-fx-background-color: #A3D1FF;
+	-fx-background-color: #359BFF;
 }
 .cancel-btn{
 	-fx-background-color: #FFF;
 	-fx-background-radius: 20px;
 	-fx-border-color: #FFF;
 }
-
+.active{
+	-fx-background-color: #FFF;
+	-fx-color: #1E90FF;
+	-fx-text-fill: #1E90FF;
+}
+.active:hover{
+	-fx-background-color: #CCE0F8;
+}
 
 
 

@@ -1,5 +1,6 @@
 package application.controllers;
 
+import java.awt.Paint;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -10,6 +11,7 @@ import application.entities.StudentInformations;
 import application.services.CommonService;
 import application.services.SchoolService;
 import application.services.StudentService;
+import application.utilities.ImageUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,6 +24,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -60,7 +64,7 @@ public class AdminScreenController implements Initializable {
 	@FXML
 	private TableColumn<SchoolInformations, Button> ecoleEditCol;
 
-	//Admin student list columns
+	// Admin student list columns
 	@FXML
 	private TableColumn<StudentInformations, String> cneCol;
 	@FXML
@@ -80,39 +84,90 @@ public class AdminScreenController implements Initializable {
 
 	@FXML
 	private Button admin_students_listbtn, admin_schools_listbtn, admin_logout, clear_search, clear_search1;
-	//TableView
+	// TableView
 	@FXML
 	private TableView<SchoolInformations> schools_table_view;
 	@FXML
 	private TableView<StudentInformations> students_table_view;
-	
+
 	@FXML
 	private TextField ecolesSearchInput;
 	@FXML
 	private TextField studentsSearchInput;
-	
+
 	@FXML
 	private Label adminSessionEmail;
-	
+
 	@FXML
 	void handleButtonAction(ActionEvent event) {
 
 		if (event.getSource() == admin_schools_listbtn) {
 			admin_school_list.toFront();
+			toggleStyleClass(admin_schools_listbtn);
 		} else if (event.getSource() == admin_students_listbtn) {
 			admin_students_list.toFront();
+			toggleStyleClass(admin_students_listbtn);
 		} else if (event.getSource() == admin_logout) {
 			Stage stage = (Stage) admin_logout.getScene().getWindow();
 			navigation.backToLogin(stage);
 		}
 	}
+
+	public void toggleStyleClass(Button event) {
+		Image image2 = new Image(getClass().getResourceAsStream("imgs/default.jpg"));
+		Image image1 = new Image(getClass().getResourceAsStream("imgs/default.jpg"));
+		ImageView imageView2 = new ImageView(image2);
+		ImageView imageView1 = new ImageView(image1);
+
+		if (event == admin_schools_listbtn) {
+
+			admin_schools_listbtn.getStyleClass().add("active");
+			admin_students_listbtn.getStyleClass().remove("active");
+
+			image2 = new Image(getClass().getResourceAsStream("imgs/school_b.png"));
+			image1 = new Image(getClass().getResourceAsStream("imgs/student_w.png"));
+
+			imageView2 = new ImageView(image2);
+			imageView1 = new ImageView(image1);
+
+			imageView1.setFitWidth(24);
+			imageView1.setFitHeight(24);
+
+			imageView2.setFitWidth(24);
+			imageView2.setFitHeight(24);
+
+			admin_students_listbtn.setGraphic(imageView1);
+			admin_schools_listbtn.setGraphic(imageView2);
+		} else if (event == admin_students_listbtn) {
+
+			admin_students_listbtn.getStyleClass().add("active");
+			admin_schools_listbtn.getStyleClass().remove("active");
+
+			image2 = new Image(getClass().getResourceAsStream("imgs/school_w.png"));
+			image1 = new Image(getClass().getResourceAsStream("imgs/student_b.png"));
+
+			imageView2 = new ImageView(image2);
+			imageView1 = new ImageView(image1);
+
+			imageView1.setFitWidth(24);
+			imageView1.setFitHeight(24);
+
+			imageView2.setFitWidth(24);
+			imageView2.setFitHeight(24);
+
+			admin_students_listbtn.setGraphic(imageView1);
+			admin_schools_listbtn.setGraphic(imageView2);
+		}
+	}
+
 	@FXML
-    void clear_search(ActionEvent event) {
+	void clear_search(ActionEvent event) {
 		if (event.getSource() == clear_search) {
 			studentsSearchInput.setText("");
 			String bacSelectedItem = admin_type_bac_filter.getSelectionModel().getSelectedItem();
 			String villeSelectedItem = admin_students_ville_filter.getSelectionModel().getSelectedItem();
-			StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem, studentsSearchInput.getText());
+			StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem,
+					studentsSearchInput.getText());
 		} else if (event.getSource() == clear_search1) {
 			ecolesSearchInput.setText("");
 			String selectedItem = admin_school_ville_filter.getSelectionModel().getSelectedItem();
@@ -120,20 +175,25 @@ public class AdminScreenController implements Initializable {
 		}
 		clear_search.setVisible(false);
 		clear_search1.setVisible(false);
-    }
+	}
+
 	public void updateTableViews() {
 		String selectedItem = admin_school_ville_filter.getSelectionModel().getSelectedItem();
 		SchoolService.fillSchoolsList(schools_table_view, selectedItem, ecolesSearchInput.getText());
-		
+
 		String bacSelectedItem = admin_type_bac_filter.getSelectionModel().getSelectedItem();
 		String villeSelectedItem = admin_students_ville_filter.getSelectionModel().getSelectedItem();
-		StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem, studentsSearchInput.getText());
+		StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem,
+				studentsSearchInput.getText());
 	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		toggleStyleClass(admin_schools_listbtn);
+
 		GlobalControllers.adminController = this;
 		adminSessionEmail.setText(Navigation.email);
-		//School list
+		// School list
 		etaCol.setCellValueFactory(new PropertyValueFactory<>("etablissement"));
 		villeCol.setCellValueFactory(new PropertyValueFactory<>("ville"));
 		emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -141,8 +201,8 @@ public class AdminScreenController implements Initializable {
 		nbFormationsCol.setCellValueFactory(new PropertyValueFactory<>("nombreFormations"));
 		ecoleDeleteCol.setCellValueFactory(new PropertyValueFactory<>("deleteUser"));
 		ecoleEditCol.setCellValueFactory(new PropertyValueFactory<>("editUser"));
-		
-		//Student list
+
+		// Student list
 		cneCol.setCellValueFactory(new PropertyValueFactory<>("cne"));
 		nomCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 		prenomCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -151,7 +211,7 @@ public class AdminScreenController implements Initializable {
 		stVilleCol.setCellValueFactory(new PropertyValueFactory<>("city"));
 		editCol.setCellValueFactory(new PropertyValueFactory<>("editUser"));
 		deleteCol.setCellValueFactory(new PropertyValueFactory<>("deleteUser"));
-		
+
 		// Search
 		ecolesSearchInput.setOnAction(e -> {
 			String selectedItem = admin_school_ville_filter.getSelectionModel().getSelectedItem();
@@ -161,11 +221,11 @@ public class AdminScreenController implements Initializable {
 		studentsSearchInput.setOnAction(e -> {
 			String bacSelectedItem = admin_type_bac_filter.getSelectionModel().getSelectedItem();
 			String villeSelectedItem = admin_students_ville_filter.getSelectionModel().getSelectedItem();
-			StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem, studentsSearchInput.getText());
+			StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem,
+					studentsSearchInput.getText());
 			clear_search.setVisible(true);
 		});
-		
-		
+
 		admin_school_ville_filter.setOnAction(event -> {
 			String selectedItem = admin_school_ville_filter.getSelectionModel().getSelectedItem();
 			SchoolService.fillSchoolsList(schools_table_view, selectedItem, ecolesSearchInput.getText());
@@ -173,12 +233,14 @@ public class AdminScreenController implements Initializable {
 		admin_students_ville_filter.setOnAction(event -> {
 			String bacSelectedItem = admin_type_bac_filter.getSelectionModel().getSelectedItem();
 			String villeSelectedItem = admin_students_ville_filter.getSelectionModel().getSelectedItem();
-			StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem, studentsSearchInput.getText());
+			StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem,
+					studentsSearchInput.getText());
 		});
 		admin_type_bac_filter.setOnAction(event -> {
 			String bacSelectedItem = admin_type_bac_filter.getSelectionModel().getSelectedItem();
 			String villeSelectedItem = admin_students_ville_filter.getSelectionModel().getSelectedItem();
-			StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem, studentsSearchInput.getText());
+			StudentService.fillStudentsList(students_table_view, villeSelectedItem, bacSelectedItem,
+					studentsSearchInput.getText());
 		});
 
 		CommonService.fillVilles(admin_school_ville_filter, true);

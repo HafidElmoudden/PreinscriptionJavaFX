@@ -161,14 +161,21 @@ public class StudentScreenController implements Initializable {
 
 		if (event.getSource() == student_appsbtn) {
 			student_applications.toFront();
-		} else if (event.getSource() == student_homebtn) {
-
+			toggleStyleClass(student_appsbtn);
+		}
+		else if (event.getSource() == student_homebtn) {
 			student_home.toFront();
-		} else if (event.getSource() == student_infosbtn) {
+			toggleStyleClass(student_homebtn);
+		}
+		else if (event.getSource() == student_infosbtn) {
 			student_infos.toFront();
-		} else if (event.getSource() == student_notifsbtn) {
+			toggleStyleClass(student_infosbtn);
+		}
+		else if (event.getSource() == student_notifsbtn) {
 			student_notifications.toFront();
-		} else if (event.getSource() == student_logout) {
+			toggleStyleClass(student_notifsbtn);
+		}
+		else if (event.getSource() == student_logout) {
 			Stage stage = (Stage) student_logout.getScene().getWindow();
 			navigation.backToLogin(stage);
 		}
@@ -233,6 +240,7 @@ public class StudentScreenController implements Initializable {
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		toggleStyleClass(student_homebtn);
 		GlobalControllers.studentController = this;
 		imagein_frofilegrid.setCellValueFactory(new PropertyValueFactory<>("checkImage"));
 		
@@ -398,5 +406,88 @@ public class StudentScreenController implements Initializable {
 		repondreAvant_notifs.setCellValueFactory(new PropertyValueFactory<>("repondreAvant"));
 		FormationService.fillMyNotifsGrid(notifications_grid, cne);
 	}
+	public void toggleStyleClass(Button event) {
+		
+		
+		Image image1 = new Image(getClass().getResourceAsStream("imgs/default.jpg"));
+		Image image2 = new Image(getClass().getResourceAsStream("imgs/default.jpg"));
+		Image image3 = new Image(getClass().getResourceAsStream("imgs/default.jpg"));
+		Image image4 = new Image(getClass().getResourceAsStream("imgs/default.jpg"));
+		
+		ImageView imageView1 = new ImageView(image1);
+		ImageView imageView2 = new ImageView(image2);
+		ImageView imageView3 = new ImageView(image3);
+		ImageView imageView4 = new ImageView(image4);
+		if (event == student_homebtn) {
 
+			student_homebtn.getStyleClass().add("active");
+			student_infosbtn.getStyleClass().remove("active");
+			student_notifsbtn.getStyleClass().remove("active");
+			student_appsbtn.getStyleClass().remove("active");
+			
+			image1 = new Image(getClass().getResourceAsStream("imgs/home_b.png"));
+			image2 = new Image(getClass().getResourceAsStream("imgs/perso_w.png"));
+			image3 = new Image(getClass().getResourceAsStream("imgs/notifs_w.png"));
+			image4 = new Image(getClass().getResourceAsStream("imgs/appl_w.png"));
+
+		}
+		else if (event == student_infosbtn) {
+
+			student_homebtn.getStyleClass().remove("active");
+			student_infosbtn.getStyleClass().add("active");
+			student_notifsbtn.getStyleClass().remove("active");
+			student_appsbtn.getStyleClass().remove("active");
+			
+			image1 = new Image(getClass().getResourceAsStream("imgs/home_w.png"));
+			image2 = new Image(getClass().getResourceAsStream("imgs/perso_b.png"));
+			image3 = new Image(getClass().getResourceAsStream("imgs/notifs_w.png"));
+			image4 = new Image(getClass().getResourceAsStream("imgs/appl_w.png"));
+		}
+		else if(event == student_notifsbtn) {
+			
+			student_homebtn.getStyleClass().remove("active");
+			student_infosbtn.getStyleClass().remove("active");
+			student_notifsbtn.getStyleClass().add("active");
+			student_appsbtn.getStyleClass().remove("active");
+			
+			image1 = new Image(getClass().getResourceAsStream("imgs/home_w.png"));
+			image2 = new Image(getClass().getResourceAsStream("imgs/perso_w.png"));
+			image3 = new Image(getClass().getResourceAsStream("imgs/notifs_b.png"));
+			image4 = new Image(getClass().getResourceAsStream("imgs/appl_w.png"));
+		}
+		else if(event == student_appsbtn) {
+			
+			student_homebtn.getStyleClass().remove("active");
+			student_infosbtn.getStyleClass().remove("active");
+			student_notifsbtn.getStyleClass().remove("active");
+			student_appsbtn.getStyleClass().add("active");
+			
+			image1 = new Image(getClass().getResourceAsStream("imgs/home_w.png"));
+			image2 = new Image(getClass().getResourceAsStream("imgs/perso_w.png"));
+			image3 = new Image(getClass().getResourceAsStream("imgs/notifs_w.png"));
+			image4 = new Image(getClass().getResourceAsStream("imgs/appl_b.png"));
+		}
+		
+		imageView1 = new ImageView(image1);
+		imageView2 = new ImageView(image2);
+		imageView3 = new ImageView(image3);
+		imageView4 = new ImageView(image4);
+
+		imageView1.setFitWidth(24);
+		imageView1.setFitHeight(24);
+
+		imageView2.setFitWidth(24);
+		imageView2.setFitHeight(24);
+		
+		imageView3.setFitWidth(24);
+		imageView3.setFitHeight(24);
+		
+		imageView4.setFitWidth(24);
+		imageView4.setFitHeight(24);
+		
+		student_homebtn.setGraphic(imageView1);
+		student_infosbtn.setGraphic(imageView2);
+		student_notifsbtn.setGraphic(imageView3);
+		student_appsbtn.setGraphic(imageView4);
+	}
 }
