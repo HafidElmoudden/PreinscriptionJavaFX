@@ -184,8 +184,8 @@ public class SchoolScreenController implements Initializable{
 		if (event == school_candidateurbtn) {
 
 			school_candidateurbtn.getStyleClass().add("active");
-			school_selectionbtn.getStyleClass().remove("active");
-			school_studentbtn.getStyleClass().remove("active");
+			school_selectionbtn.getStyleClass().removeAll("active");
+			school_studentbtn.getStyleClass().removeAll("active");
 			
 			image1 = new Image(getClass().getResourceAsStream("imgs/school_b.png"));
 			image2 = new Image(getClass().getResourceAsStream("imgs/selec_w.png"));
@@ -194,9 +194,9 @@ public class SchoolScreenController implements Initializable{
 		}
 		else if (event == school_selectionbtn) {
 
-			school_candidateurbtn.getStyleClass().remove("active");
+			school_candidateurbtn.getStyleClass().removeAll("active");
 			school_selectionbtn.getStyleClass().add("active");
-			school_studentbtn.getStyleClass().remove("active");
+			school_studentbtn.getStyleClass().removeAll("active");
 			
 			image1 = new Image(getClass().getResourceAsStream("imgs/school_w.png"));
 			image2 = new Image(getClass().getResourceAsStream("imgs/selec_b.png"));
@@ -204,8 +204,8 @@ public class SchoolScreenController implements Initializable{
 		}
 		else if(event == school_studentbtn) {
 			
-			school_candidateurbtn.getStyleClass().remove("active");
-			school_selectionbtn.getStyleClass().remove("active");
+			school_candidateurbtn.getStyleClass().removeAll("active");
+			school_selectionbtn.getStyleClass().removeAll("active");
 			school_studentbtn.getStyleClass().add("active");
 			
 			image1 = new Image(getClass().getResourceAsStream("imgs/school_w.png"));

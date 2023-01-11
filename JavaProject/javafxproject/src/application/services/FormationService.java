@@ -85,7 +85,27 @@ public class FormationService {
 			table.getItems().add(formation);
 		}
 	}
+	public static void fillMyDCGrid(TableView<FormationPost> table, String cne) {
+		table.getItems().clear();
+		List<FormationPost> formations = new ArrayList<>();
+		ResultSet result = FormationRepository.getDrenierChoix(cne);
 
+		try {
+			while (result.next()) {
+				FormationPost formation = new FormationPost();
+				formation.setEtablissement(result.getString("ecole_nom"));
+				formation.setFormation(result.getString("formation_nom"));
+				formation.setVille(result.getString("ville"));
+				formation.setDate_(result.getString("date_"));
+				formations.add(formation);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		for (FormationPost formation : formations) {
+			table.getItems().add(formation);
+		}
+	}
 	static public List<FormationPost> getMyNotifs(String cne) {
 		List<FormationPost> formations = new ArrayList<>();
 		ResultSet result = FormationRepository.getNotifs(cne);

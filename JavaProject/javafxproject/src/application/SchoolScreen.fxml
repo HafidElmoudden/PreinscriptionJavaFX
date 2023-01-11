@@ -98,32 +98,33 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane fx:id="school_candidateurs" layoutX="125.0" layoutY="147.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane fx:id="school_etudiants" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ChoiceBox fx:id="school_formaion_filter" layoutX="290.0" layoutY="20.0" prefHeight="30.0" prefWidth="250.0" styleClass="combo-box">
+                  <ChoiceBox fx:id="school_etu_statu_filter" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="250.0" styleClass="combo-box">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ChoiceBox>
-                  <ChoiceBox fx:id="school_candi_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="250.0" style="-fx-cursor: pointer;" styleClass="combo-box">
+                  <ChoiceBox fx:id="school_etu_formation_filter" layoutX="290.0" layoutY="20.0" prefHeight="30.0" prefWidth="250.0" styleClass="combo-box">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ChoiceBox>
-                  <TableView fx:id="shcool_grid_candidats" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="20.0" layoutY="70.0" prefHeight="550.0" prefWidth="1010.0" scaleShape="false" styleClass="gridview">
+                  <TableView fx:id="shool_grid_etudiants" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="20.0" layoutY="70.0" prefHeight="520.0" prefWidth="1010.0" scaleShape="false" styleClass="gridview">
                      <columns>
-                        <TableColumn fx:id="formation_grid_candida" prefWidth="200.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Formation" />
-                        <TableColumn fx:id="cne_grid_candida" minWidth="6.0" prefWidth="150.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="NCE" />
-                        <TableColumn fx:id="nom_grid_candida" prefWidth="144.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Nom" />
-                        <TableColumn fx:id="prenom_grid_candida" prefWidth="143.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Prenom" />
-                        <TableColumn fx:id="email_grid_candida" prefWidth="220.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Email" />
+                        <TableColumn fx:id="formation_grid_etudiants" prefWidth="200.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Formation" />
+                        <TableColumn fx:id="cne_grid_etudiants" minWidth="6.0" prefWidth="140.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="NCE" />
+                        <TableColumn fx:id="nom_grid_etudiants" prefWidth="123.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Nom" />
+                        <TableColumn fx:id="prenom_grid_etudiants" prefWidth="123.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Prenom" />
+                        <TableColumn fx:id="email_grid_etudiants" prefWidth="246.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Email" />
                         <TableColumn prefWidth="180.0" resizable="false" text="cp_code" visible="false" />
-                        <TableColumn fx:id="vill_grid_candida" prefWidth="135.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Ville" />
+                        <TableColumn fx:id="ville_grid_etudiants" prefWidth="120.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Ville" />
+                        <TableColumn fx:id="statu_grid_etudiants" prefWidth="40.0" resizable="false" styleClass="gridcolumn" />
                      </columns>
                   </TableView>
                   <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="24.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../resources/local_filter.png" />
+                        <Image url="@../../../resources/statu.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="296.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
@@ -131,8 +132,25 @@
                         <Image url="@../../../resources/formation.png" />
                      </image>
                   </ImageView>
-               </children>
-            </Pane>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="20.0" layoutY="600.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@entities/accepte.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="45.0" layoutY="603.0" text="Addmission accepté par l'etudiant" textFill="#717171" />
+                  <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="240.0" layoutY="600.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@entities/refuse.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="265.0" layoutY="603.0" text="Addmission refusé par l'etudiant" textFill="#717171" />
+                  <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="450.0" layoutY="601.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@entities/enattent.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="475.0" layoutY="604.0" text="La décision n'est pas encore prise" textFill="#717171" />
+               </children></Pane>
             <Pane fx:id="school_selection" layoutX="135.0" layoutY="157.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <TableView fx:id="shool_grid_section" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="20.0" layoutY="20.0" prefHeight="326.0" prefWidth="1010.0" scaleShape="false" styleClass="gridview">
@@ -179,33 +197,32 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="school_etudiants" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Pane fx:id="school_candidateurs" layoutX="125.0" layoutY="147.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ChoiceBox fx:id="school_etu_statu_filter" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="250.0" styleClass="combo-box">
+                  <ChoiceBox fx:id="school_formaion_filter" layoutX="290.0" layoutY="20.0" prefHeight="30.0" prefWidth="250.0" styleClass="combo-box">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ChoiceBox>
-                  <ChoiceBox fx:id="school_etu_formation_filter" layoutX="290.0" layoutY="20.0" prefHeight="30.0" prefWidth="250.0" styleClass="combo-box">
+                  <ChoiceBox fx:id="school_candi_ville_filter" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="250.0" style="-fx-cursor: pointer;" styleClass="combo-box">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ChoiceBox>
-                  <TableView fx:id="shool_grid_etudiants" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="20.0" layoutY="70.0" prefHeight="550.0" prefWidth="1010.0" scaleShape="false" styleClass="gridview">
+                  <TableView fx:id="shcool_grid_candidats" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="20.0" layoutY="70.0" prefHeight="550.0" prefWidth="1010.0" scaleShape="false" styleClass="gridview">
                      <columns>
-                        <TableColumn fx:id="formation_grid_etudiants" prefWidth="200.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Formation" />
-                        <TableColumn fx:id="cne_grid_etudiants" minWidth="6.0" prefWidth="140.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="NCE" />
-                        <TableColumn fx:id="nom_grid_etudiants" prefWidth="123.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Nom" />
-                        <TableColumn fx:id="prenom_grid_etudiants" prefWidth="123.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Prenom" />
-                        <TableColumn fx:id="email_grid_etudiants" prefWidth="246.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Email" />
+                        <TableColumn fx:id="formation_grid_candida" prefWidth="200.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Formation" />
+                        <TableColumn fx:id="cne_grid_candida" minWidth="6.0" prefWidth="150.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="NCE" />
+                        <TableColumn fx:id="nom_grid_candida" prefWidth="144.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Nom" />
+                        <TableColumn fx:id="prenom_grid_candida" prefWidth="143.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Prenom" />
+                        <TableColumn fx:id="email_grid_candida" prefWidth="220.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Email" />
                         <TableColumn prefWidth="180.0" resizable="false" text="cp_code" visible="false" />
-                        <TableColumn fx:id="ville_grid_etudiants" prefWidth="120.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Ville" />
-                        <TableColumn fx:id="statu_grid_etudiants" prefWidth="40.0" resizable="false" styleClass="gridcolumn" />
+                        <TableColumn fx:id="vill_grid_candida" prefWidth="135.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Ville" />
                      </columns>
                   </TableView>
                   <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="24.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../resources/statu.png" />
+                        <Image url="@../../../resources/local_filter.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="21.0" fitWidth="21.0" layoutX="296.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
@@ -213,7 +230,8 @@
                         <Image url="@../../../resources/formation.png" />
                      </image>
                   </ImageView>
-               </children></Pane>
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
    </center>

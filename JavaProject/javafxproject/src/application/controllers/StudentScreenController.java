@@ -66,7 +66,7 @@ public class StudentScreenController implements Initializable {
 	private Button student_appsbtn;
 
 	@FXML
-	private TableView<FormationPost> student_grid_home, my_applications_grid, notifications_grid;
+	private TableView<FormationPost> student_grid_home, my_applications_grid, notifications_grid, dernier_choix_grid;
 
 	@FXML
 	private Pane student_home;
@@ -152,10 +152,18 @@ public class StudentScreenController implements Initializable {
 	@FXML
 	private TableColumn<?,?> apply_grid_home;
 	
-	
+	@FXML
+	private TableColumn<?, ?> etablissement_dc, formation_dc, ville_dc, date_dc;
 	@FXML
 	private TableColumn<?,?> repondreAvant_notifs;
-	
+	public void fillDrenierChoix(String cne) {
+		etablissement_dc.setCellValueFactory(new PropertyValueFactory<>("etablissement"));
+		formation_dc.setCellValueFactory(new PropertyValueFactory<>("formation"));
+		ville_dc.setCellValueFactory(new PropertyValueFactory<>("ville"));
+		date_dc.setCellValueFactory(new PropertyValueFactory<>("date_"));
+		
+		FormationService.fillMyDCGrid(dernier_choix_grid, cne);
+	}
 	@FXML
 	void handleButtonAction(ActionEvent event) {
 
@@ -234,6 +242,7 @@ public class StudentScreenController implements Initializable {
     	if(student != null) {
     		fillOrUpdateMyApps((String) student.getCne());
     		fillNotifications((String) student.getCne());
+    		fillDrenierChoix((String) student.getCne());
     		fillFormations();
     	}
     }
@@ -366,7 +375,7 @@ public class StudentScreenController implements Initializable {
 
 		// My Notifications
 		fillNotifications((String) student.getCne());
-
+		fillDrenierChoix((String) student.getCne());
 	}
 	
 	public void fillOrUpdateMyApps(String cne) {
@@ -421,9 +430,9 @@ public class StudentScreenController implements Initializable {
 		if (event == student_homebtn) {
 
 			student_homebtn.getStyleClass().add("active");
-			student_infosbtn.getStyleClass().remove("active");
-			student_notifsbtn.getStyleClass().remove("active");
-			student_appsbtn.getStyleClass().remove("active");
+			student_infosbtn.getStyleClass().removeAll("active");
+			student_notifsbtn.getStyleClass().removeAll("active");
+			student_appsbtn.getStyleClass().removeAll("active");
 			
 			image1 = new Image(getClass().getResourceAsStream("imgs/home_b.png"));
 			image2 = new Image(getClass().getResourceAsStream("imgs/perso_w.png"));
@@ -433,10 +442,10 @@ public class StudentScreenController implements Initializable {
 		}
 		else if (event == student_infosbtn) {
 
-			student_homebtn.getStyleClass().remove("active");
+			student_homebtn.getStyleClass().removeAll("active");
 			student_infosbtn.getStyleClass().add("active");
-			student_notifsbtn.getStyleClass().remove("active");
-			student_appsbtn.getStyleClass().remove("active");
+			student_notifsbtn.getStyleClass().removeAll("active");
+			student_appsbtn.getStyleClass().removeAll("active");
 			
 			image1 = new Image(getClass().getResourceAsStream("imgs/home_w.png"));
 			image2 = new Image(getClass().getResourceAsStream("imgs/perso_b.png"));
@@ -445,10 +454,10 @@ public class StudentScreenController implements Initializable {
 		}
 		else if(event == student_notifsbtn) {
 			
-			student_homebtn.getStyleClass().remove("active");
-			student_infosbtn.getStyleClass().remove("active");
+			student_homebtn.getStyleClass().removeAll("active");
+			student_infosbtn.getStyleClass().removeAll("active");
 			student_notifsbtn.getStyleClass().add("active");
-			student_appsbtn.getStyleClass().remove("active");
+			student_appsbtn.getStyleClass().removeAll("active");
 			
 			image1 = new Image(getClass().getResourceAsStream("imgs/home_w.png"));
 			image2 = new Image(getClass().getResourceAsStream("imgs/perso_w.png"));
@@ -457,9 +466,9 @@ public class StudentScreenController implements Initializable {
 		}
 		else if(event == student_appsbtn) {
 			
-			student_homebtn.getStyleClass().remove("active");
-			student_infosbtn.getStyleClass().remove("active");
-			student_notifsbtn.getStyleClass().remove("active");
+			student_homebtn.getStyleClass().removeAll("active");
+			student_infosbtn.getStyleClass().removeAll("active");
+			student_notifsbtn.getStyleClass().removeAll("active");
 			student_appsbtn.getStyleClass().add("active");
 			
 			image1 = new Image(getClass().getResourceAsStream("imgs/home_w.png"));

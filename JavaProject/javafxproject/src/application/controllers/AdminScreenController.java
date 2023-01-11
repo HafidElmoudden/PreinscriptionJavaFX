@@ -122,42 +122,33 @@ public class AdminScreenController implements Initializable {
 		if (event == admin_schools_listbtn) {
 
 			admin_schools_listbtn.getStyleClass().add("active");
-			admin_students_listbtn.getStyleClass().remove("active");
+			admin_students_listbtn.getStyleClass().removeAll("active");
 
 			image2 = new Image(getClass().getResourceAsStream("imgs/school_b.png"));
 			image1 = new Image(getClass().getResourceAsStream("imgs/student_w.png"));
-
-			imageView2 = new ImageView(image2);
-			imageView1 = new ImageView(image1);
-
-			imageView1.setFitWidth(24);
-			imageView1.setFitHeight(24);
-
-			imageView2.setFitWidth(24);
-			imageView2.setFitHeight(24);
-
-			admin_students_listbtn.setGraphic(imageView1);
-			admin_schools_listbtn.setGraphic(imageView2);
-		} else if (event == admin_students_listbtn) {
+			
+		}
+		else if (event == admin_students_listbtn) {
 
 			admin_students_listbtn.getStyleClass().add("active");
-			admin_schools_listbtn.getStyleClass().remove("active");
+			admin_schools_listbtn.getStyleClass().removeAll("active");
 
 			image2 = new Image(getClass().getResourceAsStream("imgs/school_w.png"));
 			image1 = new Image(getClass().getResourceAsStream("imgs/student_b.png"));
 
-			imageView2 = new ImageView(image2);
-			imageView1 = new ImageView(image1);
-
-			imageView1.setFitWidth(24);
-			imageView1.setFitHeight(24);
-
-			imageView2.setFitWidth(24);
-			imageView2.setFitHeight(24);
-
-			admin_students_listbtn.setGraphic(imageView1);
-			admin_schools_listbtn.setGraphic(imageView2);
 		}
+		
+		imageView2 = new ImageView(image2);
+		imageView1 = new ImageView(image1);
+
+		imageView1.setFitWidth(24);
+		imageView1.setFitHeight(24);
+
+		imageView2.setFitWidth(24);
+		imageView2.setFitHeight(24);
+
+		admin_students_listbtn.setGraphic(imageView1);
+		admin_schools_listbtn.setGraphic(imageView2);
 	}
 
 	@FXML

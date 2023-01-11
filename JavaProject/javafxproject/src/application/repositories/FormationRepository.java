@@ -42,6 +42,12 @@ public class FormationRepository {
 		params.add(cne);
 		return dbClient.executeCommand(true, query , params);
 	}
+	public static ResultSet getDrenierChoix(String cne) {
+		String query= "SELECT CONVERT(date, A.date_) as date_ , F.formation_nom, E.ecole_nom, E.ville FROM Formation_Post F, Ecole E, Affectations A WHERE F.ecole_code = E.ecole_code AND F.cp_code = A.cp_code AND A.reponse = 'Accepté' AND A.cne = ? ";
+		List<Object> params = new ArrayList<>();
+		params.add(cne);
+		return dbClient.executeCommand(true, query , params);
+	}
     static public ResultSet getSchoolFormationsPosts(String email)
     {
         return dbClient.executeCommand(true, "SELECT F.* FROM Formation_Post F, Ecole E WHERE E.ecole_code = F.ecole_code AND E.email= ?", List.of(email));

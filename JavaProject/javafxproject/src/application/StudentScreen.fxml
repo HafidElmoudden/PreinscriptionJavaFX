@@ -96,7 +96,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="student_notifsbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="204.0" styleClass="nav-btn" text="Notifications" textFill="WHITE">
+                  <Button fx:id="student_notifsbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="204.0" styleClass="nav-btn" text="Mes admissions" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -144,21 +144,6 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Pane fx:id="student_applications" layoutX="579.0" layoutY="223.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <TableView fx:id="my_applications_grid" focusTraversable="false" layoutX="20.0" layoutY="20.0" prefHeight="600.0" prefWidth="1010.0" styleClass="gridview">
-                     <columns>
-                        <TableColumn fx:id="etablissement_apps" prefWidth="325.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Etablissement" />
-                        <TableColumn fx:id="fromation_apps" minWidth="6.0" prefWidth="280.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Formation" />
-                        <TableColumn fx:id="ville_apps" prefWidth="150.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Ville" />
-                        <TableColumn fx:id="note_apps" prefWidth="110.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Note" />
-                        <TableColumn fx:id="residuelle_apps" prefWidth="102.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Résiduelle" />
-                        <TableColumn fx:id="delete_apps" prefWidth="40.0" resizable="false" styleClass="gridcolumn" />
-                        <TableColumn fx:id="candidateur_code" prefWidth="109.0" resizable="false" styleClass="gridcolumn" visible="false" />
-                     </columns>
-                  </TableView>
-               </children>
-            </Pane>
             <Pane fx:id="view_school" prefHeight="640.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane layoutX="20.0" layoutY="20.0" maxHeight="600.0" minHeight="600.0" prefHeight="586.0" prefWidth="1010.0" style="-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 3, 0, 0, 0); -fx-background-radius: 8; -fx-background-color: fff;">
@@ -389,22 +374,6 @@
                   </AnchorPane>
                </children>
             </Pane>
-            <Pane fx:id="student_notifications" layoutX="579.0" layoutY="223.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <TableView fx:id="notifications_grid" focusTraversable="false" layoutX="20.0" layoutY="20.0" prefHeight="354.0" prefWidth="1010.0" styleClass="gridview">
-                     <columns>
-                        <TableColumn fx:id="etablissement_notifs" prefWidth="300.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Etablissement" />
-                        <TableColumn fx:id="formation_notifs" minWidth="6.0" prefWidth="200.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Formation" />
-                        <TableColumn fx:id="ville_notifs" prefWidth="120.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Ville" />
-                        <TableColumn fx:id="date_notifs" prefWidth="155.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Date" />
-                        <TableColumn fx:id="repondreAvant_notifs" prefWidth="151.5" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="À répondre avant" />
-                        <TableColumn fx:id="decline_notifs" prefWidth="40.0" resizable="false" styleClass="gridcolumn" />
-                        <TableColumn fx:id="accept_notifs" prefWidth="40.0" resizable="false" styleClass="gridcolumn" />
-                        <TableColumn fx:id="cpcode_notifs" prefWidth="77.0" resizable="false" styleClass="gridcolumn" visible="false" />
-                     </columns>
-                  </TableView>
-               </children>
-            </Pane>
             <Pane fx:id="student_home" layoutX="569.0" layoutY="213.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ChoiceBox fx:id="student_schoollist_ville_filter" focusTraversable="false" layoutX="20.0" layoutY="20.0" prefHeight="30.0" prefWidth="250.0" style="-fx-cursor: pointer; -fx-focus-color: transparent; -fx-background-color: fff;" styleClass="combo-box">
@@ -445,6 +414,59 @@
                         <Image url="@../../../resources/local_filter.png" />
                      </image>
                   </ImageView>
+               </children>
+            </Pane>
+            <Pane fx:id="student_applications" layoutX="579.0" layoutY="223.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TableView fx:id="my_applications_grid" focusTraversable="false" layoutX="20.0" layoutY="20.0" prefHeight="600.0" prefWidth="1010.0" styleClass="gridview">
+                     <columns>
+                        <TableColumn fx:id="etablissement_apps" prefWidth="325.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Etablissement" />
+                        <TableColumn fx:id="fromation_apps" minWidth="6.0" prefWidth="280.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Formation" />
+                        <TableColumn fx:id="ville_apps" prefWidth="150.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Ville" />
+                        <TableColumn fx:id="note_apps" prefWidth="110.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Note" />
+                        <TableColumn fx:id="residuelle_apps" prefWidth="102.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Résiduelle" />
+                        <TableColumn fx:id="delete_apps" prefWidth="40.0" resizable="false" styleClass="gridcolumn" />
+                        <TableColumn fx:id="candidateur_code" prefWidth="109.0" resizable="false" styleClass="gridcolumn" visible="false" />
+                     </columns>
+                  </TableView>
+               </children>
+            </Pane>
+            <Pane fx:id="student_notifications" layoutX="579.0" layoutY="223.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TableView fx:id="notifications_grid" focusTraversable="false" layoutX="20.0" layoutY="20.0" prefHeight="354.0" prefWidth="1010.0" styleClass="gridview">
+                     <columns>
+                        <TableColumn fx:id="etablissement_notifs" prefWidth="300.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Etablissement" />
+                        <TableColumn fx:id="formation_notifs" minWidth="6.0" prefWidth="200.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Formation" />
+                        <TableColumn fx:id="ville_notifs" prefWidth="120.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Ville" />
+                        <TableColumn fx:id="date_notifs" prefWidth="155.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Date" />
+                        <TableColumn fx:id="repondreAvant_notifs" prefWidth="151.5" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="À répondre avant" />
+                        <TableColumn fx:id="decline_notifs" prefWidth="40.0" resizable="false" styleClass="gridcolumn" />
+                        <TableColumn fx:id="accept_notifs" prefWidth="40.0" resizable="false" styleClass="gridcolumn" />
+                        <TableColumn fx:id="cpcode_notifs" prefWidth="77.0" resizable="false" styleClass="gridcolumn" visible="false" />
+                     </columns>
+                  </TableView>
+                  <Label layoutX="20.0" layoutY="400.0" text="Notez bien" textFill="#919191">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="20.0" layoutY="420.0" text="Tous admission sans réponse avant le dernier délai, sera annulé." textFill="#919191" />
+                  <Label layoutX="20.0" layoutY="435.0" text="Vous ne pouvez choisir qu'une seule admission, les autres seront automatiquement refusées." textFill="#919191" />
+                  <Label layoutX="20.0" layoutY="450.0" text="Si vous acceptez une admission, vous n'avez pas le droit de postuler à nouveau à une autre candidature." textFill="#919191" />
+                  <TableView fx:id="dernier_choix_grid" focusTraversable="false" layoutX="20.0" layoutY="515.0" prefHeight="61.0" prefWidth="770.0" styleClass="gridview">
+                     <columns>
+                        <TableColumn fx:id="etablissement_dc" prefWidth="300.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Etablissement" />
+                        <TableColumn fx:id="formation_dc" minWidth="6.0" prefWidth="223.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Formation" />
+                        <TableColumn fx:id="ville_dc" prefWidth="120.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Ville" />
+                        <TableColumn fx:id="date_dc" prefWidth="125.0" resizable="false" style="-fx-padding: 7px 10px;" styleClass="gridcolumn" text="Date" />
+                        <TableColumn fx:id="cpcode_notifs1" prefWidth="77.0" resizable="false" styleClass="gridcolumn" visible="false" />
+                     </columns>
+                  </TableView>
+                  <Label layoutX="20.0" layoutY="490.0" text="Mon dernier choix" textFill="#919191">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children>
