@@ -86,6 +86,20 @@ public class SchoolService {
 		return schoolName;
 	}
 
+	public static String getNbrCandidatsByFC(String formation_code) {
+		List<Object> parameters = new ArrayList<>();
+		parameters.add(formation_code);
+		String N = null;
+		ResultSet result = dbClient.executeCommand(true,"SELECT COUNT(cne) as nbrcan FROM Candidats where cp_code = ?", parameters);
+		try {
+			result.next();
+			N = result.getString("nbrcan");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return N;
+	}
 	public static void fillSelectionlist(TableView<SchoolFormationPost> table, String email) {
 		table.getItems().clear();
 		List<SchoolFormationPost> formations = FormationService.getSchoolFormationPosts(email);

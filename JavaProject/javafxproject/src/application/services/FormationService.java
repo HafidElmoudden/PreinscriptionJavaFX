@@ -151,6 +151,7 @@ public class FormationService {
 				result.getString(3), result.getString(4), result.getString(5), result.getString(6),
 				result.getString(7), result.getString(8));
 				formationPost.setEcole_nom(SchoolService.getSchoolNameByEmail(email));
+				formationPost.setNbr_apps(SchoolService.getNbrCandidatsByFC(result.getString("cp_code")));
 				formationPosts.add(formationPost);
 			}
 		} catch (SQLException e) {

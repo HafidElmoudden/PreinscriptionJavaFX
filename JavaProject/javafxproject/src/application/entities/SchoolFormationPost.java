@@ -24,6 +24,7 @@ public class SchoolFormationPost{
 	private String cp_code;
 	private String formation_nom;
 	private String re_avant;
+	private String nbr_apps;
 	private Button selection = new Button();
 	
     public SchoolFormationPost(String ecole_code, String max_chaises, String nbr_chaises_reserver, String nbr_chaises_available, String formation_code, String cp_code, String formation_nom, String re_avant)
@@ -141,6 +142,16 @@ public class SchoolFormationPost{
 
 	public void setRe_avant(String re_avant) {
 		this.re_avant = re_avant;
+	}
+
+
+	public String getNbr_apps() {
+		return nbr_apps;
+	}
+
+
+	public void setNbr_apps(String nbr_apps) {
+		this.nbr_apps = nbr_apps;
 	}    
     
 }

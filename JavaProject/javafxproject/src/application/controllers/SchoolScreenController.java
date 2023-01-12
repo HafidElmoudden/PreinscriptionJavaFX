@@ -31,7 +31,7 @@ public class SchoolScreenController implements Initializable{
 	@FXML
 	private Label identity;
     @FXML
-    private TableColumn<SchoolFormationPost, String> action_grid_selection, disponible_grid_selection, etablissement_grid_selection, formation_grid_selection, occupee_grid_selection,residuelle_grid_selection ,nextselect_grid_selection;
+    private TableColumn<SchoolFormationPost, String> action_grid_selection, disponible_grid_selection, etablissement_grid_selection, formation_grid_selection, occupee_grid_selection,residuelle_grid_selection ,nextselect_grid_selection, nbrcand_grid_selection;
     @FXML
     private TableColumn<FormationPost, String> cne_grid_etudiants, ville_grid_etudiants, email_grid_etudiants, formation_grid_etudiants, prenom_grid_etudiants, nom_grid_etudiants, statu_grid_etudiants;
     @FXML
@@ -141,6 +141,7 @@ public class SchoolScreenController implements Initializable{
 		occupee_grid_selection.setCellValueFactory(new PropertyValueFactory<>("nbr_chaises_reserver"));
 		residuelle_grid_selection.setCellValueFactory(new PropertyValueFactory<>("max_chaises"));
 		nextselect_grid_selection.setCellValueFactory(new PropertyValueFactory<>("re_avant"));
+		nbrcand_grid_selection.setCellValueFactory(new PropertyValueFactory<>("nbr_apps"));
 		SchoolService.fillSelectionlist(shool_grid_section, Navigation.email);
 	}
 	

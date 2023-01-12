@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Navigation {
 	public static String email = "";
@@ -20,6 +21,7 @@ public class Navigation {
 				Scene scene = new Scene(root,1200,720);
 				scene.getStylesheets().add(getClass().getResource("Application.css").toExternalForm());
 				stage.setScene(scene);
+				stage.setResizable(false);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -30,6 +32,7 @@ public class Navigation {
 				Scene scene = new Scene(root,1200,720);
 				scene.getStylesheets().add(getClass().getResource("Application.css").toExternalForm());
 				stage.setScene(scene);
+				stage.setResizable(false);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -40,6 +43,7 @@ public class Navigation {
 				Scene scene = new Scene(root,1200,720);
 				scene.getStylesheets().add(getClass().getResource("Application.css").toExternalForm());
 				stage.setScene(scene);
+				stage.setResizable(false);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -53,6 +57,7 @@ public class Navigation {
 		try {
 			Pane root = FXMLLoader.load(getClass().getResource("AuthentificationScreen.fxml"));
 			Scene scene = new Scene(root,1200,720);
+			stage.setResizable(false);
 			scene.getStylesheets().add(getClass().getResource("Application.css").toExternalForm());
 			stage.setScene(scene);
 		} catch (IOException e) {
