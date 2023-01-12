@@ -76,7 +76,7 @@ public class SchoolRepository {
 	public static ResultSet getSelectedStudents(String email, String formation, String status) {
 		List<Object> parameters = new ArrayList<Object>();
         parameters.add(email);
-		String  query = "SELECT DISTINCT F.formation_nom, C.cne, E1.nom, E1.prenom, E1.email, E2.ville, A.reponse FROM Formation_Post F, Ecole E2, Affectations A, Candidats C, Etudiant E1 WHERE F.ecole_code = E2.ecole_code AND F.cp_code = A.cp_code AND A.cne = C.cne AND C.cne = E1.cne AND E2.email = ?";
+		String  query = "SELECT DISTINCT F.formation_nom, C.cne, E1.nom, E1.prenom, E1.email, E1.ville, A.reponse FROM Formation_Post F, Ecole E2, Affectations A, Candidats C, Etudiant E1 WHERE F.ecole_code = E2.ecole_code AND F.cp_code = A.cp_code AND A.cne = C.cne AND C.cne = E1.cne AND E2.email = ?";
 		if (!formation.equals("Toutes les formations"))
         {
             query += " AND F.formation_nom= ? ";
