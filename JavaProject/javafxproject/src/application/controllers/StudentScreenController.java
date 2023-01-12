@@ -415,7 +415,7 @@ public class StudentScreenController implements Initializable {
 		repondreAvant_notifs.setCellValueFactory(new PropertyValueFactory<>("repondreAvant"));
 		FormationService.fillMyNotifsGrid(notifications_grid, cne);
 	}
-	public void toggleStyleClass(Button event) {
+	public void toggleStyleClass(@SuppressWarnings("exports") Button event) {
 		
 		
 		Image image1 = new Image(getClass().getResourceAsStream("imgs/default.jpg"));

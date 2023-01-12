@@ -1,11 +1,8 @@
 package application.controllers;
 
 
-import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ResourceBundle;
-
 import application.Navigation;
 import application.entities.AccountType;
 import application.entities.StudentInformations;
@@ -13,12 +10,10 @@ import application.services.AuthentificationService;
 import application.services.CommonService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.PasswordField;
@@ -29,10 +24,10 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 
-public class AuthentificationController implements Initializable{
+public class AuthentificationController{
 	
 	@FXML
-    private Button suivantbtn1, suivantbtn2, suivantbtn3;
+    private Button suivantbtn1, suivantbtn2, suivantbtn3, login_btn;
     
     @FXML
     private Button starting_signup, backtologin1, backtologin2, backtologin3;
@@ -52,49 +47,8 @@ public class AuthentificationController implements Initializable{
     @FXML
     private RadioButton signup_female, signup_male;
     
-    
-    
-    
-    
-
-    @FXML
-    private Button filladmin;
-
-    @FXML
-    private Button fillschool;
-
-    @FXML
-    private Button fillstudent;
-    
-    
-    @FXML
-    void developmentMode(ActionEvent event) {
-    	if (event.getSource() == filladmin) {
-			
-    		email_login.setText("admin");
-    		password_login.setText("admin");
-    		handleLogin();
-		} else if (event.getSource() == fillschool) {
-			
-			email_login.setText("esta@ac.uiz.ma");
-    		password_login.setText("esta12agadir");
-			handleLogin();
-		} else if (event.getSource() == fillstudent) {
-			
-			email_login.setText("mohamedjada@gmail.com");
-    		password_login.setText("a");
-			handleLogin();
-		}
-    }
-    
-    
-    
-    
     @FXML
     private TextField email_login;
-
-    @FXML
-    private Button login_btn;
 
     @FXML
     private PasswordField password_login;
@@ -106,7 +60,7 @@ public class AuthentificationController implements Initializable{
         String password = password_login.getText();
         AccountType userType = AuthentificationService.isLoginValid(email, password);
         if (userType != AccountType.NotFound) {
-        	// Login succeded
+        	// Login succeeded
 			Navigation navigation = new Navigation();
         	navigation.toAfterLogin(stage,userType);
         } else {
@@ -119,7 +73,6 @@ public class AuthentificationController implements Initializable{
         }
     }
     
-    
     @FXML
     void starting_signup(ActionEvent event) {
     	signup1.toFront();
@@ -127,11 +80,8 @@ public class AuthentificationController implements Initializable{
 		CommonService.fillVilles(bacville_choice, false);
 		CommonService.fillVilles(studentcity_choice, false);
 		bacyear_choice.getItems().addAll("2022", "2021", "2020");
-    	
-    	
     }
-    
-    
+
     StudentInformations signedstudent= new StudentInformations();
     ToggleGroup toggleGroup = new ToggleGroup();
     @FXML
@@ -145,8 +95,7 @@ public class AuthentificationController implements Initializable{
     		alert.setContentText("Veuillez d'abord remplir les conditions");
     		alert.showAndWait();
     	}
-    	else
-    	{
+    	else {
     		LocalDate selectedDate =  signup_birthday.getValue();
     		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     		String formattedDate = selectedDate.format(formatter);
@@ -172,12 +121,11 @@ public class AuthentificationController implements Initializable{
     		alert.setContentText("Veuillez d'abord remplir les conditions");
     		alert.showAndWait();
     	}
-    	else{
+    	else {
     		signup3.toFront();
     		signedstudent.setBacYear(bacyear_choice.getValue());
     		signedstudent.setBac(bactype_choice.getValue());
     		signedstudent.setBacCity(bacville_choice.getValue());
-    		
     		signup3.toFront();
     	}
     }
@@ -213,14 +161,6 @@ public class AuthentificationController implements Initializable{
     	
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
     @FXML
     void backtologin(ActionEvent event) {
     	login_forum.toFront();
@@ -230,17 +170,4 @@ public class AuthentificationController implements Initializable{
 		signup_female.setToggleGroup(toggleGroup);
 		signup_male.setToggleGroup(toggleGroup);
     }
-
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-		
-		
-		 
-		
-		
-		
-	}
-
 }

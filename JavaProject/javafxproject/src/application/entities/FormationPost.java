@@ -24,7 +24,6 @@ public class FormationPost
 	public String candida_code;
 	public String nbr_chaises_available;
 	//for student list grids in school screen 
-	
 	public String student_ville;
 	public String student_nom;
 	public String student_prenom;
@@ -38,14 +37,11 @@ public class FormationPost
     private Button declineNotif = new Button();
     private String date_;
     private String repondreAvant;
-    
     //My Applications table actions
     private Button deleteApp = new Button();
-    
     //Home table actions
     private Button viewSchool = new Button();
     private Button applySchool = new Button();
-    
     //School Profile Formation List Check Image
     private Button checkImage = new Button();
     
@@ -83,7 +79,6 @@ public class FormationPost
     public FormationPost() {
     	ImageUtils.setButtonImage(getClass(),acceptNotif, "accept.png", 20, 20, false);
     	ImageUtils.setButtonImage(getClass(),declineNotif, "decline.png", 20, 20, false);
-    	
     	ImageUtils.setButtonImage(getClass(),checkImage, "check_small.png", 20, 20, false);
 
     	ImageUtils.setButtonImage(getClass(),deleteApp, "Delete.png", 20, 20, false);
@@ -106,8 +101,6 @@ public class FormationPost
     		StudentInformations student = StudentService.getStudentInformations(Navigation.email);
     		String cp_code = this.candida_code;
             String bac = student.getBacInformations().baccalaureat;
-
-            
             
             //Cofes Notes
             FormationService cofs = FormationService.getCofs(cp_code, bac);
@@ -160,8 +153,6 @@ public class FormationPost
     	});
     	
 	}
-    
-    
     
 	public Button getCheckImage() {
 		return checkImage;

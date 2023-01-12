@@ -25,9 +25,6 @@
                   <Image url="@../../../resources/Asset%201%201.png" />
                </image>
             </ImageView>
-            <Button fx:id="fillstudent" layoutX="37.0" layoutY="655.0" mnemonicParsing="false" onAction="#developmentMode" text="student" />
-            <Button fx:id="fillschool" layoutX="115.0" layoutY="655.0" mnemonicParsing="false" onAction="#developmentMode" text="School" />
-            <Button fx:id="filladmin" layoutX="184.0" layoutY="655.0" mnemonicParsing="false" onAction="#developmentMode" text="admin" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="720.0" prefWidth="400.0" style="-fx-background-color: fff;">

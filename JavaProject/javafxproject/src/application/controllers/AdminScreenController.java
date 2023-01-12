@@ -1,9 +1,8 @@
 package application.controllers;
 
-import java.awt.Paint;
+
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import application.GlobalControllers;
 import application.Navigation;
 import application.entities.SchoolInformations;
@@ -11,15 +10,12 @@ import application.entities.StudentInformations;
 import application.services.CommonService;
 import application.services.SchoolService;
 import application.services.StudentService;
-import application.utilities.ImageUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -31,70 +27,31 @@ import javafx.stage.Stage;
 
 public class AdminScreenController implements Initializable {
 	Navigation navigation = new Navigation();
-
+	
 	@FXML
 	private ResourceBundle resources;
-
 	@FXML
 	private URL location;
 	@FXML
-
-	private ChoiceBox<String> admin_students_ville_filter;
-	@FXML
-	private ChoiceBox<String> admin_school_ville_filter;
-	@FXML
-	private ChoiceBox<String> admin_type_bac_filter;
-
+	private ChoiceBox<String> admin_students_ville_filter, admin_school_ville_filter, admin_type_bac_filter;
 	@FXML
 	private Pane admin_school_list, admin_students_list;
-
-	// admin school list columns
-	@FXML
-	private TableColumn<SchoolInformations, String> etaCol;
-	@FXML
-	private TableColumn<SchoolInformations, String> villeCol;
-	@FXML
-	private TableColumn<SchoolInformations, String> emailCol;
-	@FXML
-	private TableColumn<SchoolInformations, String> phoneCol;
-	@FXML
-	private TableColumn<SchoolInformations, String> nbFormationsCol;
-	@FXML
-	private TableColumn<SchoolInformations, Button> ecoleDeleteCol;
-	@FXML
-	private TableColumn<SchoolInformations, Button> ecoleEditCol;
-
-	// Admin student list columns
-	@FXML
-	private TableColumn<StudentInformations, String> cneCol;
-	@FXML
-	private TableColumn<StudentInformations, String> nomCol;
-	@FXML
-	private TableColumn<StudentInformations, String> prenomCol;
-	@FXML
-	private TableColumn<StudentInformations, String> stEmailCol;
-	@FXML
-	private TableColumn<StudentInformations, String> bacCol;
-	@FXML
-	private TableColumn<StudentInformations, String> stVilleCol;
-	@FXML
-	private TableColumn<StudentInformations, Button> deleteCol;
-	@FXML
-	private TableColumn<StudentInformations, Button> editCol;
-
-	@FXML
-	private Button admin_students_listbtn, admin_schools_listbtn, admin_logout, clear_search, clear_search1;
-	// TableView
 	@FXML
 	private TableView<SchoolInformations> schools_table_view;
+	// Admin : school list columns
+	@FXML
+	private TableColumn<SchoolInformations, String> etaCol, villeCol, emailCol, phoneCol, ecoleEditCol, nbFormationsCol,  ecoleDeleteCol;
 	@FXML
 	private TableView<StudentInformations> students_table_view;
-
+	// Admin : student list columns
 	@FXML
-	private TextField ecolesSearchInput;
+	private TableColumn<StudentInformations, String> cneCol,  stVilleCol,  nomCol,  prenomCol,  stEmailCol,  bacCol;
 	@FXML
-	private TextField studentsSearchInput;
-
+	private TableColumn<StudentInformations, Button> editCol, deleteCol;
+	@FXML
+	private Button admin_students_listbtn, admin_schools_listbtn, admin_logout, clear_search, clear_search1;
+	@FXML
+	private TextField ecolesSearchInput, studentsSearchInput;
 	@FXML
 	private Label adminSessionEmail;
 
@@ -113,40 +70,28 @@ public class AdminScreenController implements Initializable {
 		}
 	}
 
-	public void toggleStyleClass(Button event) {
+	public void toggleStyleClass(@SuppressWarnings("exports") Button event) {
 		Image image2 = new Image(getClass().getResourceAsStream("imgs/default.jpg"));
 		Image image1 = new Image(getClass().getResourceAsStream("imgs/default.jpg"));
 		ImageView imageView2 = new ImageView(image2);
 		ImageView imageView1 = new ImageView(image1);
-
 		if (event == admin_schools_listbtn) {
-
 			admin_schools_listbtn.getStyleClass().add("active");
 			admin_students_listbtn.getStyleClass().removeAll("active");
-
 			image2 = new Image(getClass().getResourceAsStream("imgs/school_b.png"));
 			image1 = new Image(getClass().getResourceAsStream("imgs/student_w.png"));
-			
-		}
-		else if (event == admin_students_listbtn) {
-
+		} else if (event == admin_students_listbtn) {
 			admin_students_listbtn.getStyleClass().add("active");
 			admin_schools_listbtn.getStyleClass().removeAll("active");
-
 			image2 = new Image(getClass().getResourceAsStream("imgs/school_w.png"));
 			image1 = new Image(getClass().getResourceAsStream("imgs/student_b.png"));
-
 		}
-		
 		imageView2 = new ImageView(image2);
 		imageView1 = new ImageView(image1);
-
 		imageView1.setFitWidth(24);
 		imageView1.setFitHeight(24);
-
 		imageView2.setFitWidth(24);
 		imageView2.setFitHeight(24);
-
 		admin_students_listbtn.setGraphic(imageView1);
 		admin_schools_listbtn.setGraphic(imageView2);
 	}

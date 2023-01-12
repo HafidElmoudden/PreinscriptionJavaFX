@@ -18,59 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="1200.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.AdminScreenController">
-   <left>
-      <VBox prefHeight="670.0" prefWidth="150.0" spacing="518.0" style="-fx-background-color: #1E90FF;" BorderPane.alignment="CENTER">
-         <children>
-            <VBox prefHeight="80.0" prefWidth="150.0">
-               <children>
-                  <Button fx:id="admin_schools_listbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="150.0" styleClass="nav-btn" text="Ecoles" textAlignment="RIGHT" textFill="WHITE" textOverrun="CLIP">
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../resources/school1.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="Segoe UI" size="12.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
-                  <Button fx:id="admin_students_listbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="150.0" styleClass="nav-btn" text="Etudiants" textFill="WHITE">
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../resources/group1.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin></Button>
-               </children>
-            </VBox>
-            <Button fx:id="admin_logout" alignment="TOP_LEFT" graphicTextGap="10.0" minHeight="30.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="150.0" styleClass="nav-btn" text="Se déconnecter" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../resources/logout1.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-         </children>
-      </VBox>
-   </left>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1200.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.AdminScreenController">
    <top>
       <HBox prefHeight="80.0" prefWidth="1200.0" style="-fx-background-color: #1E90FF;" BorderPane.alignment="CENTER">
          <children>
@@ -198,4 +146,59 @@
             </Pane>
          </children></AnchorPane>
    </center>
+   <left>
+      <VBox prefHeight="200.0" prefWidth="150.0" spacing="520.0" style="-fx-background-color: #1E90FF;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="40.0" prefWidth="150.0">
+               <children>
+                  <Button fx:id="admin_schools_listbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="150.0" styleClass="nav-btn" text="Ecoles" textAlignment="RIGHT" textFill="WHITE" textOverrun="CLIP">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/school1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Segoe UI" size="12.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="admin_students_listbtn" alignment="TOP_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="150.0" styleClass="nav-btn" text="Etudiants" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/group1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            <Button fx:id="admin_logout" alignment="TOP_LEFT" graphicTextGap="10.0" minHeight="30.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="150.0" styleClass="nav-btn" text="Se déconnecter" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/logout1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </VBox>
+   </left>
 </BorderPane>
