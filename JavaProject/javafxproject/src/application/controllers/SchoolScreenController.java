@@ -49,6 +49,8 @@ public class SchoolScreenController implements Initializable{
     @FXML
     private ImageView school_logo;
     @FXML
+    private Label school_name_city;
+    @FXML
     private Pane school_candidateurs, school_selection, school_etudiants;
 
     
@@ -83,6 +85,7 @@ public class SchoolScreenController implements Initializable{
 		SchoolInformations school= SchoolService.getSchoolLogoByEmail(Navigation.email);
 		Image logo = new Image(getClass().getResource(school.getLogo()).toExternalForm());
 		school_logo.setImage(logo);
+		school_name_city.setText(school.getEtablissement()+" "+school.getVille());
 		GlobalControllers.schoolController = this;
 		action_grid_selection.setCellValueFactory(new PropertyValueFactory<>("selection"));
 		

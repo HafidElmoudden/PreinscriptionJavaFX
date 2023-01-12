@@ -150,12 +150,14 @@ public class SchoolService {
 		SchoolInformations s = new SchoolInformations();
 		List<Object> parameters = new ArrayList<Object>();
         parameters.add(email);
-        String query="SELECT logo_url FROM Ecole WHERE email= ?";
+        String query="SELECT logo_url, ecole_nom, ville FROM Ecole WHERE email= ?";
         
         ResultSet result = dbClient.executeCommand(true, query, parameters);
 		try {
 			while (result.next()) {
 				s.setLogo(result.getString("logo_url"));
+				s.setEtablissement(result.getString("ecole_nom"));
+				s.setVille(result.getString("ville"));
 			}
 
 		} catch (SQLException e) {

@@ -16,6 +16,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1200.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.AdminScreenController">
@@ -24,12 +25,28 @@
          <children>
             <AnchorPane prefHeight="80.0" prefWidth="1235.0">
                <children>
-                  <Label layoutX="150.0" layoutY="20.0" text="Connecté en tant qu'administrateur" textFill="WHITE">
+                  <Label layoutX="170.0" layoutY="20.0" text="Connecté en tant qu'administrateur" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="adminSessionEmail" layoutX="150.0" layoutY="42.0" style="-fx-background-color: fff;" text="MEO DE MEOW" textFill="#2197ff" />
+                  <Label fx:id="adminSessionEmail" layoutX="170.0" layoutY="42.0" style="-fx-background-color: fff;" text="MEO DE MEOW" textFill="#2197ff" />
+                  <ImageView fitHeight="60.0" fitWidth="40.0" layoutX="16.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/Asset%201@4x.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="62.0" layoutY="26.0" text="TAWJIH" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="62.0" layoutY="39.0" text="Plate-forme" textFill="WHITE">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Line endX="1.0" endY="1.0" layoutX="172.0" layoutY="39.0" rotate="90.0" startX="-45.0" startY="1.0" stroke="#f7fdffa4" strokeMiterLimit="5.0" />
                </children>
             </AnchorPane>
          </children></HBox>
